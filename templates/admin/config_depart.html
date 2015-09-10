@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
+    <link rel="stylesheet" href="/itildemo/plugins/jquery-easyui-1.4.3/themes/default/easyui.css">
+    <link rel="stylesheet" href="/itildemo/plugins/jquery-easyui-1.4.3/themes/icon.css">
+    <script language="JavaScript" src="/itildemo/static/js/jquery-1.11.1.min.js"></script>
+    <script language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"></script>
+    <script language="JavaScript" src="/itildemo/plugins/jquery-easyui-1.4.3/jquery.easyui.min.js"></script>
+</head>
+
+<body background="/itildemo/static/img/bg.png">
+<div class="_21_config_staff">
+    <div class="_011_RequestList">
+        机构配置 &nbsp;&nbsp;
+        <a href="#" title="添加机构">
+            <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal">
+                +
+            </button>
+        </a>
+    </div>
+    <div class="_032_config_depart">
+        <ul class="easyui-tree">
+            <li>
+                <span>全部机构 </span>
+                <{$tree}>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--添加机构的模态框-->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <form class="form-horizontal" name="adddepart" method="post" action="/itildemo/home/service/depart_ser.php"
+              role="form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加机构</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group form-group-sm">
+                        <label class="col-sm-3 control-label">机构名称：</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="depart_name" class="form-control" placeholder="机构名称">
+                        </div>
+                    </div>
+                    <!--隐藏数据-->
+                    <input type="hidden" name="flag" value="1">
+                    <input type="hidden" id="depart_parent_id" name="depart_parent_id" value="">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-sm" type="submit">添加</button>
+                    <button class="btn btn-default btn-sm " type="reset" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

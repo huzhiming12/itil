@@ -1,0 +1,258 @@
+
+body, div, th, td, span, li, a, label, textarea, select, input, button {
+    font-family: "微软雅黑", Helvetica, Arial, Verdana, sans-serif;
+    font-size: 13px;
+}
+
+.title_font {
+    font-size: 14px;
+    font-weight: 800;
+    font-family: "微软雅黑", Helvetica, Arial, Verdana, sans-serif;
+}
+
+._001_MyBoard {
+    margin-top: 20px;
+    width: 94%;
+    margin-left: 3%;
+}
+
+._002_MyBoard {
+    width: 47%;
+    height: 300px;
+    border: solid thin #428BCA;
+    float: left;
+    margin-left: 2%;
+}
+
+._003_MyBoard {
+    width: 96%;
+    height: 150px;
+    border: solid thin #428BCA;
+    margin-left: 2%;
+    float: left;
+    margin-top: 10px;
+}
+
+._004_MyBoard {
+    height: 50px;
+    background-color: #F2F2F2;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+._005_MyBoard {
+    height: 240px;
+    overflow-y: scroll;
+}
+
+._006_MyBoard {
+    border-bottom: thin dashed #9A9A9A;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+._007_MyBoard {
+    width: 94%;
+    margin-left: 3%;
+}
+
+._008_MyBoard {
+    background-color: #D2E0F2;
+    width: 100%;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+._009_MyBoard {
+    float: left;
+    width: 10%;
+}
+
+._010_MyBoard {
+    float: left;
+    width: 89%;
+    overflow-y: scroll;
+    height: 115px;
+}
+
+._011_RequestList {
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 92%;
+    margin-left: 4%;
+    margin-top: 10px;
+    border-bottom: 2px solid #426AA3;
+}
+
+._012_RequestList {
+    width: 80%;
+    margin-left: 10%;
+    min-height: 520px;
+    background: #FFF none repeat scroll 0% 0%;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+}
+
+._013_RequestList {
+    width: 100%;
+    background-color: #F8F8F8;
+    border-bottom: #DDDDDD solid 1px;
+    padding-top: 10px;
+}
+
+._014_RequestList {
+    width: 92%;
+    margin-left: 4%;
+    margin-top: 10px;
+}
+
+._015_RequestList {
+    width: 92%;
+    margin-left: 4%;
+}
+
+._016_RequestList_line {
+    border: 1px solid #cccccc;
+    margin-left: 4%;
+    width: 92%;
+}
+
+._017_AddRequest {
+    margin-left: 40%;
+}
+
+._018_Title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    width: 92%;
+    margin-top: 10px;
+}
+
+._019_KnowledgeDetail {
+    width: 92%;
+    margin-left: 4%;
+    text-align: center;
+}
+
+._020_KnowledgeDetail {
+    width: 92%;
+    text-align: right;
+    color: #999;
+}
+
+._21_config_staff {
+    width: 80%;
+    margin-left: 10%;
+    height: 550px;
+    margin-top: 30px;
+    background: #FFF none repeat scroll 0% 0%;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    overflow-y: scroll;
+}
+
+._22_config_staff {
+    width: 20%;
+    float: left;
+    background-color: #F8F8F8;
+    border-right: #DDDDDD solid 1px;
+    height: 100%;
+    padding-top: 15px;
+    overflow-x: scroll;
+}
+
+._23_config_staff {
+    width: 100%;
+    padding-top: 15px;
+    background-color: #F8F8F8;
+    border-bottom: #DDDDDD solid 1px;
+}
+
+._24_config_staff {
+    width: 300px;
+    padding-left: 4%;
+    margin-bottom: 15px;
+}
+
+._25_config_staff {
+    width: 80%;
+    height: 100%;
+    float: left;
+}
+
+._026_config_staff {
+    width: 520px;
+    height: 250px;
+    padding: 10px;
+}
+
+._027_config_staff {
+    width: 90%;
+    margin-left: 3%;
+}
+
+._028_config_user {
+    width: 100%;
+}
+
+._029_config_sort {
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 40px;
+    width: 100px;
+}
+
+._030_config_sort {
+    font-size: 15px;
+    line-height: 40px;
+}
+
+._031_config_sort {
+    width: 100%;
+    border-bottom: thin solid #DDDDDD;
+}
+
+._032_config_depart {
+    width: 100%;
+    background-color: #F8F8F8;
+    border-right: #DDDDDD solid 1px;
+    height: 100%;
+    padding-left: 4%;
+    padding-top: 10px;
+}
+
+._033_config_depart {
+    line-height: 25px;
+    text-align: center;
+}
+
+._034_request_home {
+    width: 100%;
+    padding-top: 15px;
+    padding-left: 4%;
+    padding-right: 4%;
+    background-color: #F8F8F8;
+}
+
+._035_request_create {
+    width: 90%
+}
+
+._36_config_sort {
+    width: 50px;
+}
+
+._37_config_sort {
+    font-size: 11px;
+    color: #999999
+}
+

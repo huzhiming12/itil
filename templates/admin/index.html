@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<{extends file='../frame/index.html'}>
+<{block name=head}>
+<li class="nav-item dl-selected">
+    <div class="nav-item-inner nav-home">服务台</div>
+</li>
+<li class="nav-item dl-selected">
+    <div class="nav-item-inner nav-order">知识库</div>
+</li>
+<li class="nav-item dl-selected">
+    <div class="nav-item-inner nav-order">报表</div>
+</li>
+<li class="nav-item dl-selected">
+    <div class="nav-item-inner nav-order">配置</div>
+</li>
+<li class="nav-item dl-selected">
+    <div class="nav-item-inner nav-order">公告</div>
+</li>
+<{/block}>
+
+<{block name=navi}>
+<script>
+    BUI.use('common/main', function () {
+        var config =
+                [
+                    {
+                        id: '1',
+                        homePage: '1',
+                        menu: [{
+                            text: '服务台',
+                            items: [
+                                {id: '1', text: '服务首页', href: '/itildemo/home/controller/admin/request_home.php'},
+                                {id: '2', text: '服务请求查询', href: '/itildemo/home/controller/admin/request_inquiry.php'},
+                                {id: '3', text: '服务请求创建', href: '/itildemo/home/controller/admin/request_create.php'}]
+
+                        }]
+                    },
+                    {
+                        id: '2',
+                        homePage: '1',
+                        menu: [{
+                            text: '知识库',
+                            items: [
+                                {id: '1', text: '知识库首页', href: 'Node/index.html'},
+                                {id: '2', text: '知识库查询', href: 'Node/index.html'},
+                                {id: '3', text: '知识创建', href: 'Node/index.html'}]
+                        }]
+                    },
+                    {
+                        id: '3',
+                        homePage: '1',
+                        menu: [{
+                            text: '报表',
+                            items: [
+                                {id: '1', text: '我的请求', href: ''},
+                                {id: '2', text: '新增请求', href: ''}]
+                        }]
+                    },
+                    {
+                        id: '4',
+                        homePage: '1',
+                        menu: [{
+                            text: '配置',
+                            items: [
+                                {id: '1', text: '机构配置', href: '/itildemo/home/controller/admin/config_depart.php'},
+                                {id: '2', text: '人员配置', href: '/itildemo/home/controller/admin/config_staff.php'},
+                                {id: '3', text: '附件上传配置', href: '/itildemo/home/controller/admin/config_user.php'},
+                                {id: '4', text: '知识请求分类配置', href: '/itildemo/home/controller/admin/config_sort.php'},
+                            ]
+                        }]
+                    },
+                    {
+                        id: '5',
+                        homePage: '1',
+                        menu: [{
+                            text: '公告',
+                            items: [
+                                {id: '1', text: '公告列表', href: '/itildemo/home/controller/admin/config_depart.php'},
+                                {id: '2', text: '新建公告', href: '/itildemo/home/controller/admin/config_staff.php'},
+                            ]
+                        }]
+                    },
+                ];
+        new PageUtil.MainPage({
+            modulesConfig: config
+        });
+    });
+</script>
+<{/block}>
+
+</body>
+</html>

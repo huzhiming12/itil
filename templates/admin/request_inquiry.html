@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script language="JavaScript" src="/itildemo/static/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap-datetimepicker.min.css">
+
+    <script language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"></script>
+    <script language="JavaScript" src="/itildemo/static/js/bootstrap-datetimepicker.min.js"></script>
+    <script language="JavaScript" src="/itildemo/static/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <title></title>
+</head>
+
+
+<body background="/itildemo/static/img/bg.png">
+<br>
+
+<div class="_012_RequestList">
+    <div class="_013_RequestList">
+        <br>
+
+        <div class="form-group _015_RequestList">
+            <table>
+                <form action="/itildemo/home/controller/admin/request_inquiry.php" method="GET">
+                    <tr>
+                        <td>条件关系：</td>
+                        <td class="input-group-sm">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-success active">
+                                    <input type="radio" name="and_or" value="and"  autocomplete="off" checked> and
+                                </label>
+                                <label class="btn btn-success">
+                                    <input type="radio" name="and_or" value="or" autocomplete="off"> or
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>请求日期：</td>
+                        <td>&nbsp;&nbsp;起始日期：</td>
+                        <td class="input-group-sm">
+                            <input type="text" name="start_date" class="form-control datetimepicker" readonly>
+                        </td>
+                        <td>&nbsp;&nbsp;截至日期：</td>
+                        <td class="input-group-sm">
+                            <input type="text" name="end_date" class="form-control datetimepicker" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr class="form-group">
+                        <td colspan="1">请求状态：&nbsp;&nbsp;</td>
+                        <td colspan="4" class="input-group-sm">
+                            <select name="req_state" class="form-control" style="width:150px;">
+                                <option value="">全部</option>
+                                <option value="未处理">未处理</option>
+                                <option value="已指派">已指派</option>
+                                <option value="已解决">已解决</option>
+                                <option value="已取消">已取消</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr class="form-group">
+                        <td>
+                            &nbsp;关&nbsp;键&nbsp;字：&nbsp;&nbsp;
+                        </td>
+                        <td colspan="4" class="form-group-sm">
+                            <input name="keyword" class="form-control" style="width:200px">
+                        </td>
+                        <td style="width: 250px"></td>
+                        <td>
+                            <button name="search_btn" class="btn btn-sm btn-primary">&nbsp;&nbsp;搜&nbsp;&nbsp;索&nbsp;&nbsp;</button>
+                        </td>
+                    </tr>
+                </form>
+            </table>
+        </div>
+    </div>
+
+    <div class="_011_RequestList">
+        请求列表
+    </div>
+    <div class="_014_RequestList">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td></td>
+                <th>请求编号</th>
+                <th>请求标题</th>
+                <th>请求人</th>
+                <th>请求时间</th>
+                <th>请求状态</th>
+                <th>操作</th>
+            </tr>
+            <tbody>
+            <{foreach from=$res item=req name=req}>
+            <tr>
+                <td><{$smarty.foreach.req.index+1}></td>
+                <td><a href="/itildemo/home/controller/admin/request_detail.php?req_num=<{$req.req_num}>"><{$req.req_num}></a></td>
+                <td><{$req.req_title}></td>
+                <td><{$req.req_author}></td>
+                <td><{$req.req_time}></td>
+                <td><{$req.req_state}></td>
+                <td>删除</td>
+            </tr>
+            <{/foreach}>
+            </tbody>
+            </thead>
+        </table>
+    </div>
+    <hr class="_016_RequestList_line">
+    <div class="_015_RequestList">
+        <{$navi}>
+    </div>
+    <br><br>
+
+
+</div>
+</body>
+<script type="text/javascript">
+    $('.datetimepicker').datetimepicker({
+        format: 'yyyy-MM-dd',
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+</script>
+
+</html>
