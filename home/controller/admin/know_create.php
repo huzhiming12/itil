@@ -8,4 +8,4 @@
 
 require_once "../../smarty_include.php";
 
-$smarty->display("admin/kno_create.html");
+$smarty->display("admin/know_create.html");
