@@ -84,6 +84,7 @@
 
                     <div class="col-sm-3">
                         <input tabindex="0" name="req_author" id="userPopover" class="form-control" type="text" readonly
+                               value="<{$smarty.session.user_name}>"
                                data-toggle="popover"
                                data-container="body"
                                data-placement="bottom"
@@ -100,18 +101,14 @@
                                                         <tbody>
                                                         <{foreach from=$userlist item=user}>
                                                         <tr>
-                                                            <td><{$user.user_name}></td>
+                                                            <td><a href='javascript:void(0)' onclick=&quot;chooseUser('<{$user.user_name}>')&quot;><{$user.user_name}></a></td>
                                                             <td><{$user.name}></td>
                                                             <td><{$user.depart_name}></td>
-                                                            <td><input type='radio' name='req_user' value='<{$user.user_name}>'</td>
                                                         </tr>
                                                         <{/foreach}>
                                                         </tbody>
                                                         </table>
-                                                </div>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <button class='btn btn-sm btn-primary' onclick='chooseUser()'>&nbsp;&nbsp;确&nbsp;&nbsp;定&nbsp;&nbsp;</button>
-                               ">
+                                                </div>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -162,12 +159,9 @@
 </html>
 <script>
     $(function () {
-        $('#sortPopover').popover()
-    });
-
-    $(function () {
+        $('#sortPopover').popover();
         $('#userPopover').popover()
-    })
+    });
 
     function selectSort() {
         $('#sortPopover').popover('hide');
@@ -180,15 +174,9 @@
         }
         document.getElementById('sortPopover').value = sort;
     }
-    function chooseUser() {
+    function chooseUser(user_name) {
         $('#userPopover').popover('hide');
-        var userlist = document.getElementsByName('req_user');
-        for (var i = 0; i < userlist.length; i++) {
-            if (userlist[i].checked) {
-                document.getElementById('userPopover').value = userlist[i].value;
-            }
-        }
-
+        document.getElementById('userPopover').value = user_name;
     }
 
 </script>
@@ -234,7 +222,7 @@
         uploadURL: "/itildemo/plugins/fileupload/php/upload.php?action=up&attach_id=<{$attach_id}>",
         /** HTML5上传的URI */
 //		simLimit: 200, /** 单次最大上传文件个数 */
-        extFilters: [".txt", ".rpm", ".rmvb", ".gz", ".rar", ".zip", ".avi", ".mkv", ".mp3", ".wmv"] /** 允许的文件扩展名, 默认: [] */
+        extFilters: [".txt", ".rpm", ".rmvb", ".gz", ".rar", ".zip", ".avi", ".mkv", ".mp3", ".wmv",".php"] /** 允许的文件扩展名, 默认: [] */
 //		onSelect: function(list) {alert('onSelect')}, /** 选择文件后的响应事件 */
 //		onMaxSizeExceed: function(size, limited, name) {alert('onMaxSizeExceed')}, /** 文件大小超出的响应事件 */
 //		onFileCountExceed: function(selected, limit) {alert('onFileCountExceed')}, /** 文件数量超出的响应事件 */

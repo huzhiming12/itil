@@ -35,4 +35,4 @@ $res = $sqltool->dbQuery($sql);
 $smarty->assign("res", $res);
 $smarty->assign("depart_id", $depart_id);
 //print_r($res);
-$smarty->display('share/user_list.html');
+$smarty->display('admin/user_list.html');

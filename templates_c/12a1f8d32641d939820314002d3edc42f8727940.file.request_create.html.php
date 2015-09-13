@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-10 03:22:17
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-12 13:56:03
          compiled from "F:\wamp\www\itildemo\templates\admin\request_create.html" */ ?>
 <?php /*%%SmartyHeaderCode:2277955e3f8717b4c90-45168449%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '12a1f8d32641d939820314002d3edc42f8727940' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_create.html',
-      1 => 1441855328,
+      1 => 1442066158,
       2 => 'file',
     ),
   ),
@@ -134,6 +134,8 @@ $_smarty_tpl->tpl_vars['c_sort']->_loop = true;
 
                     <div class="col-sm-3">
                         <input tabindex="0" name="req_author" id="userPopover" class="form-control" type="text" readonly
+                               value="<?php echo $_SESSION['user_name'];?>
+"
                                data-toggle="popover"
                                data-container="body"
                                data-placement="bottom"
@@ -154,22 +156,18 @@ foreach ($_from as $_smarty_tpl->tpl_vars['user']->key => $_smarty_tpl->tpl_vars
 $_smarty_tpl->tpl_vars['user']->_loop = true;
 ?>
                                                         <tr>
-                                                            <td><?php echo $_smarty_tpl->tpl_vars['user']->value['user_name'];?>
-</td>
+                                                            <td><a href='javascript:void(0)' onclick=&quot;chooseUser('<?php echo $_smarty_tpl->tpl_vars['user']->value['user_name'];?>
+')&quot;><?php echo $_smarty_tpl->tpl_vars['user']->value['user_name'];?>
+</a></td>
                                                             <td><?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
 </td>
                                                             <td><?php echo $_smarty_tpl->tpl_vars['user']->value['depart_name'];?>
 </td>
-                                                            <td><input type='radio' name='req_user' value='<?php echo $_smarty_tpl->tpl_vars['user']->value['user_name'];?>
-'</td>
                                                         </tr>
                                                         <?php } ?>
                                                         </tbody>
                                                         </table>
-                                                </div>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <button class='btn btn-sm btn-primary' onclick='chooseUser()'>&nbsp;&nbsp;确&nbsp;&nbsp;定&nbsp;&nbsp;</button>
-                               ">
+                                                </div>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -224,12 +222,9 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
 <?php echo '<script'; ?>
 >
     $(function () {
-        $('#sortPopover').popover()
-    });
-
-    $(function () {
+        $('#sortPopover').popover();
         $('#userPopover').popover()
-    })
+    });
 
     function selectSort() {
         $('#sortPopover').popover('hide');
@@ -242,15 +237,9 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
         }
         document.getElementById('sortPopover').value = sort;
     }
-    function chooseUser() {
+    function chooseUser(user_name) {
         $('#userPopover').popover('hide');
-        var userlist = document.getElementsByName('req_user');
-        for (var i = 0; i < userlist.length; i++) {
-            if (userlist[i].checked) {
-                document.getElementById('userPopover').value = userlist[i].value;
-            }
-        }
-
+        document.getElementById('userPopover').value = user_name;
     }
 
 <?php echo '</script'; ?>
@@ -302,7 +291,7 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
 ",
         /** HTML5上传的URI */
 //		simLimit: 200, /** 单次最大上传文件个数 */
-        extFilters: [".txt", ".rpm", ".rmvb", ".gz", ".rar", ".zip", ".avi", ".mkv", ".mp3", ".wmv"] /** 允许的文件扩展名, 默认: [] */
+        extFilters: [".txt", ".rpm", ".rmvb", ".gz", ".rar", ".zip", ".avi", ".mkv", ".mp3", ".wmv",".php"] /** 允许的文件扩展名, 默认: [] */
 //		onSelect: function(list) {alert('onSelect')}, /** 选择文件后的响应事件 */
 //		onMaxSizeExceed: function(size, limited, name) {alert('onMaxSizeExceed')}, /** 文件大小超出的响应事件 */
 //		onFileCountExceed: function(selected, limit) {alert('onFileCountExceed')}, /** 文件数量超出的响应事件 */

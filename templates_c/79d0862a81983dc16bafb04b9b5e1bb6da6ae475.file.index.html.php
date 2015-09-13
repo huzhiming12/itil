@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-09 03:00:27
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-11 06:59:55
          compiled from "F:\wamp\www\itildemo\templates\admin\index.html" */ ?>
 <?php /*%%SmartyHeaderCode:1593055a1de2a311301-65692116%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '79d0862a81983dc16bafb04b9b5e1bb6da6ae475' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\index.html',
-      1 => 1441767625,
+      1 => 1441954792,
       2 => 'file',
     ),
     '5faa2dcbbfb8136e3a37dc4c1e38a72b8d01f8cf' => 
@@ -112,8 +112,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             text: '知识库',
                             items: [
                                 {id: '1', text: '知识库首页', href: 'Node/index.html'},
-                                {id: '2', text: '知识库查询', href: 'Node/index.html'},
-                                {id: '3', text: '知识创建', href: 'Node/index.html'}]
+                                {id: '2', text: '知识库管理', href: '/itildemo/home/controller/admin/know_list.php'},
+                                {id: '3', text: '知识创建', href: '/itildemo/home/controller/admin/know_create.php'}]
                         }]
                     },
                     {

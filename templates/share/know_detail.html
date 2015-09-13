@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script language="JavaScript" src="/itildemo/static/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
+    <script language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"></script>
+    <title></title>
+</head>
+<body>
+
+<div class="_012_RequestList">
+    <div class="_011_RequestList">
+        请求详情
+    </div>
+    <div class="_018_Title">
+        <{$res.kno_title}>
+    </div>
+    <br>
+    <div class="_019_KnowledgeDetail">
+        <font color="#999">key words：<{$res.kno_keyword}>&nbsp;&nbsp;&nbsp;&nbsp;分类：<{$res.kno_sort}></font>
+    </div>
+    <br>
+    <div class="_015_RequestList">
+        <{$res.kno_content}>
+    </div>
+    <br><br>
+
+    <div class="_020_KnowledgeDetail">
+        创建：<{$res.kno_author}>&nbsp; <{$res.kno_sub_time}>&nbsp;   阅读(88) 评论(2)
+    </div>
+    <br>
+
+    <div class="_015_RequestList">
+        <font style="font-weight: bold">附件:</font><br><br>
+        <{foreach from=$attach item=arr}>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" data-toggle="popover" data-placement="right" data-html="true" data-trigger="focus"
+                       data-content="<button class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/plugins/fileupload/php/uploads/files/<{$arr.attach_id}>/<{$arr.attach_md5_name}>&quot;'>下载</button>&nbsp;&nbsp;
+                                     <button class='btn btn-sm btn-delete' onclick='window.location.href=&quot;/itildemo/home/controller/admin/know_detail.php?flag=del&attach_id=<{$arr.attach_id}>&file_name=<{$arr.attach_md5_name}>&kno_num=<{$res.kno_num}>&quot;'>删除</button>"><{$arr.attach_name}></a>
+        </p>
+        <{/foreach}>
+    </div>
+    <br>
+    <div class="_46_knowkedge">
+        <{if $res.kno_state=='1'}>
+        <button class="btn btn-sm btn-primary" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus"
+                data-content="确定要发布吗？<br><br><button class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/home/service/know_ser.php?flag=pass&kno_num=<{$res.kno_num}>&quot;'>发布</button>&nbsp;&nbsp;
+                                              <button class='btn btn-sm btn-default'>取消</button>">发布</button>
+        <{/if}>
+        <button class="btn btn-sm btn-primary">编辑</button>&nbsp;&nbsp;
+        <button class="btn btn-sm btn-danger" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus"
+                data-content="确定要发布吗？<br><br><button class='btn btn-sm btn-danger' onclick='window.location.href=&quot;/itildemo/home/service/know_ser.php?flag=del&kno_num=<{$res.kno_num}>&quot;'>删除</button>&nbsp;&nbsp;
+                                              <button class='btn btn-sm btn-default'>取消</button>">删除</button>
+        <button class="btn btn-sm btn-default" onclick="history.go(-1)">返回</button>
+
+    </div>
+    <br>
+    <br>
+
+
+</div>
+</body>
+</html>
+
+<script>
+    $(function () {
+        $('[data-toggle="popover"]').popover();
+    })
+    function popoverCancel()
+    {
+        $('[data-toggle="popover"]').popover('hide');
+    }
+</script>

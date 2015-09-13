@@ -36,7 +36,7 @@ if ($keyword != "")
 $res = $sqltool->dbQuery("select count(*) from t_req where 1=1 " . $sql);
 
 
-$pagetool = new PageTool($res[0][0], 10);
+$pagetool = new PageTool($res[0][0]);
 $pagetool->url = "request_inquiry.php";
 $pagetool->url_arg="&and_or=$and_or&start_date=$start_date&end_date=$end_date&req_state=$req_state&keyword=$keyword";
 $pageNow = 1;
@@ -45,7 +45,7 @@ if ($_GET['pageNow'])
     $pageNow = $_GET['pageNow'];
 $pagetool->pageNow = $pageNow;
 
-$smarty->assign("res", $pagetool->getPageResource($pageNow));
+$smarty->assign("res", $pagetool->getPageResource());
 
 $smarty->assign("navi", $pagetool->getNavigate());
 $smarty->display("admin/request_inquiry.html");

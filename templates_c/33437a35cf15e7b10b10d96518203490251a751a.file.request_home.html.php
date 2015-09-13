@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-10 00:13:04
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-11 07:13:41
          compiled from "F:\wamp\www\itildemo\templates\admin\request_home.html" */ ?>
 <?php /*%%SmartyHeaderCode:2595255a20a27136c40-20673934%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '33437a35cf15e7b10b10d96518203490251a751a' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_home.html',
-      1 => 1441843978,
+      1 => 1441955618,
       2 => 'file',
     ),
   ),
@@ -44,10 +44,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <title></title>
 </head>
 <body>
-<div class="_21_config_staff">
+<br>
+<div class="_012_RequestList">
     <div class="_034_request_home">
         <ul id="myTab" class="nav nav-tabs title_font">
-            <li class="active"><a href="#home" data-toggle="tab">待审核请求</a></li>
+            <li class="active"><a href="#home" data-toggle="tab">待审核请求(<?php echo count($_smarty_tpl->tpl_vars['res']->value);?>
+)</a></li>
             <li><a href="#ios" data-toggle="tab">变更请求</a></li>
             <li><a href="#java" data-toggle="tab">逾期请求</a></li>
         </ul>

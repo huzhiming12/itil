@@ -29,15 +29,15 @@ if (isset($_POST['add_req'])) {
     $req_keyword = $_POST['req_keyword'];
     $sql = "INSERT INTO t_req (req_num,req_title,req_sort,req_author,req_attach_id,req_content,req_time,req_keyword,req_source) VALUES
             (
-                (SELECT CONCAT('SQ',DATE_FORMAT(NOW(),'%Y%m%d'),id)  FROM
+                (SELECT CONCAT('REQ',DATE_FORMAT(NOW(),'%Y%m%d'),id)  FROM
                 (
                             SELECT
                             CASE
                                 WHEN req_num IS NULL THEN '00001'
-                                ELSE LPAD(RIGHT(MAX(req_num),3)+1,5,'0')
+                                ELSE LPAD(RIGHT(MAX(req_num),5)+1,5,'0')
                                 END id FROM  t_req
                             WHERE req_num LIKE CONCAT('REQ',DATE_FORMAT(NOW(),'%Y%m%d'),'%')
-                ) req_num),'$req_title','$req_sort','test','$req_attach_id','$req_content',Now(),'$req_keyword','$req_source'
+                ) req_num),'$req_title','$req_sort','$req_author','$req_attach_id','$req_content',Now(),'$req_keyword','$req_source'
             )";
     if ($sqltool->dbUpdate($sql))
         echo "<script>alert('请求添加成功！')</script>";

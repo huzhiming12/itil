@@ -37,9 +37,8 @@ class PageTool
 
 
     //获取分页内容
-    public function getPageResource($pageNow)
+    public function getPageResource()
     {
-        $this->pageNow = $pageNow;
         //拼接sql语句
         $sql = $this->sql . " limit " . ($this->pageNow - 1) * $this->pageSize . ", " . $this->pageSize;
         $this->resArr = $this->sqlTool->dbQuery($sql);
