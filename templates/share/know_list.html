@@ -37,6 +37,8 @@
                 <{if $kno.kno_state=='1'}>
                 <span class="_state_new">&nbsp;新采集&nbsp;</span>
                 <{else if  $kno.kno_state=='2'}>
+                <span class="_state_change">&nbsp;有更新&nbsp;</span>
+                <{else if $kno.kno_state=='3'}>
                 <span class="_state_pass">&nbsp;已发布&nbsp;</span>
                 <{/if}>
             </div>

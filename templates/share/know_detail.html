@@ -38,29 +38,44 @@
         <p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="javascript:void(0)" data-toggle="popover" data-placement="right" data-html="true" data-trigger="focus"
-                       data-content="<button class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/plugins/fileupload/php/uploads/files/<{$arr.attach_id}>/<{$arr.attach_md5_name}>&quot;'>下载</button>&nbsp;&nbsp;
-                                     <button class='btn btn-sm btn-delete' onclick='window.location.href=&quot;/itildemo/home/controller/admin/know_detail.php?flag=del&attach_id=<{$arr.attach_id}>&file_name=<{$arr.attach_md5_name}>&kno_num=<{$res.kno_num}>&quot;'>删除</button>"><{$arr.attach_name}></a>
+                       data-content="<button class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/uploadfile/files/<{$arr.attach_id}>/<{$arr.attach_name}>&quot;'>下载</button>&nbsp;&nbsp;
+                                     <button class='btn btn-sm btn-delete' onclick='window.location.href=&quot;/itildemo/home/controller/admin/know_detail.php?flag=del&attach_id=<{$arr.attach_id}>&file_name=<{$arr.attach_name}>&kno_num=<{$res.kno_num}>&quot;'>删除</button>"><{$arr.attach_name}></a>
         </p>
         <{/foreach}>
     </div>
     <br>
+    <div class="_015_RequestList">
+        <b>关联请求：</b><a href="/itildemo/home/controller/admin/request_detail.php?req_num=<{$res.kno_req_num}>"><span><{$res.kno_req_num}></span></a>
+    </div>
+    <br>
+    <div class="_015_RequestList">
+        <b>变更信息:</b>
+        <ul>
+            <{foreach from=$change item=cha}>
+            <li>
+                <{$cha.kno_change_author}> &nbsp;&nbsp;
+                <{$cha.kno_change_time}> &nbsp;&nbsp;
+                <{$cha.kno_change}>
+            </li>
+            <{/foreach}>
+        </ul>
+        <br>
+
+    </div>
     <div class="_46_knowkedge">
-        <{if $res.kno_state=='1'}>
+        <{if $res.kno_state!='3'}>
         <button class="btn btn-sm btn-primary" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus"
                 data-content="确定要发布吗？<br><br><button class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/home/service/know_ser.php?flag=pass&kno_num=<{$res.kno_num}>&quot;'>发布</button>&nbsp;&nbsp;
                                               <button class='btn btn-sm btn-default'>取消</button>">发布</button>
         <{/if}>
-        <button class="btn btn-sm btn-primary">编辑</button>&nbsp;&nbsp;
+        <button class="btn btn-sm btn-primary" onclick="window.location.href='/itildemo/home/controller/admin/know_edit.php?kno_num=<{$res.kno_num}>'">编辑</button>&nbsp;&nbsp;
         <button class="btn btn-sm btn-danger" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus"
                 data-content="确定要发布吗？<br><br><button class='btn btn-sm btn-danger' onclick='window.location.href=&quot;/itildemo/home/service/know_ser.php?flag=del&kno_num=<{$res.kno_num}>&quot;'>删除</button>&nbsp;&nbsp;
                                               <button class='btn btn-sm btn-default'>取消</button>">删除</button>
         <button class="btn btn-sm btn-default" onclick="history.go(-1)">返回</button>
-
     </div>
     <br>
     <br>
-
-
 </div>
 </body>
 </html>
@@ -69,8 +84,4 @@
     $(function () {
         $('[data-toggle="popover"]').popover();
     })
-    function popoverCancel()
-    {
-        $('[data-toggle="popover"]').popover('hide');
-    }
 </script>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-12 13:46:57
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-13 09:16:17
          compiled from "F:\wamp\www\itildemo\templates\admin\request_detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:2072355ee356769d979-80355304%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '24215ae1dd70899634091dbf8b78db4421a5770c' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_detail.html',
-      1 => 1442065610,
+      1 => 1442135767,
       2 => 'file',
     ),
   ),
@@ -77,8 +77,8 @@ $_smarty_tpl->tpl_vars['res']->_loop = true;
 ?>
         <p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/itildemo/plugins/fileupload/php/uploads/files/<?php echo $_smarty_tpl->tpl_vars['res']->value['attach_id'];?>
-/<?php echo $_smarty_tpl->tpl_vars['res']->value['attach_md5_name'];?>
+            <a href="/itildemo/uploadfile/files/<?php echo $_smarty_tpl->tpl_vars['res']->value['attach_id'];?>
+/<?php echo $_smarty_tpl->tpl_vars['res']->value['attach_name'];?>
 "><?php echo $_smarty_tpl->tpl_vars['res']->value['attach_name'];?>
 </a>
         </p>

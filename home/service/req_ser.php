@@ -7,10 +7,12 @@
  */
 
 session_start();
+require_once("../smarty_include.php");
 require_once("../tools/SQLTool.class.php");
+require_once("../tools/FileUtils.php");
 
 $sqltool = new SQLTool();
-
+$fileutil = new FileUtil();
 
 //添加请求
 if (isset($_POST['add_req'])) {
@@ -39,11 +41,14 @@ if (isset($_POST['add_req'])) {
                             WHERE req_num LIKE CONCAT('REQ',DATE_FORMAT(NOW(),'%Y%m%d'),'%')
                 ) req_num),'$req_title','$req_sort','$req_author','$req_attach_id','$req_content',Now(),'$req_keyword','$req_source'
             )";
-    if ($sqltool->dbUpdate($sql))
+    //上传的文件移动
+    $res = 1;
+    if (file_exists(PROJECT_DIR . "/uploadfile/temp/" . $req_attach_id))
+        $res = $fileutil->moveDir(PROJECT_DIR . "/uploadfile/temp/" . $req_attach_id, PROJECT_DIR . "/uploadfile/files/" . $req_attach_id);
+    if ($sqltool->dbUpdate($sql) and $res)
         echo "<script>alert('请求添加成功！')</script>";
     else {
         echo "<script>alert('请求添加失败！');</script>";
-        exit;
     }
     echo "<script>window.location.href='/itildemo/home/controller/user/addrequest.php'</script>";
 }

@@ -25,5 +25,5 @@ $smarty->assign("attach_id", $attach_id);
 $smarty->assign("parent_sort", $parent_sort);
 $smarty->assign("child_sort", $child_sort);
 $smarty->assign("reqlist", $req);
-$smarty->assign("dot","\"");
-$smarty->display("admin/know_create.html");
+
+$smarty->display("share/know_create.html");

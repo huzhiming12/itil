@@ -293,9 +293,19 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     font-size: 10px;
     color: #ffffff;
     border-radius: 3px;
-
 }
 
+._state_change
+{
+    background-color: #EEAD40;
+    float: right;
+    text-align: center;
+    line-height: 19px;
+    margin-top: 8px;
+    font-size: 10px;
+    color: #ffffff;
+    border-radius: 3px;
+}
 ._42_knowledge
 {
     color: #6AA470;

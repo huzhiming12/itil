@@ -5,6 +5,7 @@
  * Date: 2015/7/10
  * Time: 9:56
  */
+session_start();
 require_once "../../smarty_include.php";
 require_once "../../tools/SQLTool.class.php";
 $sqltool = new SQLTool();

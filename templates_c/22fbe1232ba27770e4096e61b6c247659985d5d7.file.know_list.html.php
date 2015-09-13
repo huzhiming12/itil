@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-12 12:28:40
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-13 11:17:27
          compiled from "F:\wamp\www\itildemo\templates\share\know_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:1577255f27bec626277-65418021%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '22fbe1232ba27770e4096e61b6c247659985d5d7' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\share\\know_list.html',
-      1 => 1442060917,
+      1 => 1442143043,
       2 => 'file',
     ),
   ),
@@ -75,6 +75,8 @@ $_smarty_tpl->tpl_vars['kno']->_loop = true;
                 <?php if ($_smarty_tpl->tpl_vars['kno']->value['kno_state']=='1') {?>
                 <span class="_state_new">&nbsp;新采集&nbsp;</span>
                 <?php } elseif ($_smarty_tpl->tpl_vars['kno']->value['kno_state']=='2') {?>
+                <span class="_state_change">&nbsp;有更新&nbsp;</span>
+                <?php } elseif ($_smarty_tpl->tpl_vars['kno']->value['kno_state']=='3') {?>
                 <span class="_state_pass">&nbsp;已发布&nbsp;</span>
                 <?php }?>
             </div>

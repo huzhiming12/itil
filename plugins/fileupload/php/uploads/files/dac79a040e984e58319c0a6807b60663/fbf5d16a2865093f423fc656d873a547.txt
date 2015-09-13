@@ -1,9 +1,0 @@
-
-1.文件上传大小限制问题
-   找到php.ini文件将文件里面的相应参数更改所需要的大小
-   upload_max_filesize = 1024M     文件上传的最大值
-   post_max_size = 1024M           post上传文件的最大值
-   memory_limit = 20M              内存使用的最大值
-
-2.初始配置
-  左击wamp，选择php扩展  勾选php_zip

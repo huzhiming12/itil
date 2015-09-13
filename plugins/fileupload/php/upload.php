@@ -1,5 +1,6 @@
 ﻿<?php
 require_once("../../../home/tools/SQLTool.class.php");
+require_once("../../../home/smarty_include.php");
 $action = $_GET['action'];
 $attach_id = $_GET['attach_id'];
 $actions = array('tk', 'up', 'fd');
@@ -20,14 +21,15 @@ $upload->$action();
 class upload
 {
     private $_tokenPath = 'uploads/tokens/';            //令牌保存目录
-    private $_filePath = 'uploads/files/';              //上传文件保存目录
+    private $_filePath;              //上传文件保存目录
     private $sqltool;
     private $attach_id;
 
     public function __construct($attach_id)
     {
-        $this->sqltool=new SQLTool();
+        $this->sqltool = new SQLTool();
         $this->attach_id = $attach_id;
+        $this->_filePath = PROJECT_DIR ."/uploadfile/temp/";
     }
 
     /**
@@ -43,15 +45,15 @@ class upload
 
             $file['up_size'] = 0;                       //已上传文件大小
             $pathInfo = pathinfo($file['name']);
-            $path = $this->_filePath . $this->attach_id. '/';
+            $path = $this->_filePath . $this->attach_id . '/';
             //生成文件保存子目录
             if (!is_dir($path)) {
                 mkdir($path, 0700);
             }
             //上传文件保存目录
-            $file['filePath'] = $path . $file['token'] . '.' . $pathInfo['extension'];
-            $sql = "insert into t_attachment (attach_id,attach_name,attach_md5_name) values('$this->attach_id','$file[name]','$file[token].$pathInfo[extension]')";
-            if($this->attach_id)
+            $file['filePath'] = $path . $file['name'];
+            $sql = "insert into t_attachment (attach_id,attach_name) values('$this->attach_id','$file[name]')";
+            if ($this->attach_id)
                 $this->sqltool->dbUpdate($sql);
             $file['modified'] = $_GET['modified'];      //上传文件的修改日期
             //保存令牌信息

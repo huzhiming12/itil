@@ -15,11 +15,13 @@ $kno_num = $_GET['kno_num'];
 if(isset($_GET['flag']) and $_GET['flag']=='del')
 {
     $attach_id = $_GET['attach_id'];
-    $attach_md5_name = $_GET['file_name'];
+    $attach_name = $_GET['file_name'];
     //echo $attach_md5_name;
-    $res = $sqltool->dbUpdate("delete from t_attachment where attach_id='$attach_id' and attach_md5_name='$attach_md5_name'");
+    $res = $sqltool->dbUpdate("delete from t_attachment where attach_id='$attach_id' and attach_name='$attach_name'");
     //删除文件
-    $res1 = unlink(PROJECT_DIR."\\plugins\\fileupload\\php\\uploads\\files\\".$attach_id."\\".$attach_md5_name);
+    $res1 =1;
+    if(file_exists(PROJECT_DIR."\\uploadfile\\files\\".$attach_id."\\".$attach_name))
+        $res1 = unlink(PROJECT_DIR."\\uploadfile\\files\\".$attach_id."\\".$attach_name);
     if($res and $res1)
         echo "<script>alert('附件删除成功！')</script>";
     else
@@ -27,9 +29,13 @@ if(isset($_GET['flag']) and $_GET['flag']=='del')
 }
 $sql = "select *from t_kno where kno_num = '$kno_num'";
 $res = $sqltool->dbQuery($sql);
-$attachment = $sqltool->dbQuery("select attach_name,attach_md5_name,attach_id from t_attachment,t_kno where kno_attach_id=attach_id and kno_num='$kno_num'");
+$attachment = $sqltool->dbQuery("select attach_name,attach_id from t_attachment,t_kno where kno_attach_id=attach_id and kno_num='$kno_num'");
+$change = $sqltool->dbQuery("select *from t_kno_change where kno_num='$kno_num'");
+
+
 $smarty->assign("res",$res[0]);
 $smarty->assign("attach",$attachment);
+$smarty->assign("change",$change);
 $sqltool->dbCloseConnection();
 
 $smarty->display("share/know_detail.html");
