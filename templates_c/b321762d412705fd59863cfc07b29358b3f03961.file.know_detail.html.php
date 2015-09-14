@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-13 11:42:09
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-14 07:10:10
          compiled from "F:\wamp\www\itildemo\templates\share\know_detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:1671755f2d67bd50c31-24948832%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b321762d412705fd59863cfc07b29358b3f03961' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\share\\know_detail.html',
-      1 => 1442144522,
+      1 => 1442214602,
       2 => 'file',
     ),
   ),
@@ -45,7 +45,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <div class="_012_RequestList">
     <div class="_011_RequestList">
-        请求详情
+        知识详情
     </div>
     <div class="_018_Title">
         <?php echo $_smarty_tpl->tpl_vars['res']->value['kno_title'];?>
@@ -120,7 +120,7 @@ $_smarty_tpl->tpl_vars['cha']->_loop = true;
         <br>
 
     </div>
-    <div class="_46_knowkedge">
+    <div class="_46_knowledge">
         <?php if ($_smarty_tpl->tpl_vars['res']->value['kno_state']!='3') {?>
         <button class="btn btn-sm btn-primary" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus"
                 data-content="确定要发布吗？<br><br><button class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/home/service/know_ser.php?flag=pass&kno_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['kno_num'];?>

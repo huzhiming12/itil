@@ -18,12 +18,12 @@ if ($_GET['flag'] == 1) {
 if($_GET['flag']==2)
 {
     $req_num = $_GET['req_num'];
-    $sql = "select attach_id,attach_name,attach_md5_name from t_attachment,t_req where req_num='$req_num' and attach_id = req_attach_id";
+    $sql = "select attach_id,attach_name from t_attachment,t_req where req_num='$req_num' and attach_id = req_attach_id";
     $res = $sqltool->dbQuery($sql);
     $n= count($res);
     for($i=0;$i<$n;$i++)
     {
-        echo "<a href='/itildemo/plugins/fileupload/php/uploads/files/".$res[$i][0]."/".$res[$i][2]."'>".$res[$i][1]."</a><br>";
+        echo "<a href='/itildemo/uploadfile/files/".$res[$i][0]."/".$res[$i][1]."'>".$res[$i][1]."</a><br>";
     }
     if(!$n)
         echo "<a>无</a>";

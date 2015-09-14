@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script language="JavaScript" src="/itildemo/static/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap-datetimepicker.min.css">
+    <script language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"></script>
+    <title></title>
+</head>
+<body>
+<br>
+
+<div class="_012_RequestList">
+    <!--搜素框-->
+    <br><br>
+
+    <form method="get" action="/itildemo/home/controller/share/know_list.php">
+        <div class="col-sm-4"></div>
+        <div class="input-group input-group-sm col-sm-4">
+            <input type="text" name="searchcontent" class="form-control" placeholder="知识主题、编号、分类、关键字等">
+                <span class="input-group-btn">
+                  <button class="btn btn-primary" type="submit">搜索</button>
+                </span>
+        </div>
+    </form>
+
+    <div class="_014_RequestList _45_knowledge">
+        <table>
+            <{foreach $parent_sort as $p_sort}>
+            <tr>
+                <td style="width: 100px;"><label class="control-label"><{$p_sort.sort_name}>：</label></td>
+                <td style="line-height: 30px">
+                    <{foreach $child_sort as $c_sort}>
+                    <{if $c_sort.sort_parent_id == $p_sort.sort_id}>
+                    <a href="/itildemo/home/controller/share/know_list.php?kno_sort=<{$c_sort.sort_name}>"><{$c_sort.sort_name}></a>(<{$c_sort.times}>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <{/if}>
+                    <{/foreach}>
+                </td>
+            </tr>
+            <{/foreach}>
+        </table>
+        <br>
+    </div>
+    <div class="_014_RequestList">
+        <label class="control-label">热门知识</label>
+        <table>
+            <{foreach from=$kno item=res name=kno}>
+            <{if $smarty.foreach.kno.index%2 ==0}>
+            <tr>
+                <{/if}>
+                <td style="line-height: 30px; padding-left: 80px">
+                    <a href="#"><{$res.kno_title}></a>&nbsp;&nbsp;&nbsp;
+                </td>
+                <{if $smarty.foreach.kno.index%2 ==1}>
+            </tr>
+            <{/if}>
+            <{/foreach}>
+        </table>
+
+    </div>
+    <br><br>
+
+
+</div>
+
+</body>
+</html>

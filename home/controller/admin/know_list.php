@@ -15,7 +15,7 @@ $sqltool = new SQLTool();
 $sql = "select * from t_kno where 1=1 ";
 
 //搜索
-if(isset($_GET['searchcontent'])!=="")
+if(isset($_GET['searchcontent']) and $_GET['searchcontent']!="")
 {
     $searchcontent = $_GET['searchcontent'];
     $sql.=" and kno_title like '%$searchcontent%' or kno_num like '%$searchcontent%' or kno_sort like '%$searchcontent%' or kno_keyword like '%$searchcontent%'";
@@ -24,7 +24,7 @@ if(isset($_GET['searchcontent'])!=="")
 $sql.=" order by kno_state, kno_sub_time desc";
 
 $res = $sqltool->dbQuery($sql);
-$pagetool = new PageTool(count($res));
+$pagetool = new PageTool(count($res),4);
 $pagetool->url = "know_list.php";
 $pagetool->sql = $sql;
 $pagetool->url_arg="&searchcontent=$searchcontent";
@@ -37,4 +37,4 @@ $smarty->assign("res", $pagetool->getPageResource());
 if ($pagetool->pageCount >= 2)
     $smarty->assign("nav", $pagetool->getNavigate());
 
-$smarty->display("share/know_list.html");
+$smarty->display("admin/know_list.html");

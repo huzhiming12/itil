@@ -20,8 +20,9 @@ if(isset($_GET['flag']) and $_GET['flag']=='del')
     $res = $sqltool->dbUpdate("delete from t_attachment where attach_id='$attach_id' and attach_name='$attach_name'");
     //删除文件
     $res1 =1;
-    if(file_exists(PROJECT_DIR."\\uploadfile\\files\\".$attach_id."\\".$attach_name))
-        $res1 = unlink(PROJECT_DIR."\\uploadfile\\files\\".$attach_id."\\".$attach_name);
+    $file_name = iconv('UTF-8','GB2312',$attach_name);
+    if(file_exists(PROJECT_DIR."\\uploadfile\\files\\".$attach_id."\\".$file_name))
+        $res1 = unlink(PROJECT_DIR."\\uploadfile\\files\\".$attach_id."\\".$file_name);
     if($res and $res1)
         echo "<script>alert('附件删除成功！')</script>";
     else

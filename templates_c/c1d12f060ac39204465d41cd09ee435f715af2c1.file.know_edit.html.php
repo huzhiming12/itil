@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-13 11:11:54
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-14 06:47:35
          compiled from "F:\wamp\www\itildemo\templates\admin\know_edit.html" */ ?>
 <?php /*%%SmartyHeaderCode:1396255f516b07761b4-36752064%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c1d12f060ac39204465d41cd09ee435f715af2c1' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\know_edit.html',
-      1 => 1442142543,
+      1 => 1442213249,
       2 => 'file',
     ),
   ),
@@ -131,7 +131,8 @@ $_smarty_tpl->tpl_vars['c_sort']->_loop = true;
                     <label class="col-sm-2 control-label">关联请求:</label>
 
                     <div class="col-sm-3">
-                        <input type="text" name="req_num" id="reqPopover" placeholder="请求编号" class="form-control"
+                        <input type="text" name="req_num" id="reqPopover" placeholder="请求编号" class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_req_num'];?>
+"
                                data-toggle="popover"
                                data-container="body"
                                data-placement="bottom"
@@ -210,7 +211,7 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
                     </div>
                 </div>
                 <br>
-                <div class="_46_knowkedge">
+                <div class="_46_knowledge">
                     <button name="edit_kno" class="btn btn-primary btn-sm ">提交审核</button>
                     &nbsp;&nbsp;
                     <button class="btn btn-default btn-sm" onclick="window.history.go(-1)">返回</button>

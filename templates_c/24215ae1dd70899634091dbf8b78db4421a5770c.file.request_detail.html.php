@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-13 09:16:17
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-14 07:11:30
          compiled from "F:\wamp\www\itildemo\templates\admin\request_detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:2072355ee356769d979-80355304%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '24215ae1dd70899634091dbf8b78db4421a5770c' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_detail.html',
-      1 => 1442135767,
+      1 => 1442214602,
       2 => 'file',
     ),
   ),
@@ -86,7 +86,7 @@ $_smarty_tpl->tpl_vars['res']->_loop = true;
 
     </div>
     <br>
-    <div class="_46_knowkedge">
+    <div class="_46_knowledge">
         <button class="btn btn-sm btn-default" onclick="history.go(-1)">返回</button>
     </div>
     <br>

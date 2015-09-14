@@ -178,7 +178,7 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
 }
 
 ._24_config_staff {
-    width: 300px;
+    width: 400px;
     padding-left: 4%;
     margin-bottom: 15px;
 }
@@ -266,14 +266,14 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     padding-left: 20px;
     padding-right: 20px;
 }
-._40_knowledge
-{
+
+._40_knowledge {
     line-height: 35px;
     font-size: 12px;
     color: #999;
 }
-._state_new
-{
+
+._state_new {
     background-color: #FE8263;
     float: right;
     text-align: center;
@@ -283,8 +283,8 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     color: #ffffff;
     border-radius: 3px;
 }
-._state_pass
-{
+
+._state_pass {
     background-color: #76C56D;
     float: right;
     text-align: center;
@@ -295,8 +295,7 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     border-radius: 3px;
 }
 
-._state_change
-{
+._state_change {
     background-color: #EEAD40;
     float: right;
     text-align: center;
@@ -306,36 +305,38 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     color: #ffffff;
     border-radius: 3px;
 }
-._42_knowledge
-{
+
+._42_knowledge {
     color: #6AA470;
     line-height: 25px;
     font-size: 12px;
 }
 
-._43_knowledge
-{
+._43_knowledge {
     max-height: 40px;
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 2px 0px;
 }
 
-._44_knowledge
-{
+._44_knowledge {
     float: right;
     line-height: 25px;
     font-size: 12px;
     color: #999;
 }
 
-._45_knowledge
-{
+._45_knowledge {
     border-bottom: 1px dotted #AAA;
 }
 
-._46_knowkedge
-{
+._46_knowledge {
     width: 100%;
     text-align: center;
+}
+
+._47_knowledge {
+    width: 300px;
+    padding-left: 30%;
+    margin-bottom: 15px;
 }

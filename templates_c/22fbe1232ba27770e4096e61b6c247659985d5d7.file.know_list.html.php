@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-13 11:17:27
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-14 12:57:40
          compiled from "F:\wamp\www\itildemo\templates\share\know_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:1577255f27bec626277-65418021%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '22fbe1232ba27770e4096e61b6c247659985d5d7' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\share\\know_list.html',
-      1 => 1442143043,
+      1 => 1442235451,
       2 => 'file',
     ),
   ),
@@ -19,13 +19,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_55f27bec6b5567_50171546',
   'variables' => 
   array (
+    'searchcontent' => 0,
     'res' => 0,
     'kno' => 0,
     'nav' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55f27bec6b5567_50171546')) {function content_55f27bec6b5567_50171546($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_55f27bec6b5567_50171546')) {function content_55f27bec6b5567_50171546($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_replace')) include 'F:\\wamp\\www\\itildemo\\libs\\plugins\\modifier.replace.php';
+?><!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -47,9 +49,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div class="_012_RequestList">
     <div class="_23_config_staff">
         <form method="get">
-            <div class="input-group input-group-sm _24_config_staff ">
-
-                <input type="text" name="searchcontent" class="form-control" placeholder="知识主题、编号、分类、关键字">
+            <div class="col-sm-4"></div>
+            <div class="input-group input-group-sm col-sm-4">
+                <input type="text" name="searchcontent" value="<?php echo $_smarty_tpl->tpl_vars['searchcontent']->value;?>
+" class="form-control" placeholder="知识主题、编号、分类、关键字等">
                 <span class="input-group-btn">
                   <button class="btn btn-primary" name="search_btn" type="button">搜索</button>
                 </span>
@@ -58,6 +61,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </div>
     <!--知识列表--->
     <div class="_39_knowledge">
+        <?php if (count($_smarty_tpl->tpl_vars['res']->value)==0) {?>
+        <br>
+        <div class="_46_knowledge"><a>没有找到相关知识</a></div>
+        <?php }?>
         <?php  $_smarty_tpl->tpl_vars['kno'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['kno']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['res']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['kno']->key => $_smarty_tpl->tpl_vars['kno']->value) {
@@ -68,9 +75,9 @@ $_smarty_tpl->tpl_vars['kno']->_loop = true;
             <div>
                 <a href="/itildemo/home/controller/admin/know_detail.php?kno_num=<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_num'];?>
 "><span
-                        class="_38_knowledge_title"><?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_title'];?>
+                        class="_38_knowledge_title"><?php echo smarty_modifier_replace($_smarty_tpl->tpl_vars['kno']->value['kno_title'],$_smarty_tpl->tpl_vars['searchcontent']->value,"<font style='color: red'>".((string)$_smarty_tpl->tpl_vars['searchcontent']->value)."</font>");?>
 </span></a>
-                <span class="_40_knowledge">&nbsp;&nbsp;[分类：<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_sort'];?>
+                <span class="_40_knowledge">&nbsp;&nbsp;[分类：<?php echo smarty_modifier_replace($_smarty_tpl->tpl_vars['kno']->value['kno_sort'],$_smarty_tpl->tpl_vars['searchcontent']->value,"<font style='color: red'>".((string)$_smarty_tpl->tpl_vars['searchcontent']->value)."</font>");?>
 ]</span>
                 <?php if ($_smarty_tpl->tpl_vars['kno']->value['kno_state']=='1') {?>
                 <span class="_state_new">&nbsp;新采集&nbsp;</span>
@@ -82,12 +89,12 @@ $_smarty_tpl->tpl_vars['kno']->_loop = true;
             </div>
             <!--内容栏-->
             <div class="_43_knowledge">
-                <?php echo preg_replace('!<[^>]*?>!', ' ', $_smarty_tpl->tpl_vars['kno']->value['kno_content']);?>
+                <?php echo smarty_modifier_replace(preg_replace('!<[^>]*?>!', ' ', $_smarty_tpl->tpl_vars['kno']->value['kno_content']),$_smarty_tpl->tpl_vars['searchcontent']->value,"<font style='color: red'>".((string)$_smarty_tpl->tpl_vars['searchcontent']->value)."</font>");?>
 
             </div>
             <!--结尾关键字栏-->
             <div>
-                <span class="_42_knowledge">关键字：<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_keyword'];?>
+                <span class="_42_knowledge">关键字：<?php echo smarty_modifier_replace($_smarty_tpl->tpl_vars['kno']->value['kno_keyword'],$_smarty_tpl->tpl_vars['searchcontent']->value,"<font style='color: red'>".((string)$_smarty_tpl->tpl_vars['searchcontent']->value)."</font>");?>
 </span>
                 <span class="_44_knowledge">创建：<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_author'];?>
   <?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_sub_time'];?>
@@ -96,6 +103,7 @@ $_smarty_tpl->tpl_vars['kno']->_loop = true;
         </div>
         <?php } ?>
         <br>
+
         <div>
             <?php echo $_smarty_tpl->tpl_vars['nav']->value;?>
 

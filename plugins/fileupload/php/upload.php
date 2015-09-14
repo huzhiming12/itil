@@ -1,4 +1,4 @@
-﻿<?php
+﻿﻿<?php
 require_once("../../../home/tools/SQLTool.class.php");
 require_once("../../../home/smarty_include.php");
 $action = $_GET['action'];
@@ -29,7 +29,7 @@ class upload
     {
         $this->sqltool = new SQLTool();
         $this->attach_id = $attach_id;
-        $this->_filePath = PROJECT_DIR ."/uploadfile/temp/";
+        $this->_filePath = PROJECT_DIR . "/uploadfile/temp/";
     }
 
     /**
@@ -96,9 +96,11 @@ class upload
         if ($fileInfo['size'] > $fileInfo['up_size']) {
             //取得上传内容
             $data = file_get_contents('php://input', 'r');
+            //编码转换
+            $file_name = iconv('UTF-8', 'GB2312', $fileInfo['filePath']);
             if (!empty($data)) {
                 //上传内容写入目标文件
-                $fp = fopen($fileInfo['filePath'], 'a');
+                $fp = fopen($file_name, 'a');
                 flock($fp, LOCK_EX);
                 fwrite($fp, $data);
                 flock($fp, LOCK_UN);
