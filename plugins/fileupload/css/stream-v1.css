@@ -137,7 +137,7 @@ a {
 }
 
 .stream-main-upload-box {
-    width: 800px;
+    width: 100%;
     background-color: #FFFFFF;
     border-style: solid;
     border-width: 1px;

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script language="JavaScript" src="/itildemo/static/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap-datetimepicker.min.css">
+    <script language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"></script>
+    <title></title>
+</head>
+<body>
+<br>
+
+<div class="_012_RequestList">
+    <div class="_011_RequestList">
+        任务清单
+    </div>
+    <br>
+
+    <div class="_034_request_home">
+        <ul id="myTab" class="nav nav-tabs title_font">
+            <li class="active"><a href="#do" data-toggle="tab">我的待办</a></li>
+            <li><a href="#done" data-toggle="tab">我的已办</a></li>
+        </ul>
+    </div>
+    <br>
+
+    <div id="myTabContent" class="tab-content _007_MyBoard">
+        <div class="tab-pane active" id="do">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>请求编号</th>
+                    <th>请求标题</th>
+                    <th>请求人</th>
+                    <th>请求时间</th>
+                    <th>指派时间</th>
+                    <th>优先级</th>
+                    <th>影响范围</th>
+                    <th>余时/超时</th>
+                </tr>
+                <tbody>
+            <{foreach from=$res item=req}>
+                <tr>
+                    <td>1</td>
+                    <td><{$req.req_num}></td>
+                    <td><{$req.req_title}></td>
+                    <td><{$req.req_author}></td>
+                    <td><{$req.req_time}></td>
+                    <td><{$req.assign_time}></td>
+                    <td>
+                        <{if $req.req_priority==1}><div class="_span_low">&nbsp;低&nbsp;</div>
+                        <{else if $req.req_priority==2}><div class="_span_middle">&nbsp;中&nbsp;</div>
+                        <{else}><div class="_span_high">&nbsp;高&nbsp;</div>
+                        <{/if}>
+                    </td>
+                    <td>
+                        <{if $req.req_effect==1}><div class="_span_low">&nbsp;个人&nbsp;</div>
+                        <{else if $req.req_effect==2}><div class="_span_middle">&nbsp;部门&nbsp;</div>
+                        <{else}><div class="_span_high">&nbsp;单位&nbsp;</div>
+                        <{/if}>
+                    </td>
+                    <td><{$req.times}></td>
+                </tr>
+            <{/foreach}>
+                </tbody>
+                </thead>
+            </table>
+        </div>
+        <div class="tab-pane" id="done">
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

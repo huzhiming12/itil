@@ -48,7 +48,7 @@ if (isset($_POST['add_kno'])) {
     else
         echo "<script>alert('知识采集失败！')</script>";
 
-    echo "<script>window.location.href='/itildemo/home/controller/admin/know_create.php'</script>";
+    echo "<script>window.location.href='/itildemo/home/controller/share/know_create.php'</script>";
 }
 
 //发布

@@ -24,7 +24,7 @@ if(isset($_GET['searchcontent']) and $_GET['searchcontent']!="")
 $sql.=" order by kno_state, kno_sub_time desc";
 
 $res = $sqltool->dbQuery($sql);
-$pagetool = new PageTool(count($res),4);
+$pagetool = new PageTool(count($res));
 $pagetool->url = "know_list.php";
 $pagetool->sql = $sql;
 $pagetool->url_arg="&searchcontent=$searchcontent";

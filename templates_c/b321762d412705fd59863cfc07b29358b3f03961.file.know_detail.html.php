@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-14 07:10:10
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-15 11:16:29
          compiled from "F:\wamp\www\itildemo\templates\share\know_detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:1671755f2d67bd50c31-24948832%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b321762d412705fd59863cfc07b29358b3f03961' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\share\\know_detail.html',
-      1 => 1442214602,
+      1 => 1442307864,
       2 => 'file',
     ),
   ),
@@ -94,7 +94,7 @@ $_smarty_tpl->tpl_vars['arr']->_loop = true;
     </div>
     <br>
     <div class="_015_RequestList">
-        <b>关联请求：</b><a href="/itildemo/home/controller/admin/request_detail.php?req_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['kno_req_num'];?>
+        <b>关联请求：</b><a href="/itildemo/home/controller/share/request_detail.php?req_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['kno_req_num'];?>
 "><span><?php echo $_smarty_tpl->tpl_vars['res']->value['kno_req_num'];?>
 </span></a>
     </div>
@@ -121,6 +121,7 @@ $_smarty_tpl->tpl_vars['cha']->_loop = true;
 
     </div>
     <div class="_46_knowledge">
+        <?php if ($_SESSION['role']=='admin') {?>
         <?php if ($_smarty_tpl->tpl_vars['res']->value['kno_state']!='3') {?>
         <button class="btn btn-sm btn-primary" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus"
                 data-content="确定要发布吗？<br><br><button class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/home/service/know_ser.php?flag=pass&kno_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['kno_num'];?>
@@ -133,6 +134,7 @@ $_smarty_tpl->tpl_vars['cha']->_loop = true;
                 data-content="确定要发布吗？<br><br><button class='btn btn-sm btn-danger' onclick='window.location.href=&quot;/itildemo/home/service/know_ser.php?flag=del&kno_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['kno_num'];?>
 &quot;'>删除</button>&nbsp;&nbsp;
                                               <button class='btn btn-sm btn-default'>取消</button>">删除</button>
+        <?php }?>
         <button class="btn btn-sm btn-default" onclick="history.go(-1)">返回</button>
     </div>
     <br>

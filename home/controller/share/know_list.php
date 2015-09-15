@@ -16,6 +16,7 @@ $sqltool = new SQLTool();
 $sql = "select * from t_kno where 1=1 ";
 
 //输入搜索
+$searchcontent="";
 if (isset($_GET['searchcontent']) and $_GET['searchcontent'] != "") {
     $searchcontent = $_GET['searchcontent'];
     $sql .= " and kno_title like '%$searchcontent%' or kno_num like '%$searchcontent%' or kno_sort like '%$searchcontent%' or kno_keyword like '%$searchcontent%' or kno_content like '%$searchcontent%' and kno_state=3";
@@ -30,7 +31,7 @@ $sql .= " order by kno_read desc";
 
 $res = $sqltool->dbQuery($sql);
 
-$pagetool = new PageTool(count($res), 3);
+$pagetool = new PageTool(count($res));
 $pagetool->url = "know_list.php";
 $pagetool->sql = $sql;
 $pagetool->url_arg = "searchcontent=$searchcontent&kno_sort=$sort";

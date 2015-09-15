@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-11 07:13:41
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-15 08:28:34
          compiled from "F:\wamp\www\itildemo\templates\admin\request_home.html" */ ?>
 <?php /*%%SmartyHeaderCode:2595255a20a27136c40-20673934%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '33437a35cf15e7b10b10d96518203490251a751a' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_home.html',
-      1 => 1441955618,
+      1 => 1442305709,
       2 => 'file',
     ),
   ),
@@ -45,13 +45,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </head>
 <body>
 <br>
+
 <div class="_012_RequestList">
     <div class="_034_request_home">
         <ul id="myTab" class="nav nav-tabs title_font">
             <li class="active"><a href="#home" data-toggle="tab">待审核请求(<?php echo count($_smarty_tpl->tpl_vars['res']->value);?>
 )</a></li>
-            <li><a href="#ios" data-toggle="tab">变更请求</a></li>
-            <li><a href="#java" data-toggle="tab">逾期请求</a></li>
+            <li><a href="#ios" data-toggle="tab">变更请求(0)</a></li>
+            <li><a href="#java" data-toggle="tab">逾期请求(0)</a></li>
         </ul>
     </div>
     <br>
@@ -105,8 +106,17 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
 </td>
                     <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_time'];?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_state'];?>
-</td>
+                    <td>
+                        <?php if ($_smarty_tpl->tpl_vars['req']->value['req_state']=='1') {?>
+                        <span>&nbsp;未处理&nbsp;</span>
+                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_state']=='2') {?>
+                        <span>&nbsp;已指派&nbsp;</span>
+                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_state']=='3') {?>
+                        <span>&nbsp;已取消&nbsp;</span>
+                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_state']=='4') {?>
+                        <span>&nbsp;已解决&nbsp;</span>
+                        <?php }?>
+                    </td>
                     <td>删除</td>
                 </tr>
                 <?php } ?>
@@ -167,6 +177,7 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
             </table>
         </div>
 
+        <br><br>
     </div>
 </div>
 
@@ -202,42 +213,53 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
                     </div>
                     <div class="form-group form-group-sm">
                         <label class="col-md-2 control-label">请求描述: </label>
+
                         <div class="col-sm-9">
                             <div class="form-control" id="box" style="height: 200px;overflow-y: scroll"></div>
                         </div>
                     </div>
                     <div class="form-group form-group-sm">
                         <label class="col-md-2 control-label"> 附 件: </label>
+
                         <div class="col-sm-9" id="attach">
                         </div>
                     </div>
                     <hr>
                     <div class="form-group form-group-sm">
                         <label class="col-md-2 control-label">追加描述:</label>
+
                         <div class="col-sm-9">
                             <textarea rows="5" class="form-control" name="add_description"></textarea>
                         </div>
                     </div>
                     <div class="form-group form-group-sm">
                         <label class="col-md-2 control-label">影响范围:</label>
+
                         <div class="col-sm-4">
-                            <label class='btn btn-sm btn-default'><input type='radio' name='req_effect' value="1" checked>个人</label>
+                            <label class='btn btn-sm btn-default'><input type='radio' name='req_effect' value="1"
+                                                                         checked>个人</label>
                             &nbsp;&nbsp;
-                            <label class='btn btn-sm btn-default'><input type='radio' name='req_effect' value="2">部门</label>
+                            <label class='btn btn-sm btn-default'><input type='radio' name='req_effect'
+                                                                         value="2">部门</label>
                             &nbsp;&nbsp;
-                            <label class='btn btn-sm btn-default'><input type='radio' name='req_effect' value="3">单位</label>
+                            <label class='btn btn-sm btn-default'><input type='radio' name='req_effect'
+                                                                         value="3">单位</label>
                         </div>
                         <label class="col-md-1 control-label">优先级:</label>
+
                         <div class="col-sm-4">
                             <label class='btn btn-sm btn-default'><input type='radio' name='priority' value="1" checked>低</label>
                             &nbsp;&nbsp;
-                            <label class='btn btn-sm btn-default'><input type='radio' name='priority' value="2">中</label>
+                            <label class='btn btn-sm btn-default'><input type='radio' name='priority'
+                                                                         value="2">中</label>
                             &nbsp;&nbsp;
-                            <label class='btn btn-sm btn-default'><input type='radio' name='priority' value="3">高</label>
+                            <label class='btn btn-sm btn-default'><input type='radio' name='priority'
+                                                                         value="3">高</label>
                         </div>
                     </div>
                     <div class="form-group form-group-sm">
                         <label class="col-md-2 control-label">服务协议:</label>
+
                         <div class="col-sm-3">
                             <select class="form-control" name="req_time_limit">
                                 <option value="2">A级2小时内完成</option>
@@ -293,6 +315,7 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
                     </div>
                 </div>
                 <input type="hidden" name="req_num" class="req_num">
+
                 <div class="modal-footer">
                     <button class="btn btn-primary btn-sm" type="submit" name="assign_btn">指派</button>
                     <button class="btn btn-default btn-sm " data-dismiss="modal">取消</button>
@@ -319,11 +342,9 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
     $('#gcs_btn').click(function chooseGcs() {
         $('#gcsPopover').popover('hide');
         var gcs = document.getElementsByName('gcs');
-        for(var i=0;i<gcs.length;i++)
-        {
-            if(gcs[i].checked)
-            {
-                document.getElementById('gcsPopover').value= gcs[i].value;
+        for (var i = 0; i < gcs.length; i++) {
+            if (gcs[i].checked) {
+                document.getElementById('gcsPopover').value = gcs[i].value;
             }
         }
     })

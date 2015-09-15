@@ -306,6 +306,17 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     border-radius: 3px;
 }
 
+._state_cancel {
+    background-color: #72A5A7;
+    float: right;
+    text-align: center;
+    line-height: 19px;
+    margin-top: 8px;
+    font-size: 10px;
+    color: #ffffff;
+    border-radius: 3px;
+}
+
 ._42_knowledge {
     color: #6AA470;
     line-height: 25px;
@@ -339,4 +350,26 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     width: 300px;
     padding-left: 30%;
     margin-bottom: 15px;
+}
+
+._span_high,._span_middle,._span_low
+{
+    border-radius: 3px;
+    line-height: 20px;
+    color: #ffffff;
+    font-size: 10px;
+    width: 40px;
+    text-align: center;
+}
+._span_high
+{
+    background-color: #E15656;
+}
+._span_middle
+{
+    background-color: #E9981F;
+}
+._span_low
+{
+    background-color: #A6D037;
 }

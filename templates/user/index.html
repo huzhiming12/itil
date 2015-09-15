@@ -13,12 +13,7 @@
 <li class="nav-item dl-selected">
     <div class="nav-item-inner nav-order">公告通知</div>
 </li>
-<li class="nav-item dl-selected">
-    <div class="nav-item-inner nav-order">服务请求</div>
-</li>
-<li class="nav-item dl-selected">
-    <div class="nav-item-inner nav-order">知识库</div>
-</li>
+
 <{/block}>
 
 <{block name=navi}>
@@ -30,10 +25,12 @@
                         id: '1',
                         homePage: '1',
                         menu: [{
-                            text: '系统主页',
+                            text: '自助服务',
                             items: [
-                                {id: '1', text: '我的面板', href: '/itildemo/home/controller/user/myboard.php'},
-                                {id: '2', text: '个人信息', href: 'Role/index.html'},]
+                                {id: '1', text: '我的请求', href: '/itildemo/home/controller/user/my_request_list.php'},
+                                {id: '2', text: '请求创建', href: '/itildemo/home/controller/user/request_create.php'},
+                                {id: '3', text: '知识检索', href: '/itildemo/home/controller/share/know_search.php'},
+                            ]
                         }]
                     },
                     {
@@ -45,28 +42,7 @@
                                 {id: '1', text: '最新通知', href: 'Node/index.html'},
                                 {id: '2', text: '消息提醒', href: 'Node/index.html'}]
                         }]
-                    },
-                    {
-                        id: '3',
-                        homePage: '1',
-                        menu: [{
-                            text: '服务请求',
-                            items: [
-                                {id: '1', text: '我的请求', href: '/itildemo/home/controller/user/requestlist.php'},
-                                {id: '2', text: '新增请求', href: '/itildemo/home/controller/user/addrequest.php'}]
-                        }]
-                    },
-                    {
-                        id: '4',
-                        homePage: '1',
-                        menu: [{
-                            text: '知识库',
-                            items: [
-                                {id: '1', text: '知识列表', href: '/itildemo/home/controller/user/knowledgelist.php'},
-                                {id: '2', text: '我的知识', href: 'Node/index.html'},
-                                {id: '3', text: '新增知识', href: 'Node/index.html'}]
-                        }]
-                    },
+                    }
                 ];
         new PageUtil.MainPage({
             modulesConfig: config

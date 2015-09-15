@@ -10,7 +10,7 @@ require_once "../../smarty_include.php";
 require_once "../../tools/SQLTool.class.php";
 
 $sqltool = new SQLTool();
-$sql = "select *from t_req where req_state='未处理'";
+$sql = "select *from t_req where req_state=1";
 $undo_res = $sqltool->dbQuery($sql);
 
 $engineer = $sqltool->dbQuery("select *from t_user where user_role=2");

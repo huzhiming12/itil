@@ -50,7 +50,10 @@ if (isset($_POST['add_req'])) {
     else {
         echo "<script>alert('请求添加失败！');</script>";
     }
-    echo "<script>window.location.href='/itildemo/home/controller/user/addrequest.php'</script>";
+    if ($flag == "admin")
+        echo "<script>window.location.href='/itildemo/home/controller/admin/request_create.php'</script>";
+    else
+        echo "<script>window.location.href='/itildemo/home/controller/user/request_create.php'</script>";
 }
 
 //指派请求
@@ -62,7 +65,7 @@ if (isset($_POST['assign_btn'])) {
     $req_time_limit = $_POST['req_time_limit'];
     $req_gcs = $_POST['req_gcs'];
 
-    $sql1 = "update t_req set req_add_description ='$decription',req_effect='$req_effect',req_priority='$req_priority',req_time_limit='$req_time_limit',req_state='已指派' where req_num='$req_num'";
+    $sql1 = "update t_req set req_add_description ='$decription',req_effect='$req_effect',req_priority='$req_priority',req_time_limit='$req_time_limit',req_state='2' where req_num='$req_num'";
     $sql2 = "insert into t_req_assign (req_num,req_engineer,assign_time) values ('$req_num','$req_gcs',NOW())";
     //echo $sql1."<br>".$sql2;
     if ($sqltool->dbUpdate($sql1) and $sqltool->dbUpdate($sql2))
@@ -70,7 +73,16 @@ if (isset($_POST['assign_btn'])) {
     else
         echo "<script>alert('请求指派失败！')</script>";
     echo "<script>window.location.href='/itildemo/home/controller/admin/request_home.php'</script>";
+}
 
-
+//注销请求
+if(isset($_GET['cancel_req']))
+{
+    $req_num = $_GET['cancel_req'];
+    if($sqltool ->dbUpdate("update t_req set req_state=3 where req_num ='$req_num'"))
+        echo "<script>alert('请求注销成功！')</script>";
+    else
+        echo "<script>alert('请求注销失败！')</script>";
+    echo "<script>window.location.href='/itildemo/home/controller/user/my_request_list.php'</script>";
 }
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-14 07:00:03
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-15 02:11:11
          compiled from "F:\wamp\www\itildemo\templates\admin\index.html" */ ?>
 <?php /*%%SmartyHeaderCode:1593055a1de2a311301-65692116%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '79d0862a81983dc16bafb04b9b5e1bb6da6ae475' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\index.html',
-      1 => 1442213927,
+      1 => 1442282556,
       2 => 'file',
     ),
     '5faa2dcbbfb8136e3a37dc4c1e38a72b8d01f8cf' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\frame\\index.html',
-      1 => 1441682414,
+      1 => 1442283069,
       2 => 'file',
     ),
   ),
@@ -42,9 +42,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <!--<img src="/chinapost/Public/assets/img/top.png">-->
     </div>
 
-    <div class="dl-log">欢迎您，<span class="dl-log-user"><?php echo $_SESSION['user_name'];?>
+    <div class="dl-log">欢迎您，<span class="dl-log-user"><?php echo $_SESSION['role'];?>
+管理员:<?php echo $_SESSION['user_name'];?>
 </span>
-        <a href="/chinapost/index.php?m=Public&a=logout" title="退出系统" class="dl-log-quit">[退出]</a>
+        <a href="#" title="退出系统" class="dl-log-quit">[退出]</a>
     </div>
 </div>
 <div class="content">
@@ -113,7 +114,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             items: [
                                 {id: '1', text: '知识检索', href: '/itildemo/home/controller/share/know_search.php'},
                                 {id: '2', text: '知识库管理', href: '/itildemo/home/controller/admin/know_list.php'},
-                                {id: '3', text: '知识创建', href: '/itildemo/home/controller/admin/know_create.php'}]
+                                {id: '3', text: '知识采集', href: '/itildemo/home/controller/share/know_create.php'}]
                         }]
                     },
                     {

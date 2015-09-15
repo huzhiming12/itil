@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-08 03:18:51
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-15 07:55:25
          compiled from "F:\wamp\www\itildemo\templates\admin\request_inquiry.html" */ ?>
 <?php /*%%SmartyHeaderCode:1089055e3f86e8afd41-50589588%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ccfa7bcc337d89e69a159ac83a0620cb418af059' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_inquiry.html',
-      1 => 1441682328,
+      1 => 1442303704,
       2 => 'file',
     ),
   ),
@@ -55,8 +55,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div class="_012_RequestList">
     <div class="_013_RequestList">
         <br>
-
-        <div class="form-group _015_RequestList">
+        <div class="form-group _015_RequestList form-group-sm">
             <table>
                 <form action="/itildemo/home/controller/admin/request_inquiry.php" method="GET">
                     <tr>
@@ -147,7 +146,7 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
             <tr>
                 <td><?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['req']['index']+1;?>
 </td>
-                <td><a href="/itildemo/home/controller/admin/request_detail.php?req_num=<?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
+                <td><a href="/itildemo/home/controller/share/request_detail.php?req_num=<?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
 "><?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
 </a></td>
                 <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_title'];?>

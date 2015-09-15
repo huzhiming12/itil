@@ -20,8 +20,7 @@
 <div class="_012_RequestList">
     <div class="_013_RequestList">
         <br>
-
-        <div class="form-group _015_RequestList">
+        <div class="form-group _015_RequestList form-group-sm">
             <table>
                 <form action="/itildemo/home/controller/admin/request_inquiry.php" method="GET">
                     <tr>
@@ -105,7 +104,7 @@
             <{foreach from=$res item=req name=req}>
             <tr>
                 <td><{$smarty.foreach.req.index+1}></td>
-                <td><a href="/itildemo/home/controller/admin/request_detail.php?req_num=<{$req.req_num}>"><{$req.req_num}></a></td>
+                <td><a href="/itildemo/home/controller/share/request_detail.php?req_num=<{$req.req_num}>"><{$req.req_num}></a></td>
                 <td><{$req.req_title}></td>
                 <td><{$req.req_author}></td>
                 <td><{$req.req_time}></td>

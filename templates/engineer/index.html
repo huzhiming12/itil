@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<{extends file='../frame/index.html'}>
+<{block name=head}>
+<li class="nav-item dl-selected">
+    <div class="nav-item-inner nav-home">主页</div>
+</li>
+<li class="nav-item dl-selected">
+    <div class="nav-item-inner nav-order">公告通知</div>
+</li>
+<li class="nav-item dl-selected">
+    <div class="nav-item-inner nav-order">知识库</div>
+</li>
+<{/block}>
+
+<{block name=navi}>
+<script>
+    BUI.use('common/main', function () {
+        var config =
+                [
+                    {
+                        id: '1',
+                        homePage: '1',
+                        menu: [{
+                            text: '我的主页',
+                            items: [
+                                {id: '1', text: '任务清单', href: '/itildemo/home/controller/engineer/task_list.php'},
+                                {id: '2', text: '个人信息', href: 'Role/index.html'},]
+                        }]
+                    },
+                    {
+                        id: '2',
+                        homePage: '1',
+                        menu: [{
+                            text: '公告通知',
+                            items: [
+                                {id: '1', text: '最新通知', href: 'Node/index.html'},
+                                {id: '2', text: '消息提醒', href: 'Node/index.html'}]
+                        }]
+                    },
+                    {
+                        id: '3',
+                        homePage: '1',
+                        menu: [{
+                            text: '知识库',
+                            items: [
+                                {id: '1', text: '知识检索', href: '/itildemo/home/controller/share/know_search.php'},
+                                {id: '2', text: '我的知识', href: '/itildemo/home/controller/engineer/my_know_list.php'},
+                                {id: '3', text: '知识采集', href: '/itildemo/home/controller/share/know_create.php'}]
+                        }]
+                    },
+                ];
+        new PageUtil.MainPage({
+            modulesConfig: config
+        });
+    });
+</script>
+<{/block}>
+
+</body>
+</html>

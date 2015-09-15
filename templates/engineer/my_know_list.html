@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script language="JavaScript" src="/itildemo/static/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap-datetimepicker.min.css">
+    <script language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"></script>
+    <title></title>
+</head>
+<body>
+<br>
+
+<div class="_012_RequestList">
+    <div class="_23_config_staff">
+        <form method="get" action="/itildemo/home/controller/engineer/my_know_list.php">
+            <div class="input-group input-group-sm _24_config_staff ">
+                <input type="text" name="searchcontent" class="form-control" placeholder="知识主题、编号、分类、关键字">
+                <span class="input-group-btn">
+                  <button class="btn btn-primary" type="submit">搜索</button>
+                </span>
+            </div>
+        </form>
+    </div>
+    <!--知识列表--->
+    <div class="_39_knowledge">
+        <{if $res|count ==0 }>
+        <br>
+        <div class="_46_knowledge"><a>没有找到相关知识</a></div>
+        <{/if}>
+        <{foreach from=$res item=kno}>
+        <div class="_45_knowledge">
+            <!--标题栏-->
+            <div>
+                <a href="/itildemo/home/controller/admin/know_detail.php?kno_num=<{$kno.kno_num}>"><span
+                        class="_38_knowledge_title"><{$kno.kno_title}></span></a>
+                <span class="_40_knowledge">&nbsp;&nbsp;[分类：<{$kno.kno_sort}>]</span>
+                <{if $kno.kno_state=='1'}>
+                <span class="_state_new">&nbsp;新采集&nbsp;</span>
+                <{else if  $kno.kno_state=='2'}>
+                <span class="_state_change">&nbsp;有更新&nbsp;</span>
+                <{else if $kno.kno_state=='3'}>
+                <span class="_state_pass">&nbsp;已发布&nbsp;</span>
+                <{/if}>
+            </div>
+            <!--内容栏-->
+            <div class="_43_knowledge">
+                <{$kno.kno_content|strip_tags}>
+            </div>
+            <!--结尾关键字栏-->
+            <div>
+                <span class="_42_knowledge">关键字：<{$kno.kno_keyword}></span>
+                <span class="_44_knowledge">创建：<{$kno.kno_author}>  <{$kno.kno_sub_time}> 阅读(0) 评论(0)</span>
+            </div>
+        </div>
+        <{/foreach}>
+        <br>
+        <div>
+            <{$nav}>
+        </div>
+        <br>
+    </div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

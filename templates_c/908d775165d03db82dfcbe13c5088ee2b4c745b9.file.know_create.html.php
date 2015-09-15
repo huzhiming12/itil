@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-13 10:25:00
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-15 08:23:31
          compiled from "F:\wamp\www\itildemo\templates\share\know_create.html" */ ?>
 <?php /*%%SmartyHeaderCode:1778655f50b8839e987-24807902%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '908d775165d03db82dfcbe13c5088ee2b4c745b9' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\share\\know_create.html',
-      1 => 1442139892,
+      1 => 1442303385,
       2 => 'file',
     ),
   ),
@@ -52,31 +52,33 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </head>
 
 <body background="/itildemo/static/img/bg.png">
+<br>
 <div class="_012_RequestList">
     <div class="_011_RequestList">
         知识采集
     </div>
     <br>
-
     <div class="_013_RequestList">
-        <div class="_013_RequestList form-group-sm">
-            <form class="form-horizontal" action="/itildemo/home/service/know_ser.php?flag=admin" method="post">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">知识主题:</label>
+        <form class="form-horizontal" action="/itildemo/home/service/know_ser.php?flag=admin" method="post">
+            <div class="panel panel-primary _015_RequestList form-group-sm">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">知识主题:</label>
 
-                    <div class="col-sm-3">
-                        <input type="text" name="kno_title" class="form-control" placeholder="知识主题">
-                    </div>
-                    <label class="col-sm-2 control-label">知识分类:</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="kno_title" class="form-control" placeholder="知识主题">
+                        </div>
+                        <label class="col-sm-2 control-label">知识分类:</label>
 
-                    <div class="col-sm-3">
-                        <input tabindex="0" name="kno_sort" id="sortPopover" class="form-control" type="text" readonly
-                               data-toggle="popover"
-                               data-container="body"
-                               data-placement="bottom"
-                               data-html="true"
-                               title="分类请求"
-                               data-content="
+                        <div class="col-sm-3">
+                            <input tabindex="0" name="kno_sort" id="sortPopover" class="form-control" type="text"
+                                   readonly
+                                   data-toggle="popover"
+                                   data-container="body"
+                                   data-placement="bottom"
+                                   data-html="true"
+                                   title="分类请求"
+                                   data-content="
                                <div class='_015_RequestList'>
                                     <div class='_014_RequestList btn-group' data-toggle='buttons'>
                                         <table width='100%'>
@@ -111,25 +113,26 @@ $_smarty_tpl->tpl_vars['c_sort']->_loop = true;
                                     <br><br><button class='btn btn-sm btn-primary' onclick='selectSort()'>确定</button>
                                 </div>
                                ">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">关键字:</label>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">关键字:</label>
 
-                    <div class="col-sm-3">
-                        <input type="text" name="kno_keyword" placeholder="keyword1  keyword2  keyword3 …"
-                               class="form-control">
-                    </div>
-                    <label class="col-sm-2 control-label">关联请求:</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="kno_keyword" placeholder="keyword1  keyword2  keyword3 …"
+                                   class="form-control">
+                        </div>
+                        <label class="col-sm-2 control-label">关联请求:</label>
 
-                    <div class="col-sm-3">
-                        <input type="text" name="req_num" id="reqPopover" placeholder="请求编号" class="form-control" readonly
-                               data-toggle="popover"
-                               data-container="body"
-                               data-placement="bottom"
-                               data-html="true"
-                               title="已解决请求"
-                               data-content="
+                        <div class="col-sm-3">
+                            <input type="text" name="req_num" id="reqPopover" placeholder="请求编号" class="form-control"
+                                   readonly
+                                   data-toggle="popover"
+                                   data-container="body"
+                                   data-placement="bottom"
+                                   data-html="true"
+                                   title="已解决请求"
+                                   data-content="
                                <div style='max-height:300px;overflow-y:scroll'>
                                     <table class='table table-hover'>
                                          <tbody>
@@ -152,53 +155,54 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
                                </div>
 
                                 ">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">附件:</label>
-
-                    <div class="col-sm-4">
-                        <p id="i_select_files"></p>
-                        <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['attach_id']->value;?>
-" name="attach_id">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-1"></label>
-
-                    <div class="col-sm-6">
-                        <div id="i_stream_files_queue">
                         </div>
-                        <br>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-primary" onclick="javascript:_t.upload();">开始上传</a>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-danger"
-                           onclick="javascript:_t.stop();">停止上传</a>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-default" onclick="javascript:_t.cancel();">
-                            &nbsp;取&nbsp;消&nbsp;</a>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">附件:</label>
+
+                        <div class="col-sm-4">
+                            <p id="i_select_files"></p>
+                            <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['attach_id']->value;?>
+" name="attach_id">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1"></label>
+
+                        <div class="col-sm-10">
+                            <div id="i_stream_files_queue">
+                            </div>
+                            <br>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-primary"
+                               onclick="javascript:_t.upload();">开始上传</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-danger"
+                               onclick="javascript:_t.stop();">停止上传</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-default"
+                               onclick="javascript:_t.cancel();">
+                                &nbsp;取&nbsp;消&nbsp;</a>
+                        </div>
                     </div>
                 </div>
-
-                <div class="_015_RequestList">
-                    <textarea name="kno_content" id="content"></textarea>
-                    <?php echo '<script'; ?>
+            </div>
+            <div class="_015_RequestList">
+                <textarea name="kno_content" id="content"></textarea>
+                <?php echo '<script'; ?>
 >
-                        CKEDITOR.replace("kno_content", {
-                            filebrowserBrowseUrl: '/itildemo/plugins/ckfinder/ckfinder.html',
-                            filebrowserImageBrowseUrl: '/itildemo/plugins/ckfinder/ckfinder.html?Type=Images',
-                            filebrowserFlashBrowseUrl: '/itildemo/plugins/ckfinder/ckfinder.html?Type=Flash',
-                            filebrowserUploadUrl: '/itildemo/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-                            filebrowserImageUploadUrl: '/itildemo/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-                            filebrowserFlashUploadUrl: '/itildemo/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-                        });
-                    <?php echo '</script'; ?>
+                    CKEDITOR.replace("kno_content", {
+                        filebrowserBrowseUrl: '/itildemo/plugins/ckfinder/ckfinder.html',
+                        filebrowserImageBrowseUrl: '/itildemo/plugins/ckfinder/ckfinder.html?Type=Images',
+                        filebrowserFlashBrowseUrl: '/itildemo/plugins/ckfinder/ckfinder.html?Type=Flash',
+                        filebrowserUploadUrl: '/itildemo/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                        filebrowserImageUploadUrl: '/itildemo/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                        filebrowserFlashUploadUrl: '/itildemo/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                    });
+                <?php echo '</script'; ?>
 >
-                </div>
-                <br>
-
-                <button name="add_kno" class="btn btn-primary btn-sm _017_AddRequest">提交审核</button>
-                <br><br><br>
-            </form>
-        </div>
+            </div>
+            <br>
+            <button name="add_kno" class="btn btn-primary btn-sm _017_AddRequest">提交审核</button>
+            <br><br><br>
+        </form>
     </div>
 </div>
 </body>
@@ -221,7 +225,7 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
         var sort = "";
         for (var i = 0; i < chooseSort.length; i++) {
             if (chooseSort[i].checked) {
-                sort += chooseSort[i].value + "  ";
+                sort += chooseSort[i].value + "    ";
             }
         }
         document.getElementById('sortPopover').value = sort;
@@ -247,7 +251,7 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
         /** 拖拽提示, 默认: `<span>把文件(文件夹)拖拽到这里</span>` */
         filesQueueId: "i_stream_files_queue",
         /** 文件上传容器的ID, 默认: i_stream_files_queue */
-        filesQueueHeight: 200,
+        filesQueueHeight: 150,
         /** 文件上传容器的高度（px）, 默认: 450 */
         messagerId: "i_stream_message_container",
         /** 消息显示容器的ID, 默认: i_stream_message_container */
