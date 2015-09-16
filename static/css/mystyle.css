@@ -357,7 +357,6 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     border-radius: 3px;
     line-height: 20px;
     color: #ffffff;
-    font-size: 10px;
     width: 40px;
     text-align: center;
 }
@@ -372,4 +371,16 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
 ._span_low
 {
     background-color: #A6D037;
+}
+
+._48_task
+{
+    background: #F8F8F8 none repeat scroll 0% 0%;
+    padding: 6px 20px;
+    margin-bottom: 16px;
+    width: 92%;
+    margin-left: 4%;
+    border: 1px solid #EEE;
+    overflow: hidden;
+    border-radius: 4px;
 }

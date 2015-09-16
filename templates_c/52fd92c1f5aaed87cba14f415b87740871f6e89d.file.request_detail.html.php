@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-15 08:56:04
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-16 08:48:40
          compiled from "F:\wamp\www\itildemo\templates\share\request_detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:1546155f7cee85bb8e1-78268792%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '52fd92c1f5aaed87cba14f415b87740871f6e89d' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\share\\request_detail.html',
-      1 => 1442307148,
+      1 => 1442392270,
       2 => 'file',
     ),
   ),
@@ -49,6 +49,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <?php echo $_smarty_tpl->tpl_vars['res']->value['req_title'];?>
 
     </div>
+
     <br>
     <div class="_019_KnowledgeDetail">
         <font color="#999">key words：<?php echo $_smarty_tpl->tpl_vars['res']->value['req_keyword'];?>
@@ -61,11 +62,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     </div>
     <br><br>
-    <div class="_020_KnowledgeDetail">
-        创建：<?php echo $_smarty_tpl->tpl_vars['res']->value['req_author'];?>
- &nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['res']->value['req_time'];?>
 
-    </div>
     <br>
     <div class="_015_RequestList">
         <font style="font-weight: bold">附件:</font><br><br>

@@ -39,32 +39,43 @@
                     <th>指派时间</th>
                     <th>优先级</th>
                     <th>影响范围</th>
-                    <th>余时/超时</th>
+                    <th><span style="color: #009900">余时</span>/<span style="color: red">超时</span></th>
                 </tr>
                 <tbody>
-            <{foreach from=$res item=req}>
+                <{foreach from=$res item=req name=res}>
                 <tr>
-                    <td>1</td>
-                    <td><{$req.req_num}></td>
-                    <td><{$req.req_title}></td>
-                    <td><{$req.req_author}></td>
-                    <td><{$req.req_time}></td>
-                    <td><{$req.assign_time}></td>
+                    <td><{$smarty.foreach.res.index+1}></td>
+                    <td><a href="task_detail.php?req_num=<{$req.req_num}>"><{$req.req_num}></a></td>
+                    <td style="max-width: 200px;"><{$req.req_title}></td>
+                    <td style="max-width: 80px;"><{$req.req_author}></td>
+                    <td><{$req.req_time|date_format:'%y/%m/%d %H:%M'}></td>
+                    <td><{$req.assign_time|date_format:'%y/%m/%d %H:%M'}></td>
                     <td>
-                        <{if $req.req_priority==1}><div class="_span_low">&nbsp;低&nbsp;</div>
-                        <{else if $req.req_priority==2}><div class="_span_middle">&nbsp;中&nbsp;</div>
-                        <{else}><div class="_span_high">&nbsp;高&nbsp;</div>
+                        <{if $req.req_priority==1}>
+                        <div class="_span_low">&nbsp;低&nbsp;</div>
+                        <{else if $req.req_priority==2}>
+                        <div class="_span_middle">&nbsp;中&nbsp;</div>
+                        <{else}>
+                        <div class="_span_high">&nbsp;高&nbsp;</div>
                         <{/if}>
                     </td>
                     <td>
-                        <{if $req.req_effect==1}><div class="_span_low">&nbsp;个人&nbsp;</div>
-                        <{else if $req.req_effect==2}><div class="_span_middle">&nbsp;部门&nbsp;</div>
-                        <{else}><div class="_span_high">&nbsp;单位&nbsp;</div>
+                        <{if $req.req_effect==1}>
+                        <div class="_span_low">&nbsp;个人&nbsp;</div>
+                        <{else if $req.req_effect==2}>
+                        <div class="_span_middle">&nbsp;部门&nbsp;</div>
+                        <{else}>
+                        <div class="_span_high">&nbsp;单位&nbsp;</div>
                         <{/if}>
                     </td>
-                    <td><{$req.times}></td>
+                    <td><{if $req.flag}>
+                        <span style="color: red"><{$req.hour}>小时<{$req.minute}>分</span>
+                        <{else}>
+                        <span style="color: #009900"><{$req.hour}>小时<{$req.minute}>分</span>
+                        <{/if}>
+                    </td>
                 </tr>
-            <{/foreach}>
+                <{/foreach}>
                 </tbody>
                 </thead>
             </table>

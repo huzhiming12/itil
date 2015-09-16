@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-15 14:00:27
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-16 16:20:05
          compiled from "F:\wamp\www\itildemo\templates\engineer\task_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:909155f8056a783865-38473970%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '44d1a657a47d82416b280ff8ff3b163dfb51a3fe' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\engineer\\task_list.html',
-      1 => 1442325622,
+      1 => 1442391601,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55f8056a7fef22_50990536')) {function content_55f8056a7fef22_50990536($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_55f8056a7fef22_50990536')) {function content_55f8056a7fef22_50990536($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include 'F:\\wamp\\www\\itildemo\\libs\\plugins\\modifier.date_format.php';
+?><!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -69,42 +70,60 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <th>指派时间</th>
                     <th>优先级</th>
                     <th>影响范围</th>
-                    <th>余时/超时</th>
+                    <th><span style="color: #009900">余时</span>/<span style="color: red">超时</span></th>
                 </tr>
                 <tbody>
-            <?php  $_smarty_tpl->tpl_vars['req'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['req']->_loop = false;
+                <?php  $_smarty_tpl->tpl_vars['req'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['req']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['res']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']['res']['index']=-1;
 foreach ($_from as $_smarty_tpl->tpl_vars['req']->key => $_smarty_tpl->tpl_vars['req']->value) {
 $_smarty_tpl->tpl_vars['req']->_loop = true;
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']['res']['index']++;
 ?>
                 <tr>
-                    <td>1</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
+                    <td><?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['res']['index']+1;?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_title'];?>
+                    <td><a href="task_detail.php?req_num=<?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
+"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
+</a></td>
+                    <td style="max-width: 200px;"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_title'];?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_author'];?>
+                    <td style="max-width: 80px;"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_author'];?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_time'];?>
+                    <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['req']->value['req_time'],'%y/%m/%d %H:%M');?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['req']->value['assign_time'];?>
+                    <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['req']->value['assign_time'],'%y/%m/%d %H:%M');?>
 </td>
                     <td>
-                        <?php if ($_smarty_tpl->tpl_vars['req']->value['req_priority']==1) {?><div class="_span_low">&nbsp;低&nbsp;</div>
-                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_priority']==2) {?><div class="_span_middle">&nbsp;中&nbsp;</div>
-                        <?php } else { ?><div class="_span_high">&nbsp;高&nbsp;</div>
+                        <?php if ($_smarty_tpl->tpl_vars['req']->value['req_priority']==1) {?>
+                        <div class="_span_low">&nbsp;低&nbsp;</div>
+                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_priority']==2) {?>
+                        <div class="_span_middle">&nbsp;中&nbsp;</div>
+                        <?php } else { ?>
+                        <div class="_span_high">&nbsp;高&nbsp;</div>
                         <?php }?>
                     </td>
                     <td>
-                        <?php if ($_smarty_tpl->tpl_vars['req']->value['req_effect']==1) {?><div class="_span_low">&nbsp;个人&nbsp;</div>
-                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_effect']==2) {?><div class="_span_middle">&nbsp;部门&nbsp;</div>
-                        <?php } else { ?><div class="_span_high">&nbsp;单位&nbsp;</div>
+                        <?php if ($_smarty_tpl->tpl_vars['req']->value['req_effect']==1) {?>
+                        <div class="_span_low">&nbsp;个人&nbsp;</div>
+                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_effect']==2) {?>
+                        <div class="_span_middle">&nbsp;部门&nbsp;</div>
+                        <?php } else { ?>
+                        <div class="_span_high">&nbsp;单位&nbsp;</div>
                         <?php }?>
                     </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['req']->value['times'];?>
-</td>
+                    <td><?php if ($_smarty_tpl->tpl_vars['req']->value['flag']) {?>
+                        <span style="color: red"><?php echo $_smarty_tpl->tpl_vars['req']->value['hour'];?>
+小时<?php echo $_smarty_tpl->tpl_vars['req']->value['minute'];?>
+分</span>
+                        <?php } else { ?>
+                        <span style="color: #009900"><?php echo $_smarty_tpl->tpl_vars['req']->value['hour'];?>
+小时<?php echo $_smarty_tpl->tpl_vars['req']->value['minute'];?>
+分</span>
+                        <?php }?>
+                    </td>
                 </tr>
-            <?php } ?>
+                <?php } ?>
                 </tbody>
                 </thead>
             </table>

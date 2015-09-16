@@ -5,9 +5,16 @@
     <title></title>
 </head>
 <body>
-<form method="post" class="">
-用户名：<input type="text">
-
+<form method="post" action="/itildemo/home/controller/share/login.php">
+用户名：<input type="text" name="user_name"><br>
+密码：<input type="password" name="pwd"><br>
+    <label for="user">用户</label>
+    <input type="radio" id="user" name="role" value="user" checked>
+    <label for="engineer">工程师</label>
+    <input type="radio" id="engineer" name="role" value="engineer">
+    <label for="admin">管理员</label>
+    <input type="radio" id="admin" name="role" value="admin"><br>
+    <button type="submit">登录</button>
 </form>
 </body>
 </html>

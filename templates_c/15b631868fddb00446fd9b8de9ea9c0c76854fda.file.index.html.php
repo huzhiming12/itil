@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-15 11:44:15
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-16 01:24:12
          compiled from "F:\wamp\www\itildemo\templates\engineer\index.html" */ ?>
 <?php /*%%SmartyHeaderCode:1226355f77a65c03b39-24923746%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -13,7 +13,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5faa2dcbbfb8136e3a37dc4c1e38a72b8d01f8cf' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\frame\\index.html',
-      1 => 1442283069,
+      1 => 1442366263,
       2 => 'file',
     ),
   ),
@@ -43,7 +43,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </div>
 
     <div class="dl-log">欢迎您，<span class="dl-log-user"><?php echo $_SESSION['role'];?>
-管理员:<?php echo $_SESSION['user_name'];?>
+:<?php echo $_SESSION['user_name'];?>
 </span>
         <a href="#" title="退出系统" class="dl-log-quit">[退出]</a>
     </div>
