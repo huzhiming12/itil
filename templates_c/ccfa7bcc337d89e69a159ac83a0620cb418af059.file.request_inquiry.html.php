@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-15 07:55:25
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-17 03:22:54
          compiled from "F:\wamp\www\itildemo\templates\admin\request_inquiry.html" */ ?>
 <?php /*%%SmartyHeaderCode:1089055e3f86e8afd41-50589588%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ccfa7bcc337d89e69a159ac83a0620cb418af059' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_inquiry.html',
-      1 => 1442303704,
+      1 => 1442460171,
       2 => 'file',
     ),
   ),
@@ -93,10 +93,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <td colspan="4" class="input-group-sm">
                             <select name="req_state" class="form-control" style="width:150px;">
                                 <option value="">全部</option>
-                                <option value="未处理">未处理</option>
-                                <option value="已指派">已指派</option>
-                                <option value="已解决">已解决</option>
-                                <option value="已取消">已取消</option>
+                                <option value="1">未处理</option>
+                                <option value="2">已指派</option>
+                                <option value="3">已解决</option>
+                                <option value="4">已取消</option>
                             </select>
                         </td>
                     </tr>

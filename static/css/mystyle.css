@@ -352,10 +352,11 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     margin-bottom: 15px;
 }
 
-._span_high,._span_middle,._span_low
+._span_high,._span_middle,._span_low,._span_new
 {
     border-radius: 3px;
     line-height: 20px;
+    font-size: 10px;
     color: #ffffff;
     width: 40px;
     text-align: center;
@@ -371,6 +372,10 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
 ._span_low
 {
     background-color: #A6D037;
+}
+._span_new
+{
+    background: #FE8263;
 }
 
 ._48_task

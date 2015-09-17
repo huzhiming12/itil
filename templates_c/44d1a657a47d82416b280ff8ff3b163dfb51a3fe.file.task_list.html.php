@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-16 16:20:05
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-17 21:09:39
          compiled from "F:\wamp\www\itildemo\templates\engineer\task_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:909155f8056a783865-38473970%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '44d1a657a47d82416b280ff8ff3b163dfb51a3fe' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\engineer\\task_list.html',
-      1 => 1442391601,
+      1 => 1442495191,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'res' => 0,
+    'done' => 0,
+    'changelist' => 0,
     'req' => 0,
   ),
   'has_nocache_code' => false,
@@ -51,8 +53,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     <div class="_034_request_home">
         <ul id="myTab" class="nav nav-tabs title_font">
-            <li class="active"><a href="#do" data-toggle="tab">我的待办</a></li>
-            <li><a href="#done" data-toggle="tab">我的已办</a></li>
+            <li class="active"><a href="#do" data-toggle="tab">我的待办(<?php echo count($_smarty_tpl->tpl_vars['res']->value);?>
+)</a></li>
+            <li><a href="#done" data-toggle="tab">我的已办(<?php echo count($_smarty_tpl->tpl_vars['done']->value);?>
+)</a></li>
+            <li><a href="#change" data-toggle="tab">我的变更(<?php echo count($_smarty_tpl->tpl_vars['changelist']->value);?>
+)</a></li>
         </ul>
     </div>
     <br>
@@ -84,7 +90,7 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
                     <td><?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['res']['index']+1;?>
 </td>
                     <td><a href="task_detail.php?req_num=<?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
-"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
+&flag=1"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
 </a></td>
                     <td style="max-width: 200px;"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_title'];?>
 </td>
@@ -129,7 +135,87 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
             </table>
         </div>
         <div class="tab-pane" id="done">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>请求编号</th>
+                    <th>请求标题</th>
+                    <th>请求人</th>
+                    <th>请求时间</th>
+                    <th>解决时间</th>
+                </tr>
+                <tbody>
+                <?php  $_smarty_tpl->tpl_vars['req'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['req']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['done']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']['res']['index']=-1;
+foreach ($_from as $_smarty_tpl->tpl_vars['req']->key => $_smarty_tpl->tpl_vars['req']->value) {
+$_smarty_tpl->tpl_vars['req']->_loop = true;
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']['res']['index']++;
+?>
+                <tr>
+                    <td><?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['res']['index']+1;?>
+</td>
+                    <td><a href="task_detail.php?req_num=<?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
+&flag=2"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
+</a></td>
+                    <td style="max-width: 200px;"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_title'];?>
+</td>
+                    <td style="max-width: 80px;"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_author'];?>
+</td>
+                    <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['req']->value['req_time'],'%y/%m/%d %H:%M');?>
+</td>
+                    <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['req']->value['req_finish_time'],'%y/%m/%d %H:%M');?>
+</td>
+                </tr>
+                <?php } ?>
+                </tbody>
+                </thead>
+            </table>
+        </div>
+        <div class="tab-pane" id="change">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>请求编号</th>
+                    <th>请求标题</th>
+                    <th>请求人</th>
+                    <th>请求时间</th>
+                    <th>变更时间</th>
+                    <th>受理状态</th>
+                </tr>
+                <tbody>
+                <?php  $_smarty_tpl->tpl_vars['req'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['req']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['changelist']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']['res']['index']=-1;
+foreach ($_from as $_smarty_tpl->tpl_vars['req']->key => $_smarty_tpl->tpl_vars['req']->value) {
+$_smarty_tpl->tpl_vars['req']->_loop = true;
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']['res']['index']++;
+?>
+                <tr>
+                    <td><?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['res']['index']+1;?>
+</td>
+                    <td><a href="task_detail.php?req_num=<?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
+&flag=3"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
+</a></td>
+                    <td style="max-width: 200px;"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_title'];?>
+</td>
+                    <td style="max-width: 80px;"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_author'];?>
+</td>
+                    <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['req']->value['req_time'],'%y/%m/%d %H:%M');?>
+</td>
+                    <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['req']->value['change_time'],'%y/%m/%d %H:%M');?>
+</td>
+                    <td><?php if ($_smarty_tpl->tpl_vars['req']->value['flag']==1) {?><div class="_span_new">未受理</div>
+                        <?php } else { ?><div class="_span_low">已指派</div><?php }?>
 
+                    </td>
+                </tr>
+                <?php } ?>
+                </tbody>
+                </thead>
+            </table>
         </div>
     </div>
 
