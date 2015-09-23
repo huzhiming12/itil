@@ -1,23 +1,31 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: huzhiming
  * Date: 2015/7/1
  * Time: 11:25
  */
+$dir = dirname(dirname(__FILE__));
+require_once($dir . "/smarty_include.php");
+$smarty->configLoad("config.ini", "db");
+
 
 class SQLTool
 {
     //属性
     private $conn;
-    private $host = "localhost:3308";
-    private $user = "root";
-    private $password = "123456";
-    private $db = "itildemo";
+    private $host;
+    private $user;
+    private $password;
+    private $db;
 
     function SQLTool()
     {
+        global $smarty;
+        $this->host = $smarty->getConfigVars("host");
+        $this->user = $smarty->getConfigVars("user");
+        $this->password = $smarty->getConfigVars("password");
+        $this->db = $smarty->getConfigVars("db");
         $this->conn = mysql_connect($this->host, $this->user, $this->password);
         if (!$this->conn) {
             die("连接数据库失败" . mysql_error());
@@ -54,6 +62,7 @@ class SQLTool
             }
         }
     }
+
     //关闭数据库连接
     public function dbCloseConnection()
     {

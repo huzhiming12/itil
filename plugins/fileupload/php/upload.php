@@ -1,4 +1,4 @@
-﻿﻿<?php
+﻿﻿﻿<?php
 require_once("../../../home/tools/SQLTool.class.php");
 require_once("../../../home/smarty_include.php");
 $action = $_GET['action'];

@@ -9,44 +9,43 @@
     <title></title>
 </head>
 <body>
+<br>
 
-<div class="_21_config_staff">
-    <div class="_028_config_user">
-        <div class="_011_RequestList">
-            知识请求分类&nbsp;&nbsp;
-            <button class="btn btn-sm btn-default" title="添加分类" data-toggle="modal" data-target="#myModal">+</button>
-        </div>
-        <div class="_015_RequestList">
-            <div class="_014_RequestList">
-                <table width="100%">
-                    <{foreach $parent_sort as $p_sort}>
-                    <tr class="_031_config_sort">
-                        <td class="_029_config_sort"><{$p_sort.sort_name}>：</td>
-                        <td class="_030_config_sort">
-                            <{foreach $child_sort as $c_sort}>
-                            <{if $c_sort.sort_parent_id == $p_sort.sort_id}>
-                            <a tabindex="0" role="button" data-trigger="focus" class="btn btn-sm btn-default"
-                               data-toggle="popover" title="操作"
-                               data-content="<a href='#' onclick='deleteSort(<{$c_sort.sort_id}>)'>删除</a>"
-                               data-html="true">
-                                <{$c_sort.sort_name}>
-                            </a>
-                            &nbsp;&nbsp;
-                            <{/if}>
-                            <{/foreach}>
-                            <button class="btn btn-sm btn-default" onclick="ChangeValue('<{$p_sort.sort_id}>')"
-                                    title="添加子类别">+
-                            </button>
-                        </td>
-                        <td class="_36_config_sort"><a href="#" onclick="deleteSort('<{$p_sort.sort_id}>')"
-                                                       class="_37_config_sort">删除</a></td>
-                    </tr>
-                    <{/foreach}>
-                </table>
-            </div>
-        </div>
-        <br><br>
+<div class="_012_RequestList">
+    <div class="_011_RequestList">
+        知识请求分类&nbsp;&nbsp;
+        <button class="btn btn-sm btn-default" title="添加分类" data-toggle="modal" data-target="#myModal">+</button>
     </div>
+    <div class="_015_RequestList">
+        <div class="_014_RequestList">
+            <table width="100%">
+                <{foreach $parent_sort as $p_sort}>
+                <tr class="_031_config_sort">
+                    <td class="_029_config_sort"><{$p_sort.sort_name}>：</td>
+                    <td class="_030_config_sort">
+                        <{foreach $child_sort as $c_sort}>
+                        <{if $c_sort.sort_parent_id == $p_sort.sort_id}>
+                        <a tabindex="0" role="button" data-trigger="focus" class="btn btn-sm btn-default"
+                           data-toggle="popover" title="操作"
+                           data-content="<a href='#' onclick='deleteSort(<{$c_sort.sort_id}>)'>删除</a>"
+                           data-html="true">
+                            <{$c_sort.sort_name}>
+                        </a>
+                        &nbsp;&nbsp;
+                        <{/if}>
+                        <{/foreach}>
+                        <button class="btn btn-sm btn-default" onclick="ChangeValue('<{$p_sort.sort_id}>')"
+                                title="添加子类别">+
+                        </button>
+                    </td>
+                    <td class="_36_config_sort"><a href="#" onclick="deleteSort('<{$p_sort.sort_id}>')"
+                                                   class="_37_config_sort">删除</a></td>
+                </tr>
+                <{/foreach}>
+            </table>
+        </div>
+    </div>
+    <br>
 </div>
 
 <!--添加分类的模态框-->

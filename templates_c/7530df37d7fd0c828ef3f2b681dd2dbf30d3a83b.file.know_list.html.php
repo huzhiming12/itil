@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-14 11:59:10
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-22 13:04:42
          compiled from "F:\wamp\www\itildemo\templates\admin\know_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:2983055f6b0f251c895-08352182%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7530df37d7fd0c828ef3f2b681dd2dbf30d3a83b' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\know_list.html',
-      1 => 1442231946,
+      1 => 1442924683,
       2 => 'file',
     ),
   ),
@@ -35,7 +35,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <link rel="stylesheet" href="/itildemo/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
     <link rel="stylesheet" href="/itildemo/static/css/bootstrap-datetimepicker.min.css">
-
     <?php echo '<script'; ?>
  language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"><?php echo '</script'; ?>
 >

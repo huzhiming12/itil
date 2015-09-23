@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-17 11:13:16
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 08:12:55
          compiled from "F:\wamp\www\itildemo\templates\admin\request_assign.html" */ ?>
 <?php /*%%SmartyHeaderCode:1230455fa1b00c94f92-73396372%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ad530333eb304751d52fa4b6384c2abb26dd2101' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_assign.html',
-      1 => 1442488386,
+      1 => 1442978113,
       2 => 'file',
     ),
   ),
@@ -59,6 +59,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </div>
     <br>
 
+    <!--请求信息-->
     <div class="_48_task">
         <table>
             <tr>
@@ -94,7 +95,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
         </div>
     </div>
-
+    <!--附件信息-->
     <div class="_48_task">
         <span style="color: #999">相关附件:</span><br><br>
         <?php  $_smarty_tpl->tpl_vars['att'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['att']->_loop = false;
@@ -104,14 +105,14 @@ $_smarty_tpl->tpl_vars['att']->_loop = true;
 ?>
         <p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/itildemo/uploadfile/files/<?php echo $_smarty_tpl->tpl_vars['att']->value['attach_id'];?>
+            <a href="/itildemo/uploadfile/files/req/<?php echo $_smarty_tpl->tpl_vars['att']->value['attach_id'];?>
 /<?php echo $_smarty_tpl->tpl_vars['att']->value['attach_name'];?>
 "><?php echo $_smarty_tpl->tpl_vars['att']->value['attach_name'];?>
 </a>
         </p>
         <?php } ?>
     </div>
-
+    <!--流程信息-->
     <div class="_48_task">
         <span style="color: #999">流程信息：</span><br><br>
 
@@ -148,7 +149,7 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
                 <div id="collapse<?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['res']['index'];?>
 " class="panel-collapse collapse">
                     <div class="panel-body">
-                        <?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['res']['index']%2==0) {?><!--指派信息-->
+                        <?php if ($_smarty_tpl->tpl_vars['pro']->value['flag']=='ass') {?><!--指派信息-->
                         <table>
                             <tr>
                                 <td style="color: #999">影响范围：</td>
@@ -192,6 +193,23 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
                                     G级 720小时内完成
                                     <?php }?>
                                 </td>
+                                <td class="col-sm-2"></td>
+                                <td style="color: #999">复杂程度：</td>
+                                <td>
+                                    <?php if ($_smarty_tpl->tpl_vars['pro']->value['req_complex']==1) {?>
+                                    一级 较容易
+                                    <?php } elseif ($_smarty_tpl->tpl_vars['pro']->value['req_complex']==2) {?>
+                                    二级 容易
+                                    <?php } elseif ($_smarty_tpl->tpl_vars['pro']->value['req_complex']==3) {?>
+                                    三级 一般
+                                    <?php } elseif ($_smarty_tpl->tpl_vars['pro']->value['req_complex']==4) {?>
+                                    四级 复杂
+                                    <?php } elseif ($_smarty_tpl->tpl_vars['pro']->value['req_complex']==5) {?>
+                                    五级 较复杂
+                                    <?php } elseif ($_smarty_tpl->tpl_vars['pro']->value['req_complex']==6) {?>
+                                    六级 很复杂
+                                    <?php }?>
+                                </td>
                             </tr>
                             <tr>
                                 <td style="color: #999">建议或意见：</td>
@@ -215,40 +233,14 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
             <?php } ?>
         </div>
     </div>
-
-    <form method="post" action="/itildemo/home/service/req_ser.php?flag=<?php echo $_smarty_tpl->tpl_vars['flag']->value;?>
-">
+    <!--指派表单-->
+    <form method="post" name="assign_form" action="/itildemo/home/service/req_ser.php?flag=<?php echo $_smarty_tpl->tpl_vars['flag']->value;?>
+"
+          onsubmit="return CheckValue()">
         <div class="_48_task">
             <table class="form-group-sm">
                 <tr>
-                    <td style="color: #999">影响范围：</td>
-                    <td>
-                        <label class="checkbox-inline">
-                            <input type="radio" name="effect" value="1" checked>个人
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" name="effect" value="2">部门
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" name="effect" value="3">单位
-                        </label>
-                    </td>
-                    <td class="col-sm-2"></td>
-                    <td style="color: #999">优 先 级：</td>
-                    <td>
-                        <label class="checkbox-inline">
-                            <input type="radio" name="priority" value="1" checked>低
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" name="priority" value="2">中
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" name="priority" value="3">高
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="color: #999">服务协议：</td>
+                    <td style="color: #999"><span style="color:red;">*</span>服务协议：</td>
                     <td>
                         <select class="form-control" name="req_time_limit">
                             <option value="2">A级 2小时内完成</option>
@@ -262,7 +254,47 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
                         </select>
                     </td>
                     <td class="col-sm-2"></td>
-                    <td style="color: #999">工程师:</td>
+                    <td style="color: #999;"><span style="color:red;">*</span>复杂程度：</td>
+                    <td>
+                        <select class="form-control" name="req_complex">
+                            <option value="1">一级 较容易</option>
+                            <option value="2">二级 容易</option>
+                            <option value="3">三级 一般</option>
+                            <option value="4">四级 复杂</option>
+                            <option value="5">五级 较复杂</option>
+                            <option value="6">六级 很复杂</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: #999"><span style="color:red;">*</span>影响范围：</td>
+                    <td>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="effect" value="1" checked>个人
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="effect" value="2">部门
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="effect" value="3">单位
+                        </label>
+                    </td>
+                    <td class="col-sm-2"></td>
+                    <td style="color: #999"><span style="color:red;">*</span>优 先 级：</td>
+                    <td>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="priority" value="1" checked>低
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="priority" value="2">中
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="priority" value="3">高
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: #999"><span style="color:red;">*</span>工 程 师:</td>
                     <td>
                         <input type="text" id="engineer" name="engineer" class="form-control"
                                data-toggle="popover"
@@ -298,7 +330,7 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
                     </td>
                 </tr>
                 <tr>
-                    <td style="color: #999">意见或建议：</td>
+                    <td style="color: #999"><span style="color:red;">*</span>意见或建议：</td>
                 </tr>
             </table>
             <div>
@@ -311,6 +343,22 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
         <div class="_46_knowledge">
             <button class="btn btn-sm btn-primary" name="assign_btn">指派工程师</button>
             &nbsp;&nbsp;
+            <?php if ($_smarty_tpl->tpl_vars['res']->value['req_state']==1||$_smarty_tpl->tpl_vars['flag']->value=='re_assign') {?>
+            <a href="javascript:void(0)" class="btn btn-sm btn-warning" data-toggle="popover" data-placement="top"
+               data-html="true" data-trigger="focus"
+               data-content="
+                    <div class='_46_knowledge'>确定要注销吗？注销后将<br>不会指派工程师解决该问题<br><br>
+                    <a href='javascript:void(0)' class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/home/service/req_ser.php?cancel_req=<?php echo $_smarty_tpl->tpl_vars['res']->value['req_num'];?>
+&flag=admin&quot;'>注销</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href='javascript:void(0)' class='btn btn-sm btn-default'>取消</a></div>">取消请求</a>&nbsp;&nbsp;&nbsp;
+            <?php }?>
+            <a href="javascript:void(0)" class="btn btn-sm btn-danger" data-toggle="popover" data-placement="top"
+               data-html="true" data-trigger="focus"
+               data-content="
+                    <div class='_46_knowledge'>确定要删除该请求？<br><br>
+                    <a href='javascript:void(0)' class='btn btn-sm btn-danger' onclick='window.location.href=&quot;/itildemo/home/service/req_ser.php?delete_req=<?php echo $_smarty_tpl->tpl_vars['res']->value['req_num'];?>
+&quot;'>删除</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href='javascript:void(0)' class='btn btn-sm btn-default'>取消</a></div>">删除</a>&nbsp;&nbsp;&nbsp;
             <a href="javascript:void(0)" class="btn btn-sm btn-default" onclick="history.go(-1)">返回</a>
         </div>
     </form>
@@ -329,6 +377,16 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
     function chooseUser(user_name) {
         $('#engineer').popover('hide');
         document.getElementById('engineer').value = user_name;
+    }
+    function CheckValue() {
+        if ("" == assign_form.engineer.value) {
+            alert("还未选择工程师！");
+            return false;
+        }
+        if ("" == assign_form.add_description.value) {
+            alert("建议或意见不能为空！");
+            return false;
+        }
     }
 <?php echo '</script'; ?>
 ><?php }} ?>

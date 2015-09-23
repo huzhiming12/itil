@@ -18,3 +18,4 @@ $smarty->right_delimiter = "}>";
 $smarty->setTemplateDir($dir . "/templates");
 $smarty->setCompileDir($dir . "/templates_c");
 $smarty->setCacheDir($dir."/cache");
+$smarty->setConfigDir($dir."/configs");

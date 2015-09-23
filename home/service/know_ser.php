@@ -42,7 +42,7 @@ if (isset($_POST['add_kno'])) {
     //将上传的文件从temp文件夹下移到files
     $res = 1;
     if (file_exists(PROJECT_DIR . "/uploadfile/temp/" . $kno_attach_id))
-        $res = $fileutil->moveDir(PROJECT_DIR . "/uploadfile/temp/" . $kno_attach_id, PROJECT_DIR . "/uploadfile/files/" . $kno_attach_id);
+        $res = $fileutil->moveDir(PROJECT_DIR . "/uploadfile/temp/" . $kno_attach_id, PROJECT_DIR . "/uploadfile/files/know/" . $kno_attach_id);
     if ($sqltool->dbUpdate($sql) and $res)
         echo "<script>alert('知识采集成功！')</script>";
     else

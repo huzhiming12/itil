@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-16 01:18:05
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-22 12:36:23
          compiled from "F:\wamp\www\itildemo\templates\admin\index.html" */ ?>
 <?php /*%%SmartyHeaderCode:1593055a1de2a311301-65692116%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '79d0862a81983dc16bafb04b9b5e1bb6da6ae475' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\index.html',
-      1 => 1442282556,
+      1 => 1442925307,
       2 => 'file',
     ),
     '5faa2dcbbfb8136e3a37dc4c1e38a72b8d01f8cf' => 
@@ -135,7 +135,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             items: [
                                 {id: '1', text: '机构配置', href: '/itildemo/home/controller/admin/config_depart.php'},
                                 {id: '2', text: '人员配置', href: '/itildemo/home/controller/admin/config_staff.php'},
-                                {id: '3', text: '附件上传配置', href: '/itildemo/home/controller/admin/config_user.php'},
+                                {id: '3', text: '附件上传配置', href: '/itildemo/home/controller/admin/config_attach.php'},
                                 {id: '4', text: '知识请求分类配置', href: '/itildemo/home/controller/admin/config_sort.php'},
                             ]
                         }]
@@ -146,8 +146,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         menu: [{
                             text: '公告',
                             items: [
-                                {id: '1', text: '公告列表', href: '/itildemo/home/controller/admin/config_depart.php'},
-                                {id: '2', text: '新建公告', href: '/itildemo/home/controller/admin/config_staff.php'},
+                                {id: '1', text: '公告列表', href: '/itildemo/home/controller/share/news_list.php'},
+                                {id: '2', text: '新建公告', href: '/itildemo/home/controller/admin/news_create.php'},
                             ]
                         }]
                     },

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-16 01:24:12
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 03:17:32
          compiled from "F:\wamp\www\itildemo\templates\engineer\index.html" */ ?>
 <?php /*%%SmartyHeaderCode:1226355f77a65c03b39-24923746%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '15b631868fddb00446fd9b8de9ea9c0c76854fda' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\engineer\\index.html',
-      1 => 1442317397,
+      1 => 1442978248,
       2 => 'file',
     ),
     '5faa2dcbbfb8136e3a37dc4c1e38a72b8d01f8cf' => 
@@ -104,7 +104,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         menu: [{
                             text: '公告通知',
                             items: [
-                                {id: '1', text: '最新通知', href: 'Node/index.html'},
+                                {id: '1', text: '最新通知', href: '/itildemo/home/controller/share/news_list.php'},
                                 {id: '2', text: '消息提醒', href: 'Node/index.html'}]
                         }]
                     },

@@ -21,6 +21,7 @@ $sqltool->dbCloseConnection();
 //生成唯一的附件id标识符
 $attach_id = md5(uniqid(md5(microtime(true)), true));
 
+$smarty->configLoad("config.ini", "uploadfile");
 $smarty->assign("attach_id", $attach_id);
 $smarty->assign("parent_sort", $parent_sort);
 $smarty->assign("child_sort", $child_sort);

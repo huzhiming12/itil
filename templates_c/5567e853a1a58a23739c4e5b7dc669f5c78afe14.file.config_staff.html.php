@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-11 01:51:01
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-21 07:43:39
          compiled from "F:\wamp\www\itildemo\templates\admin\config_staff.html" */ ?>
 <?php /*%%SmartyHeaderCode:1822355a1de335d3062-09046241%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5567e853a1a58a23739c4e5b7dc669f5c78afe14' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\config_staff.html',
-      1 => 1441936255,
+      1 => 1442821415,
       2 => 'file',
     ),
   ),
@@ -80,7 +80,7 @@ function searchStaff()
                 </button>
             </a>
         </div>
-        <div class="_015_RequestList" id="box">
+        <div class="_015_RequestList _49_userlist" id="box">
         </div>
         <br>
     </div>

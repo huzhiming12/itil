@@ -20,6 +20,7 @@ if (isset($_GET['searchcontent']) and $_GET['searchcontent'] != "") {
     $searchcontent = $_GET['searchcontent'];
     $sql .= " and (req_title like '%$searchcontent%' or req_sort like '%$searchcontent%' or req_keyword like '%$searchcontent%' or req_content like '%$searchcontent%') ";
 }
+$sql.=" order by req_time desc";
 
 
 $res = $sqltool->dbQuery($sql);

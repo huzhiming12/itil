@@ -74,7 +74,8 @@ class PageTool
             $res .= "  <a href='$this->url?pageNow=$pageNow&$this->url_arg'>下一页</a>  ";
         } else
             $res .= "<a>下一页</a>";
-        $res .= "   <span>第<font>" . $this->pageNow . "</font>页/" . "共" . $this->pageCount . "页</span></div>";
+        $res .= "   <span>第<font>" . $this->pageNow . "</font>页/" . "共" . $this->pageCount . "页</span>";
+        $res.=" <span>共".$this->rowCount."条记录.</span></div>";
         return $res;
     }
 

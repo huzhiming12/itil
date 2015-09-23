@@ -157,7 +157,6 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     background: #FFF none repeat scroll 0% 0%;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
-    overflow-y: scroll;
 }
 
 ._22_config_staff {
@@ -352,7 +351,7 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     margin-bottom: 15px;
 }
 
-._span_high,._span_middle,._span_low,._span_new
+._span_high,._span_middle,._span_low,._span_new,._span_cancel
 {
     border-radius: 3px;
     line-height: 20px;
@@ -375,7 +374,11 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
 }
 ._span_new
 {
-    background: #FE8263;
+    background-color: #FE8263;
+}
+._span_cancel
+{
+    background-color:#72A5A7;
 }
 
 ._48_task
@@ -388,4 +391,18 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     border: 1px solid #EEE;
     overflow: hidden;
     border-radius: 4px;
+}
+
+._49_userlist
+{
+    height: 400px;
+    overflow-y: scroll;
+}
+
+._50_attach
+{
+    background: url("/itildemo/static/img/attach.png") no-repeat center left;
+    background-size: 20px 20px;
+    display: inline-block;
+    font-size: 10px;
 }

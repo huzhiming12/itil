@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script language="JavaScript" src="/itildemo/static/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
+    <script language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"></script>
+    <title></title>
+</head>
+<body>
+
+<div class="_012_RequestList">
+    <div class="_011_RequestList">
+        知识详情
+    </div>
+    <div class="_018_Title">
+        <{$res.news_title}>
+    </div>
+    <br>
+
+    <div class="_019_KnowledgeDetail">
+        <font color="#999">发布人：<{$res.news_author}>&nbsp;&nbsp;&nbsp;&nbsp;</font>
+    </div>
+    <br>
+
+    <div class="_015_RequestList">
+        <{$res.news_content}>
+    </div>
+    <br><br>
+
+    <div class="_020_KnowledgeDetail">
+        发布时间： <{$res.news_time}>&nbsp; 阅读(<{$res.news_read}>)
+    </div>
+    <br>
+
+    <div class="_015_RequestList">
+        <font style="font-weight: bold">附件:</font><br><br>
+        <{foreach from=$attach item=arr}>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" data-toggle="popover" data-placement="right" data-html="true"
+               data-trigger="focus"
+               data-content="<button class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/uploadfile/files/news/<{$arr.attach_id}>/<{$arr.attach_name}>&quot;'>下载</button>&nbsp;&nbsp;"><{$arr.attach_name}>
+            </a>
+
+        </p>
+        <{/foreach}>
+    </div>
+    <br>
+
+    <div class="_46_knowledge">
+        <{if $smarty.session.role=='admin'}>
+        <button class="btn btn-sm btn-danger" data-toggle="popover" data-placement="top" data-html="true"
+                data-trigger="focus"
+                data-content="确定要删除吗？<br><br><button class='btn btn-sm btn-danger' onclick='window.location.href=&quot;/itildemo/home/service/news_ser.php?news_delete=<{$res.news_id}>&quot;'>删除</button>&nbsp;&nbsp;
+                                              <button class='btn btn-sm btn-default'>取消</button>">删 除
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <{/if}>
+        <button class="btn btn-sm btn-default" onclick="history.go(-1)">返 回</button>
+    </div>
+    <br>
+    <br>
+</div>
+</body>
+</html>
+
+<script>
+    $(function () {
+        $('[data-toggle="popover"]').popover();
+    })
+</script>

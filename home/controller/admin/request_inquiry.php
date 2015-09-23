@@ -20,6 +20,7 @@ $end_date = $_GET['end_date'];
 $req_state = $_GET['req_state'];
 $keyword = $_GET['keyword'];
 
+
 if ($start_date != "" and $end_date != "")
     $sql .= $and_or . " (req_time >='$start_date' and req_time <='$end_date') ";
 else {

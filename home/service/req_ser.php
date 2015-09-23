@@ -44,7 +44,7 @@ if (isset($_POST['add_req'])) {
     //上传的文件移动
     $res = 1;
     if (file_exists(PROJECT_DIR . "/uploadfile/temp/" . $req_attach_id))
-        $res = $fileutil->moveDir(PROJECT_DIR . "/uploadfile/temp/" . $req_attach_id, PROJECT_DIR . "/uploadfile/files/" . $req_attach_id);
+        $res = $fileutil->moveDir(PROJECT_DIR . "/uploadfile/temp/" . $req_attach_id, PROJECT_DIR . "/uploadfile/files/req/" . $req_attach_id);
     if ($sqltool->dbUpdate($sql) and $res)
         echo "<script>alert('请求添加成功！')</script>";
     else {
@@ -64,13 +64,16 @@ if (isset($_POST['assign_btn'])) {
     $req_priority = $_POST['priority'];
     $req_time_limit = $_POST['req_time_limit'];
     $req_gcs = $_POST['engineer'];
+    $req_complex = $_POST['req_complex'];
     $admin = $_SESSION['user_name'];
 
     if ($_GET['flag'] == "re_assign")
         $sql1 = "update t_req_change set flag=2 where req_num ='$req_num' and flag=1"; //请求重新指派
+    else if ($_GET['flag'] == "over_assign")//请求逾期再指派
+        $sql1 = "update t_req_assign set finish_flag=4,req_time_left = req_time_limit *3600 -TIME_TO_SEC(TIMEDIFF(NOW(),assign_time)) where req_num='$req_num' and finish_flag=1";
     else
         $sql1 = "update t_req set req_state='2' where req_num='$req_num'";
-    $sql2 = "insert into t_req_assign (req_num,req_engineer,assign_time,req_priority,req_effect,req_time_limit,req_add_description,assign_admin) values ('$req_num','$req_gcs',NOW(),'$req_priority','$req_effect','$req_time_limit','$decription','$admin')";
+    $sql2 = "insert into t_req_assign (req_num,req_engineer,assign_time,req_priority,req_effect,req_time_limit,req_add_description,assign_admin,req_complex) values ('$req_num','$req_gcs',NOW(),'$req_priority','$req_effect','$req_time_limit','$decription','$admin','$req_complex')";
     //echo $_GET['flag'];
     if ($sqltool->dbUpdate($sql1) and $sqltool->dbUpdate($sql2))
         echo "<script>alert('请求指派成功！')</script>";
@@ -83,12 +86,20 @@ if (isset($_POST['assign_btn'])) {
 //注销请求
 if (isset($_GET['cancel_req'])) {
     $req_num = $_GET['cancel_req'];
+    $user_name = $_SESSION['user_name'];
+    //插入注销记录
+    $sql = "insert into t_req_cancel (req_num,user_cancel,cancel_time) values('$req_num','$user_name',now())";
+    $sqltool->dbUpdate($sql);
+    $sqltool->dbUpdate("update t_req_change set flag=3 where req_num='$req_num' and flag=1");
     //req_state =3 请求取消
     if ($sqltool->dbUpdate("update t_req set req_state=3 where req_num ='$req_num'"))
         echo "<script>alert('请求注销成功！')</script>";
     else
         echo "<script>alert('请求注销失败！')</script>";
-    echo "<script>window.location.href='/itildemo/home/controller/user/my_request_list.php'</script>";
+    if ($_GET['flag'] == "admin")
+        echo "<script>window.location.href='/itildemo/home/controller/admin/request_home.php'</script>";
+    else
+        echo "<script>window.location.href='/itildemo/home/controller/user/my_request_list.php'</script>";
 }
 
 //请求变更
@@ -97,13 +108,11 @@ if (isset($_POST['change_reason'])) {
     $req_num = $_GET['req_num'];
     $user_name = $_SESSION['user_name'];
     $res1 = $sqltool->dbUpdate("insert into t_req_change (req_num,req_engineer,change_reason,change_time) values('$req_num','$user_name','$change_reason',NOW())");
-    $res2 = $sqltool->dbUpdate("update t_req_assign set finish_flag=3 where req_num='$req_num' and finish_flag=1");
-
+    $res2 = $sqltool->dbUpdate("update t_req_assign set finish_flag=3,req_time_left = req_time_limit *3600 -TIME_TO_SEC(TIMEDIFF(NOW(),assign_time)) where req_num='$req_num' and finish_flag=1");
     if ($res1 and $res2)
         echo "<script>alert('请求变更成功！')</script>";
     else
         echo "<script>alert('请求变更失败！')</script>";
-
     echo "<script>window.location.href='/itildemo/home/controller/engineer/task_list.php'</script>";
 }
 
@@ -111,14 +120,26 @@ if (isset($_POST['change_reason'])) {
 if (isset($_POST['req_solution'])) {
     $solution = $_POST['req_solution'];
     $req_num = $_GET['req_num'];
+    $req_complex = $_GET['req_complex'];
     $user_name = $_SESSION['user_name'];
-    $res1 = $sqltool->dbUpdate("update t_req_assign set finish_flag=2 where req_num='$req_num' and finish_flag=1");
-    $res2 = $sqltool->dbUpdate("update t_req set req_state=4,req_finish_time=Now(),req_finish_engineer='$user_name',req_solution='$solution' where req_num='$req_num'");
-    if($res1 and $res2)
+    $res1 = $sqltool->dbUpdate("update t_req_assign set finish_flag=2,req_time_left = req_time_limit *3600 -TIME_TO_SEC(TIMEDIFF(NOW(),assign_time)) where req_num='$req_num' and finish_flag=1");
+    $res2 = $sqltool->dbUpdate("update t_req set req_state=4,req_finish_time=Now(),req_finish_engineer='$user_name',req_solution='$solution',req_complex='$req_complex' where req_num='$req_num'");
+    if ($res1 and $res2)
         echo "<script>alert('解决方案提交成功！')</script>";
     else
         echo "<script>alert('解决方案提交失败！')</script>";
     echo "<script>window.location.href='/itildemo/home/controller/engineer/task_list.php'</script>";
+}
+
+//删除请求
+if (isset($_GET['delete_req'])) {
+    $req_num = $_GET['delete_req'];
+    $res = $sqltool->dbUpdate("delete from t_req where req_num='$req_num'");
+    if ($res)
+        echo "<script>alert('请求删除成功！')</script>";
+    else
+        echo "<script>alert('请求删除失败！')</script>";
+    echo "<script>window.location.href='/itildemo/home/controller/admin/request_home.php'</script>";
 }
 
 $sqltool->dbCloseConnection();

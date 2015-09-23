@@ -38,7 +38,7 @@
         <p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="javascript:void(0)" data-toggle="popover" data-placement="right" data-html="true" data-trigger="focus"
-                       data-content="<button class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/uploadfile/files/<{$arr.attach_id}>/<{$arr.attach_name}>&quot;'>下载</button>&nbsp;&nbsp;
+                       data-content="<button class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/uploadfile/files/know/<{$arr.attach_id}>/<{$arr.attach_name}>&quot;'>下载</button>&nbsp;&nbsp;
                                      <button class='btn btn-sm btn-delete' onclick='window.location.href=&quot;/itildemo/home/controller/admin/know_detail.php?flag=del&attach_id=<{$arr.attach_id}>&file_name=<{$arr.attach_name}>&kno_num=<{$res.kno_num}>&quot;'>删除</button>"><{$arr.attach_name}></a>
         </p>
         <{/foreach}>
@@ -71,7 +71,7 @@
         <{/if}>
         <button class="btn btn-sm btn-primary" onclick="window.location.href='/itildemo/home/controller/admin/know_edit.php?kno_num=<{$res.kno_num}>'">编辑</button>&nbsp;&nbsp;
         <button class="btn btn-sm btn-danger" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus"
-                data-content="确定要发布吗？<br><br><button class='btn btn-sm btn-danger' onclick='window.location.href=&quot;/itildemo/home/service/know_ser.php?flag=del&kno_num=<{$res.kno_num}>&quot;'>删除</button>&nbsp;&nbsp;
+                data-content="确定要删除吗？<br><br><button class='btn btn-sm btn-danger' onclick='window.location.href=&quot;/itildemo/home/service/know_ser.php?flag=del&kno_num=<{$res.kno_num}>&quot;'>删除</button>&nbsp;&nbsp;
                                               <button class='btn btn-sm btn-default'>取消</button>">删除</button>
         <{/if}>
         <button class="btn btn-sm btn-default" onclick="history.go(-1)">返回</button>

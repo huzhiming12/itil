@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-07-14 10:48:21
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-21 07:27:18
          compiled from "F:\wamp\www\itildemo\templates\admin\config_sort.html" */ ?>
 <?php /*%%SmartyHeaderCode:2079655a1e221c3d1c8-39512616%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3b35eb3e156454aec8921b2e8c7ebda56667034a' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\config_sort.html',
-      1 => 1436870845,
+      1 => 1442820435,
       2 => 'file',
     ),
   ),
@@ -41,57 +41,56 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <title></title>
 </head>
 <body>
+<br>
 
-<div class="_21_config_staff">
-    <div class="_028_config_user">
-        <div class="_011_RequestList">
-            知识请求分类&nbsp;&nbsp;
-            <button class="btn btn-sm btn-default" title="添加分类" data-toggle="modal" data-target="#myModal">+</button>
-        </div>
-        <div class="_015_RequestList">
-            <div class="_014_RequestList">
-                <table width="100%">
-                    <?php  $_smarty_tpl->tpl_vars['p_sort'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['p_sort']->_loop = false;
+<div class="_012_RequestList">
+    <div class="_011_RequestList">
+        知识请求分类&nbsp;&nbsp;
+        <button class="btn btn-sm btn-default" title="添加分类" data-toggle="modal" data-target="#myModal">+</button>
+    </div>
+    <div class="_015_RequestList">
+        <div class="_014_RequestList">
+            <table width="100%">
+                <?php  $_smarty_tpl->tpl_vars['p_sort'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['p_sort']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['parent_sort']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['p_sort']->key => $_smarty_tpl->tpl_vars['p_sort']->value) {
 $_smarty_tpl->tpl_vars['p_sort']->_loop = true;
 ?>
-                    <tr class="_031_config_sort">
-                        <td class="_029_config_sort"><?php echo $_smarty_tpl->tpl_vars['p_sort']->value['sort_name'];?>
+                <tr class="_031_config_sort">
+                    <td class="_029_config_sort"><?php echo $_smarty_tpl->tpl_vars['p_sort']->value['sort_name'];?>
 ：</td>
-                        <td class="_030_config_sort">
-                            <?php  $_smarty_tpl->tpl_vars['c_sort'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['c_sort']->_loop = false;
+                    <td class="_030_config_sort">
+                        <?php  $_smarty_tpl->tpl_vars['c_sort'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['c_sort']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['child_sort']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['c_sort']->key => $_smarty_tpl->tpl_vars['c_sort']->value) {
 $_smarty_tpl->tpl_vars['c_sort']->_loop = true;
 ?>
-                            <?php if ($_smarty_tpl->tpl_vars['c_sort']->value['sort_parent_id']==$_smarty_tpl->tpl_vars['p_sort']->value['sort_id']) {?>
-                            <a tabindex="0" role="button" data-trigger="focus" class="btn btn-sm btn-default"
-                               data-toggle="popover" title="操作"
-                               data-content="<a href='#' onclick='deleteSort(<?php echo $_smarty_tpl->tpl_vars['c_sort']->value['sort_id'];?>
+                        <?php if ($_smarty_tpl->tpl_vars['c_sort']->value['sort_parent_id']==$_smarty_tpl->tpl_vars['p_sort']->value['sort_id']) {?>
+                        <a tabindex="0" role="button" data-trigger="focus" class="btn btn-sm btn-default"
+                           data-toggle="popover" title="操作"
+                           data-content="<a href='#' onclick='deleteSort(<?php echo $_smarty_tpl->tpl_vars['c_sort']->value['sort_id'];?>
 )'>删除</a>"
-                               data-html="true">
-                                <?php echo $_smarty_tpl->tpl_vars['c_sort']->value['sort_name'];?>
+                           data-html="true">
+                            <?php echo $_smarty_tpl->tpl_vars['c_sort']->value['sort_name'];?>
 
-                            </a>
-                            &nbsp;&nbsp;
-                            <?php }?>
-                            <?php } ?>
-                            <button class="btn btn-sm btn-default" onclick="ChangeValue('<?php echo $_smarty_tpl->tpl_vars['p_sort']->value['sort_id'];?>
+                        </a>
+                        &nbsp;&nbsp;
+                        <?php }?>
+                        <?php } ?>
+                        <button class="btn btn-sm btn-default" onclick="ChangeValue('<?php echo $_smarty_tpl->tpl_vars['p_sort']->value['sort_id'];?>
 ')"
-                                    title="添加子类别">+
-                            </button>
-                        </td>
-                        <td class="_36_config_sort"><a href="#" onclick="deleteSort('<?php echo $_smarty_tpl->tpl_vars['p_sort']->value['sort_id'];?>
+                                title="添加子类别">+
+                        </button>
+                    </td>
+                    <td class="_36_config_sort"><a href="#" onclick="deleteSort('<?php echo $_smarty_tpl->tpl_vars['p_sort']->value['sort_id'];?>
 ')"
-                                                       class="_37_config_sort">删除</a></td>
-                    </tr>
-                    <?php } ?>
-                </table>
-            </div>
+                                                   class="_37_config_sort">删除</a></td>
+                </tr>
+                <?php } ?>
+            </table>
         </div>
-        <br><br>
     </div>
+    <br>
 </div>
 
 <!--添加分类的模态框-->

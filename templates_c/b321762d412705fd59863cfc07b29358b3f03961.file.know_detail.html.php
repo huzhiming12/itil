@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-15 11:16:29
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 08:18:46
          compiled from "F:\wamp\www\itildemo\templates\share\know_detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:1671755f2d67bd50c31-24948832%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b321762d412705fd59863cfc07b29358b3f03961' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\share\\know_detail.html',
-      1 => 1442307864,
+      1 => 1442978064,
       2 => 'file',
     ),
   ),
@@ -81,7 +81,7 @@ $_smarty_tpl->tpl_vars['arr']->_loop = true;
         <p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="javascript:void(0)" data-toggle="popover" data-placement="right" data-html="true" data-trigger="focus"
-                       data-content="<button class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/uploadfile/files/<?php echo $_smarty_tpl->tpl_vars['arr']->value['attach_id'];?>
+                       data-content="<button class='btn btn-sm btn-primary' onclick='window.location.href=&quot;/itildemo/uploadfile/files/know/<?php echo $_smarty_tpl->tpl_vars['arr']->value['attach_id'];?>
 /<?php echo $_smarty_tpl->tpl_vars['arr']->value['attach_name'];?>
 &quot;'>下载</button>&nbsp;&nbsp;
                                      <button class='btn btn-sm btn-delete' onclick='window.location.href=&quot;/itildemo/home/controller/admin/know_detail.php?flag=del&attach_id=<?php echo $_smarty_tpl->tpl_vars['arr']->value['attach_id'];?>
@@ -131,7 +131,7 @@ $_smarty_tpl->tpl_vars['cha']->_loop = true;
         <button class="btn btn-sm btn-primary" onclick="window.location.href='/itildemo/home/controller/admin/know_edit.php?kno_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['kno_num'];?>
 '">编辑</button>&nbsp;&nbsp;
         <button class="btn btn-sm btn-danger" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus"
-                data-content="确定要发布吗？<br><br><button class='btn btn-sm btn-danger' onclick='window.location.href=&quot;/itildemo/home/service/know_ser.php?flag=del&kno_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['kno_num'];?>
+                data-content="确定要删除吗？<br><br><button class='btn btn-sm btn-danger' onclick='window.location.href=&quot;/itildemo/home/service/know_ser.php?flag=del&kno_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['kno_num'];?>
 &quot;'>删除</button>&nbsp;&nbsp;
                                               <button class='btn btn-sm btn-default'>取消</button>">删除</button>
         <?php }?>

@@ -20,15 +20,15 @@
 
     <div class="_034_request_home">
         <ul id="myTab" class="nav nav-tabs title_font">
-            <li class="active"><a href="#do" data-toggle="tab">我的待办(<{$res|count}>)</a></li>
-            <li><a href="#done" data-toggle="tab">我的已办(<{$done|count}>)</a></li>
-            <li><a href="#change" data-toggle="tab">我的变更(<{$changelist|count}>)</a></li>
+            <li <{if $flag==1}>class="active"<{/if}> ><a href="#do" data-toggle="tab">我的待办(<{$res|count}>)</a></li>
+            <li <{if $flag==2}>class="active"<{/if}> ><a href="#done" data-toggle="tab">我的已办(<{$totalCount2}>)</a></li>
+            <li <{if $flag==3}>class="active"<{/if}> ><a href="#change" data-toggle="tab">我的变更(<{$totalCount3}>)</a></li>
         </ul>
     </div>
     <br>
 
     <div id="myTabContent" class="tab-content _007_MyBoard">
-        <div class="tab-pane active" id="do">
+        <div class="tab-pane <{if $flag==1}>active<{/if}>" id="do">
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -81,7 +81,7 @@
                 </thead>
             </table>
         </div>
-        <div class="tab-pane" id="done">
+        <div class="tab-pane <{if $flag==2}>active<{/if}>" id="done">
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -106,8 +106,10 @@
                 </tbody>
                 </thead>
             </table>
+            <br>
+            <{$nav2}>
         </div>
-        <div class="tab-pane" id="change">
+        <div class="tab-pane <{if $flag==3}>active<{/if}>" id="change">
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -129,7 +131,9 @@
                     <td><{$req.req_time|date_format:'%y/%m/%d %H:%M'}></td>
                     <td><{$req.change_time|date_format:'%y/%m/%d %H:%M'}></td>
                     <td><{if $req.flag==1}><div class="_span_new">未受理</div>
-                        <{else}><div class="_span_low">已指派</div><{/if}>
+                        <{else if $req.flag==2}><div class="_span_low">已指派</div>
+                        <{else}><div class="_span_cancel">已取消</div>
+                        <{/if}>
 
                     </td>
                 </tr>
@@ -137,6 +141,8 @@
                 </tbody>
                 </thead>
             </table>
+            <br>
+            <{$nav3}>
         </div>
     </div>
 

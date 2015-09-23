@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-17 03:22:54
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-22 12:27:43
          compiled from "F:\wamp\www\itildemo\templates\admin\request_inquiry.html" */ ?>
 <?php /*%%SmartyHeaderCode:1089055e3f86e8afd41-50589588%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ccfa7bcc337d89e69a159ac83a0620cb418af059' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_inquiry.html',
-      1 => 1442460171,
+      1 => 1442924820,
       2 => 'file',
     ),
   ),
@@ -63,7 +63,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <td class="input-group-sm">
                             <div class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-success active">
-                                    <input type="radio" name="and_or" value="and"  autocomplete="off" checked> and
+                                    <input type="radio" name="and_or" value="and" autocomplete="off" checked> and
                                 </label>
                                 <label class="btn btn-success">
                                     <input type="radio" name="and_or" value="or" autocomplete="off"> or
@@ -95,8 +95,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                 <option value="">全部</option>
                                 <option value="1">未处理</option>
                                 <option value="2">已指派</option>
-                                <option value="3">已解决</option>
-                                <option value="4">已取消</option>
+                                <option value="3">已取消</option>
+                                <option value="4">已解决</option>
                             </select>
                         </td>
                     </tr>
@@ -148,15 +148,26 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
 </td>
                 <td><a href="/itildemo/home/controller/share/request_detail.php?req_num=<?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
 "><?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
-</a></td>
+</a>
+                </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_title'];?>
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_author'];?>
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_time'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_state'];?>
-</td>
+                <td>
+                    <?php if ($_smarty_tpl->tpl_vars['req']->value['req_state']==1) {?>
+                    <span class="_span_new">未处理</span>
+                    <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_state']==2) {?>
+                    <span class="_span_middle">已指派</span>
+                    <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_state']==3) {?>
+                    <span class="_span_cancel">已取消</span>
+                    <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_state']==4) {?>
+                    <span class="_span_low">已解决</span>
+                    <?php }?>
+
+                </td>
                 <td>删除</td>
             </tr>
             <?php } ?>

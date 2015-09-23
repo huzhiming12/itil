@@ -17,12 +17,13 @@
         <ul id="myTab" class="nav nav-tabs title_font">
             <li class="active"><a href="#home" data-toggle="tab">待审核请求(<{$res|count}>)</a></li>
             <li><a href="#ios" data-toggle="tab">变更请求(<{$change_req|count}>)</a></li>
-            <li><a href="#java" data-toggle="tab">逾期请求(0)</a></li>
+            <li><a href="#java" data-toggle="tab">逾期请求(<{$over_time_req|count}>)</a></li>
         </ul>
     </div>
     <br>
 
     <div id="myTabContent" class="tab-content _007_MyBoard">
+        <!--请求列表-->
         <div class="tab-pane in active" id="home">
             <table class="table table-hover">
                 <thead>
@@ -63,6 +64,7 @@
                 </thead>
             </table>
         </div>
+        <!--变更列表-->
         <div class="tab-pane" id="ios">
             <table class="table table-hover">
                 <thead>
@@ -91,6 +93,7 @@
                 </thead>
             </table>
         </div>
+        <!--逾期列表-->
         <div class="tab-pane" id="java">
             <table class="table table-hover">
                 <thead>
@@ -100,19 +103,23 @@
                     <th>请求标题</th>
                     <th>请求人</th>
                     <th>请求时间</th>
-                    <th>请求状态</th>
-                    <th>操作</th>
+                    <th>指派时间</th>
+                    <th>当前工程师</th>
+                    <th style="color: red">超时</th>
                 </tr>
                 <tbody>
+            <{foreach from=$over_time_req item=over name=req}>
                 <tr>
-                    <td>1</td>
-                    <td>SQ15070004</td>
-                    <td>电脑重装系统</td>
-                    <td>韦小宝</td>
-                    <td>7-6 17:28</td>
-                    <td>已解决</td>
-                    <td>删除</td>
+                    <td><{$smarty.foreach.req.index+1}></td>
+                    <td><a href="/itildemo/home/controller/admin/request_assign.php?flag=over_assign&req_num=<{$over.req_num}>"><{$over.req_num}></a></td>
+                    <td><{$over.req_title}></td>
+                    <td><{$over.req_author}></td>
+                    <td><{$over.req_time|date_format:'%y/%m/%d %H:%M'}></td>
+                    <td><{$over.assign_time|date_format:'%y/%m/%d %H:%M'}></td>
+                    <td><{$over.req_engineer}></td>
+                    <td><span style="color:red;"><{($over.time_left/3600)|string_format:"%d"}>小时<{($over.time_left%3600/60)|string_format:"%d"}>分</span></td>
                 </tr>
+            <{/foreach}>
                 </tbody>
                 </thead>
             </table>

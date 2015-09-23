@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-17 13:33:53
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-21 00:45:18
          compiled from "F:\wamp\www\itildemo\templates\engineer\task_detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:1172355f91637852724-76109748%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '73759c41a706d1b427c79987b3578860003b9cc1' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\engineer\\task_detail.html',
-      1 => 1442496826,
+      1 => 1442796035,
       2 => 'file',
     ),
   ),
@@ -26,6 +26,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ass' => 0,
     'process' => 0,
     'pro' => 0,
+    'cancel' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -54,10 +55,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <div class="_012_RequestList">
     <div class="_011_RequestList">
-        任务详情
+        请求详情
     </div>
     <br>
-
+    <!--请求详情-->
     <div class="_48_task">
         <table>
             <tr>
@@ -93,7 +94,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
         </div>
     </div>
-
+    <!---附件信息-->
     <div class="_48_task">
         <span style="color: #999">相关附件:</span><br><br>
         <?php  $_smarty_tpl->tpl_vars['att'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['att']->_loop = false;
@@ -110,8 +111,8 @@ $_smarty_tpl->tpl_vars['att']->_loop = true;
         </p>
         <?php } ?>
     </div>
-
     <?php if ($_smarty_tpl->tpl_vars['flag']->value==1) {?>
+    <!--指派信息-->
     <div class="_48_task">
         <table>
             <tr>
@@ -159,6 +160,23 @@ $_smarty_tpl->tpl_vars['att']->_loop = true;
                     G级 720小时内完成
                     <?php }?>
                 </td>
+                <td class="col-sm-2"></td>
+                <td style="color: #999">复杂程度：</td>
+                <td>
+                    <?php if ($_smarty_tpl->tpl_vars['ass']->value['req_complex']==1) {?>
+                    一级 较容易
+                    <?php } elseif ($_smarty_tpl->tpl_vars['ass']->value['req_complex']==2) {?>
+                    二级 容易
+                    <?php } elseif ($_smarty_tpl->tpl_vars['ass']->value['req_complex']==3) {?>
+                    三级 一般
+                    <?php } elseif ($_smarty_tpl->tpl_vars['ass']->value['req_complex']==4) {?>
+                    四级 复杂
+                    <?php } elseif ($_smarty_tpl->tpl_vars['ass']->value['req_complex']==5) {?>
+                    五级 较复杂
+                    <?php } elseif ($_smarty_tpl->tpl_vars['ass']->value['req_complex']==6) {?>
+                    六级 很复杂
+                    <?php }?>
+                </td>
             </tr>
             <tr>
                 <td style="color: #999">追加描述：</td>
@@ -170,6 +188,7 @@ $_smarty_tpl->tpl_vars['att']->_loop = true;
         </div>
     </div>
     <?php } elseif ($_smarty_tpl->tpl_vars['flag']->value==2) {?>
+    <!--解决方案-->
     <div class="_48_task">
         <table>
             <tr>
@@ -178,10 +197,9 @@ $_smarty_tpl->tpl_vars['att']->_loop = true;
         </table>
         <?php echo $_smarty_tpl->tpl_vars['res']->value['req_solution'];?>
 
-
     </div>
     <?php }?>
-
+    <!--流程信息-->
     <div class="_48_task">
         <span style="color: #999">流程信息：</span><br><br>
 
@@ -262,6 +280,23 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
                                     G级 720小时内完成
                                     <?php }?>
                                 </td>
+                                <td class="col-sm-2"></td>
+                                <td style="color: #999">复杂程度：</td>
+                                <td>
+                                    <?php if ($_smarty_tpl->tpl_vars['pro']->value['req_complex']==1) {?>
+                                    一级 较容易
+                                    <?php } elseif ($_smarty_tpl->tpl_vars['pro']->value['req_complex']==2) {?>
+                                    二级 容易
+                                    <?php } elseif ($_smarty_tpl->tpl_vars['pro']->value['req_complex']==3) {?>
+                                    三级 一般
+                                    <?php } elseif ($_smarty_tpl->tpl_vars['pro']->value['req_complex']==4) {?>
+                                    四级 复杂
+                                    <?php } elseif ($_smarty_tpl->tpl_vars['pro']->value['req_complex']==5) {?>
+                                    五级 较复杂
+                                    <?php } elseif ($_smarty_tpl->tpl_vars['pro']->value['req_complex']==6) {?>
+                                    六级 很复杂
+                                    <?php }?>
+                                </td>
                             </tr>
                             <tr>
                                 <td style="color: #999">建议或意见：</td>
@@ -283,7 +318,7 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
                 </div>
             </div>
             <?php } ?>
-            <?php if ($_smarty_tpl->tpl_vars['res']->value['req_state']==4) {?>
+            <?php if ($_smarty_tpl->tpl_vars['res']->value['req_state']==4) {?><!--请求的解决信息-->
             <div class="panel panel-default">
                 <div class="panel-heading" style="height: 30px;line-height:30px;padding: 0px 10px ">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseend">
@@ -305,9 +340,28 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
                 </div>
             </div>
             <?php }?>
+            <?php if ($_smarty_tpl->tpl_vars['cancel']->value['user_cancel']!='') {?><!--请求取消悉尼型-->
+            <div class="panel panel-default">
+                <div class="panel-heading" style="height: 30px;line-height:30px;padding: 0px 10px ">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapsecancel">
+                        <?php echo $_smarty_tpl->tpl_vars['cancel']->value['cancel_time'];?>
+ <?php echo $_smarty_tpl->tpl_vars['cancel']->value['user_cancel'];?>
+ 取消了该请求
+                    </a>
+                </div>
+                <div id="collapsecancel" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        无相关信息
+                    </div>
+                </div>
+            </div>
+            <?php }?>
         </div>
     </div>
-    <form method="post" action="/itildemo/home/service/req_ser.php?req_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['req_num'];?>
+    <!--解决方案编辑-->
+    <form method="post" name="solution_form" onsubmit="return CheckValue()"
+          action="/itildemo/home/service/req_ser.php?req_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['req_num'];?>
+&req_complex=<?php echo $_smarty_tpl->tpl_vars['ass']->value['req_complex'];?>
 ">
         <?php if ($_smarty_tpl->tpl_vars['flag']->value==1) {?>
         <div class="_48_task">
@@ -341,7 +395,7 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
             </a>
             &nbsp;&nbsp;
             <?php }?>
-            <button class="btn btn-sm btn-default" onclick="window.history.go(-1)">返回</button>
+            <a class="btn btn-sm btn-default" href="javascript:void(0)" onclick="window.history.go(-1)">返回</a>
         </div>
     </form>
     <br>
@@ -352,8 +406,6 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
 </div>
 </body>
 </html>
-
-
 <?php echo '<script'; ?>
 >
     $(function () {
@@ -361,6 +413,13 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
     })
     function hidePopover() {
         $('[data-toggle="popover"]').popover('hide');
+    }
+
+    function CheckValue() {
+        if (solution_form.req_solution.value == "") {
+            alert("解决方案不能为空！");
+            return false;
+        }
     }
 <?php echo '</script'; ?>
 ><?php }} ?>

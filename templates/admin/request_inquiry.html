@@ -28,7 +28,7 @@
                         <td class="input-group-sm">
                             <div class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-success active">
-                                    <input type="radio" name="and_or" value="and"  autocomplete="off" checked> and
+                                    <input type="radio" name="and_or" value="and" autocomplete="off" checked> and
                                 </label>
                                 <label class="btn btn-success">
                                     <input type="radio" name="and_or" value="or" autocomplete="off"> or
@@ -60,8 +60,8 @@
                                 <option value="">全部</option>
                                 <option value="1">未处理</option>
                                 <option value="2">已指派</option>
-                                <option value="3">已解决</option>
-                                <option value="4">已取消</option>
+                                <option value="3">已取消</option>
+                                <option value="4">已解决</option>
                             </select>
                         </td>
                     </tr>
@@ -104,11 +104,23 @@
             <{foreach from=$res item=req name=req}>
             <tr>
                 <td><{$smarty.foreach.req.index+1}></td>
-                <td><a href="/itildemo/home/controller/share/request_detail.php?req_num=<{$req.req_num}>"><{$req.req_num}></a></td>
+                <td><a href="/itildemo/home/controller/share/request_detail.php?req_num=<{$req.req_num}>"><{$req.req_num}></a>
+                </td>
                 <td><{$req.req_title}></td>
                 <td><{$req.req_author}></td>
                 <td><{$req.req_time}></td>
-                <td><{$req.req_state}></td>
+                <td>
+                    <{if $req.req_state==1}>
+                    <span class="_span_new">未处理</span>
+                    <{else if $req.req_state==2}>
+                    <span class="_span_middle">已指派</span>
+                    <{else if $req.req_state==3}>
+                    <span class="_span_cancel">已取消</span>
+                    <{else if $req.req_state==4}>
+                    <span class="_span_low">已解决</span>
+                    <{/if}>
+
+                </td>
                 <td>删除</td>
             </tr>
             <{/foreach}>

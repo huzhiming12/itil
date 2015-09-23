@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script language="JavaScript" src="/itildemo/static/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
+    <script language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"></script>
+    <title></title>
+</head>
+<body>
+<br>
+
+<div class="_012_RequestList">
+    <div class="_011_RequestList">
+        附件上传配置&nbsp;&nbsp;
+    </div>
+    <br>
+
+    <div class="_015_RequestList">
+        <div class="_029_config_sort">当前配置：</div>
+        <div class="_014_RequestList" style="line-height: 30px">
+            单个文件最大是 <span style="color: red"><{$smarty.config.MaxFileSize/1024/1024}></span> M，
+            同时最多上传 <span style="color: red"> <{$smarty.config.MaxFileCount}></span>个文件<br>
+            支持上传的文件格式：<{$smarty.config.extFilters}>
+        </div>
+        <br>
+
+        <div class="_029_config_sort">配置修改：</div>
+        <form method="post" action="">
+            <div class="_014_RequestList">
+                <table class="form-group-sm">
+                    <tr>
+                        <td><label class="control-label">单个文件最大限制：</label></td>
+                        <td><select class="form-control" name="file_size">
+                            <option value="10">10M</option>
+                            <option value="50">50M</option>
+                            <option value="100">100M</option>
+                            <option value="200">200M</option>
+                            <option value="500">500M</option>
+                            <option value="1024">1024M</option>
+                            <option value="2048">2048M</option>
+                        </select></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td><label class="control-label">同时上传文件个数：</label></td>
+                        <td>
+                            <select class="form-control" name="file_count">
+                                <option value="1">1个</option>
+                                <option value="2">2个</option>
+                                <option value="3">3个</option>
+                                <option value="4">4个</option>
+                                <option value="5">5个</option>
+                                <option value="6">6个</option>
+                                <option value="7">7个</option>
+                                <option value="8">8个</option>
+                                <option value="9">9个</option>
+                                <option value="10">10个</option>
+
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>文件格式：</label></td>
+                    </tr>
+                </table>
+                <div class="_014_RequestList">
+                    <table class="form-group-sm btn-group" >
+                        <tr class='_031_config_sort'>
+                            <td>文档类：</td>
+                            <td class='_030_config_sort'>
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="doc">.doc</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="docx">.docx</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="ppt">.ppt</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="pptx">.pptx</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="xml">.xls</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="xmlx">.xlsx</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="pdf">.pdf</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="txt">.txt</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="php">.php</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="html">.html</label>&nbsp;&nbsp;
+                            </td>
+                        </tr>
+                        <tr class='_031_config_sort'>
+                            <td>视频类：</td>
+                            <td class='_030_config_sort'>
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="wmv">.wmv</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="asf">.asf</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="rm">.rm</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="rmvb">.rmvb</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="mpg">.mpg</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="mpe">.mpe</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="3gp">.3gp</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="mov">.mov</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="mp4">.mp4</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="avi">.avi</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="mkv">.mkv</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="flv">.flv</label>&nbsp;&nbsp;
+                            </td>
+                        </tr>
+                        <tr class='_031_config_sort'>
+                            <td>压缩包类：</td>
+                            <td class='_030_config_sort'>
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="rar">.rar</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="zip">.zip</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="tar">.tar</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="iso">.iso</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="jar">.jar</label>&nbsp;&nbsp;
+                            </td>
+                        </tr>
+                        <tr class='_031_config_sort'>
+                            <td>其他：</td>
+                            <td class='_030_config_sort'>
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="exe">.exe</label>&nbsp;&nbsp;
+                                <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
+                                                                             value="msi">.msi</label>&nbsp;&nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br><br>
+
+                <div class="_46_knowledge">
+                    <button class="btn btn-sm btn-primary" type="submit" name="config_change">修改</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-sm btn-default" type="reset">重置</button>
+                    &nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+        </form>
+    </div>
+    <br><br><br>
+
+</div>
+
+</body>
+</html>
