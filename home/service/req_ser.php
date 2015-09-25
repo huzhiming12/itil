@@ -10,6 +10,7 @@ session_start();
 require_once("../smarty_include.php");
 require_once("../tools/SQLTool.class.php");
 require_once("../tools/FileUtils.php");
+require_once("../tools/emailUtils.php");
 
 $sqltool = new SQLTool();
 $fileutil = new FileUtil();
@@ -75,9 +76,11 @@ if (isset($_POST['assign_btn'])) {
         $sql1 = "update t_req set req_state='2' where req_num='$req_num'";
     $sql2 = "insert into t_req_assign (req_num,req_engineer,assign_time,req_priority,req_effect,req_time_limit,req_add_description,assign_admin,req_complex) values ('$req_num','$req_gcs',NOW(),'$req_priority','$req_effect','$req_time_limit','$decription','$admin','$req_complex')";
     //echo $_GET['flag'];
-    if ($sqltool->dbUpdate($sql1) and $sqltool->dbUpdate($sql2))
+    if ($sqltool->dbUpdate($sql1) and $sqltool->dbUpdate($sql2)) {
+        $email = new emailUtils($req_gcs, 1);
+        $email->sEmail();
         echo "<script>alert('请求指派成功！')</script>";
-    else
+    } else
         echo "<script>alert('请求指派失败！')</script>";
     echo "<script>window.location.href='/itildemo/home/controller/admin/request_home.php'</script>";
 }

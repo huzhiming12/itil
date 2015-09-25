@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 08:11:45
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 13:04:46
          compiled from "F:\wamp\www\itildemo\templates\admin\request_create.html" */ ?>
 <?php /*%%SmartyHeaderCode:2277955e3f8717b4c90-45168449%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '12a1f8d32641d939820314002d3edc42f8727940' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_create.html',
-      1 => 1442995902,
+      1 => 1442996079,
       2 => 'file',
     ),
   ),
@@ -57,7 +57,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         请求创建
     </div>
     <br>
-
     <div class="_013_RequestList">
         <form class="form-horizontal form-group-sm" action="/itildemo/home/service/req_ser.php?flag=admin" method="post">
             <div class="form-group">
