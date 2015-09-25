@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-18 13:18:13
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-25 13:11:08
          compiled from "F:\wamp\www\itildemo\templates\admin\request_home.html" */ ?>
 <?php /*%%SmartyHeaderCode:2595255a20a27136c40-20673934%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '33437a35cf15e7b10b10d96518203490251a751a' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_home.html',
-      1 => 1442581677,
+      1 => 1443186665,
       2 => 'file',
     ),
   ),
@@ -67,7 +67,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <td></td>
+                    <th></th>
                     <th>请求编号</th>
                     <th>请求标题</th>
                     <th>请求人</th>
@@ -120,7 +120,7 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <td></td>
+                    <th></th>
                     <th>请求编号</th>
                     <th>请求标题</th>
                     <th>请求人</th>
@@ -163,7 +163,7 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <td></td>
+                    <th></th>
                     <th>请求编号</th>
                     <th>请求标题</th>
                     <th>请求人</th>
