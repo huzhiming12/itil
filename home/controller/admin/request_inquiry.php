@@ -36,7 +36,7 @@ if ($keyword != "")
 
 $res = $sqltool->dbQuery("select count(*) from t_req where 1=1 " . $sql);
 
-
+$sql .=" order by req_time desc";
 $pagetool = new PageTool($res[0][0]);
 $pagetool->url = "request_inquiry.php";
 $pagetool->url_arg="&and_or=$and_or&start_date=$start_date&end_date=$end_date&req_state=$req_state&keyword=$keyword";

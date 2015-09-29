@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-25 13:56:59
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-29 02:12:16
          compiled from "F:\wamp\www\itildemo\templates\admin\graph_engineer.html" */ ?>
 <?php /*%%SmartyHeaderCode:1558560358364b0710-41846670%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '97fdb475cb322e50d009a0aea04696b8a8057fca' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\graph_engineer.html',
-      1 => 1443189416,
+      1 => 1443492728,
       2 => 'file',
     ),
   ),
@@ -54,89 +54,136 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <br>
 
     <div id="myTabContent" class="tab-content _015_RequestList">
-        <!--请求列表-->
+        <!--工程师工作量统计-->
         <div class="tab-pane in active" id="home">
             <div class="form-group">
-                <label class="control-label">日期：</label>
-                <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-sm btn-primary active">
-                        <input type="radio" name="options" id="option1" checked> 本月
-                    </label>
-                    <label class="btn btn-sm btn-primary">
-                        <input type="radio" name="options" id="option2"> 上月
-                    </label>
-                    <label class="btn btn-sm btn-primary">
-                        <input type="radio" name="options" id="option3"> 本周
-                    </label>
-                    <label class="btn btn-sm btn-primary">
-                        <input type="radio" name="options" id="option4"> 上周
-                    </label>
-                    <label class="btn btn-sm btn-primary">
-                        <input type="radio" name="options" id="option5"> 本季度
-                    </label>
-                    <label class="btn btn-sm btn-primary">
-                        <input type="radio" name="options" id="option6"> 上季度
-                    </label>
-                    <label class="btn btn-sm btn-primary">
-                        <input type="radio" name="options" id="option7"> 指定日期
-                    </label>
-                </div>
+                <table>
+                    <tr class="form-group-sm">
+                        <td>
+                            <label class="control-label">日期：</label></td>
+                        <td>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-sm btn-primary active" onclick="graph_engineer_work_change(1)">
+                                    <input type="radio" name="options" checked> 本月
+                                </label>
+                                <label class="btn btn-sm btn-primary" onclick="graph_engineer_work_change(2)">
+                                    <input type="radio" name="options"> 上月
+                                </label>
+                                <label class="btn btn-sm btn-primary" onclick="graph_engineer_work_change(3)">
+                                    <input type="radio" name="options"> 本周
+                                </label>
+                                <label class="btn btn-sm btn-primary" onclick="graph_engineer_work_change(4)">
+                                    <input type="radio" name="options"> 上周
+                                </label>
+                                <label class="btn btn-sm btn-primary" onclick="graph_engineer_work_change(5)">
+                                    <input type="radio" name="options"> 本季度
+                                </label>
+                                <label class="btn btn-sm btn-primary" onclick="graph_engineer_work_change(6)">
+                                    <input type="radio" name="options"> 上季度
+                                </label>
+                                <label class="btn btn-sm btn-primary" onclick="graph_engineer_work_change(7)">
+                                    <input type="radio" name="options"> 指定日期
+                                </label>
+                            </div>
+                        </td>
+                        <td id="datepicker1" style="display: none">
+                            <table>
+                                <tr>
+                                    <td>
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td>
+                                        <input id="date1" class="form-control datetimepicker" size="10">
+                                    </td>
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td class="input-group">
+                                        <input id="date2" class="form-control datetimepicker" size="10">
+                                        <span class="input-group-btn">
+                                             <button class="btn btn-sm btn-primary"
+                                                     onclick="graph_engineer_work_change(8)">查询
+                                             </button>
+                                         </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <div style="width: 100%;border-bottom: 2px solid #426AA3;" ></div>
+            <div style="width: 100%;border-bottom: 2px solid #426AA3;"></div>
             <br>
             <label class="control-label">工程师工作量排行榜(<font color="#ff8c00">按解决的请求数量*请求复杂系数排名</font>)</label>
-            <img src="/itildemo/home/graph/bar_engineer_work_1.php">
-            <span style="color: red; font-size: 10">请求复杂程度对应的复杂系数如下：一级-->1.0  二级-->1.2 三级-->1.4 四级-->1.6 五级-->1.8 六级-->2.0</span>
+            <img id="engineer_work1" src="/itildemo/home/graph/bar_engineer_work_1.php?id=1">
+            <br>
+            <span style="color: red; font-size: 10px">请求复杂程度对应的复杂系数如下：一级-->1.0  二级-->1.2 三级-->1.4 四级-->1.6 五级-->1.8 六级-->2.0</span>
             <br><br>
             <label class="control-label">工程师请求解决量排行榜(<font color="#ff8c00">按实际解决的请求数量排名</font>)</label>
-            <img src="/itildemo/home/graph/bar_engineer_work_2.php">
+            <img id="engineer_work2" src="/itildemo/home/graph/bar_engineer_work_2.php?id=1">
         </div>
-        <!--变更列表-->
+        <!--工程师逾期请求量-->
         <div class="tab-pane" id="ios">
             <div class="form-group">
-                <label class="control-label">日期：</label>
-                <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-sm btn-primary active">
-                        <input type="radio" name="options" id="option1" checked> 本月
-                    </label>
-                    <label class="btn btn-sm btn-primary">
-                        <input type="radio" name="options" id="option2"> 上月
-                    </label>
-                    <label class="btn btn-sm btn-primary">
-                        <input type="radio" name="options" id="option3"> 本周
-                    </label>
-                    <label class="btn btn-sm btn-primary">
-                        <input type="radio" name="options" id="option4"> 上周
-                    </label>
-                    <label class="btn btn-sm btn-primary">
-                        <input type="radio" name="options" id="option5"> 本季度
-                    </label>
-                    <label class="btn btn-sm btn-primary">
-                        <input type="radio" name="options" id="option6"> 上季度
-                    </label>
-                    <label class="btn btn-sm btn-primary">
-                        <input type="radio" name="options" id="option7"> 指定日期
-                    </label>
-                </div>
+                <table>
+                    <tr class="form-group-sm">
+                        <td>
+                            <label class="control-label">日期：</label></td>
+                        <td>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-sm btn-primary active" onclick="graph_over_time(1)">
+                                    <input type="radio" name="options" checked> 本月
+                                </label>
+                                <label class="btn btn-sm btn-primary" onclick="graph_over_time(2)">
+                                    <input type="radio" name="options"> 上月
+                                </label>
+                                <label class="btn btn-sm btn-primary" onclick="graph_over_time(3)">
+                                    <input type="radio" name="options"> 本周
+                                </label>
+                                <label class="btn btn-sm btn-primary" onclick="graph_over_time(4)">
+                                    <input type="radio" name="options"> 上周
+                                </label>
+                                <label class="btn btn-sm btn-primary" onclick="graph_over_time(5)">
+                                    <input type="radio" name="options"> 本季度
+                                </label>
+                                <label class="btn btn-sm btn-primary" onclick="graph_over_time(6)">
+                                    <input type="radio" name="options"> 上季度
+                                </label>
+                                <label class="btn btn-sm btn-primary" onclick="graph_over_time(7)">
+                                    <input type="radio" name="options"> 指定日期
+                                </label>
+                            </div>
+                        </td>
+                        <td id="datepicker2" style="display: none">
+                            <table>
+                                <tr>
+                                    <td>
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td>
+                                        <input id="date3" class="form-control datetimepicker" size="10">
+                                    </td>
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td class="input-group">
+                                        <input id="date4" class="form-control datetimepicker" size="10">
+                                        <span class="input-group-btn">
+                                             <button class="btn btn-sm btn-primary" onclick="graph_over_time(8)">查询
+                                             </button>
+                                         </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <div style="width: 100%;border-bottom: 2px solid #426AA3;" ></div>
+            <div style="width: 100%;border-bottom: 2px solid #426AA3;"></div>
             <br>
             <label class="control-label">工程师逾期请求记录(<font color="#ff8c00">逾期请求数量统计</font>)</label>
-            <img src="/itildemo/home/graph/bar_engineer_overtime_1.php">
+            <img id="over_time1" src="/itildemo/home/graph/bar_engineer_overtime_1.php?id=1">
             <br><br>
             <label class="control-label">工程师耽误工时统计(<font color="#ff8c00">逾期请求超时之和</font>)&nbsp;&nbsp;单位：小时</label>
-            <img src="/itildemo/home/graph/bar_engineer_overtime_2.php">
+            <img id="over_time2" src="/itildemo/home/graph/bar_engineer_overtime_2.php?id=1">
         </div>
-        <!--逾期列表-->
-        <div class="tab-pane" id="java">
-
-        </div>
-
         <br><br>
     </div>
-
 </div>
-
 </body>
 </html>
 
@@ -146,7 +193,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         $('[data-toggle="popover"]').popover()
     })
     $('.datetimepicker').datetimepicker({
-        format: 'yyyy-MM-dd',
+        format: 'yyyy-mm-dd',
         language: 'zh-CN',
         weekStart: 1,
         todayBtn: 1,
@@ -156,5 +203,56 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         minView: 2,
         forceParse: 0
     });
+
+    function graph_engineer_work_change(id) {
+        switch (id) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                document.getElementById("datepicker1").style.display = "none";
+                document.getElementById("engineer_work1").src = "/itildemo/home/graph/bar_engineer_work_1.php?id=" + id + "";
+                document.getElementById("engineer_work2").src = "/itildemo/home/graph/bar_engineer_work_2.php?id=" + id + "";
+                break;
+            case 7:
+
+                document.getElementById("datepicker1").style.display = "block";
+                break;
+            case 8:
+                document.getElementById("datepicker1").style.display = "block";
+                var date1 = document.getElementById("date1").value;
+                var date2 = document.getElementById("date2").value;
+                document.getElementById("engineer_work1").src = "/itildemo/home/graph/bar_engineer_work_1.php?id=" + id + "&date1=" + date1 + "&date2=" + date2 + "";
+                document.getElementById("engineer_work2").src = "/itildemo/home/graph/bar_engineer_work_2.php?id=" + id + "&date1=" + date1 + "&date2=" + date2 + "";
+                break;
+        }
+    }
+
+    function graph_over_time(id) {
+        switch (id) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                document.getElementById("datepicker2").style.display = "none";
+                document.getElementById("over_time1").src = "/itildemo/home/graph/bar_engineer_overtime_1.php?id=" + id + "";
+                document.getElementById("over_time2").src = "/itildemo/home/graph/bar_engineer_overtime_2.php?id=" + id + "";
+                break;
+            case 7:
+                document.getElementById("datepicker2").style.display = "block";
+                break;
+            case 8:
+                document.getElementById("datepicker2").style.display = "block";
+                var date1 = document.getElementById("date3").value;
+                var date2 = document.getElementById("date4").value;
+                document.getElementById("over_time1").src = "/itildemo/home/graph/bar_engineer_overtime_1.php?id=" + id + "&date1=" + date1 + "&date2=" + date2 + "";
+                document.getElementById("over_time2").src = "/itildemo/home/graph/bar_engineer_overtime_2.php?id=" + id + "&date1=" + date1 + "&date2=" + date2 + "";
+                break;
+        }
+    }
 <?php echo '</script'; ?>
 ><?php }} ?>

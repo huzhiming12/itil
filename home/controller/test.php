@@ -6,5 +6,9 @@
  * Time: 10:04
  */
 
-$file_name= iconv('UTF-8','GB2312//TRANSLIT',"[Android开发从零开始].1.Android开发环境搭建[学习库www.xuexi111.com].mp4");
-echo $file_name;
+echo '<br>上月起始时间:<br>';
+echo date("Y-m-d H:i:s",mktime(0, 0 , 0,date("m")-1,1,date("Y"))),"\n";
+echo date("Y-m-d H:i:s",mktime(23,59,59,date("m") ,0,date("Y"))),"\n";
+echo '<br>本月起始时间:<br>';
+echo date("Y-m-d H:i:s",mktime(0, 0 , 0,date("m"),1,date("Y"))),"\n";
+echo date("Y-m-d H:i:s",mktime(23,59,59,date("m"),date("t"),date("Y"))),"\n";

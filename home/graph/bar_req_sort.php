@@ -57,20 +57,22 @@ switch ($id)
         break;
 }
 
-$title.=" 工程师解决请求数量排行榜";
-$sql = " and (req_finish_time >'$start_date' and req_finish_time<'$end_date')";
+$title.=" 请求分类统计";
+
+$sql = " and (req_time >'$start_date' and req_time<'$end_date')";
+
 
 $sqltool = new SQLTool();
-$res = $sqltool->dbQuery("select user_name,(select count(*) from t_req where req_finish_engineer=t_user.user_name $sql) num from t_user where user_role=2 order by num desc");
-for($i=0;$i<count($res);$i++)
+$res = $sqltool->dbQuery("select sort_name,(select count(*) from t_req where req_sort like  CONCAT('%',t_req_sort.sort_name,'%') $sql ) num from t_req_sort where sort_parent_id!='' order by num desc");
+for ($i = 0; $i < count($res); $i++)
 {
-    $datay[$i]=$res[$i][1];
-    $datax[$i]=$res[$i][0];
+    $datay[$i] = $res[$i][1];
+    $datax[$i] = $res[$i][0];
 }
 
 // Size of graph
-$width = 880;
-$height = count($res)*40+20;
+$width = 870;
+$height = count($res) * 40 + 20;
 
 // Set the basic parameters of the graph
 $graph = new Graph($width, $height, 'auto');
@@ -79,7 +81,7 @@ $graph->setcolor('white');
 
 
 // Rotate graph 90 degrees and set margin
-$graph->Set90AndMargin(100, 20, 30, 10);
+$graph->Set90AndMargin(120, 20, 30, 10);
 
 
 // Setup title

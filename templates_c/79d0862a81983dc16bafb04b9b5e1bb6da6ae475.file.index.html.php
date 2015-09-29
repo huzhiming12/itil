@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-24 01:52:53
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-29 03:17:10
          compiled from "F:\wamp\www\itildemo\templates\admin\index.html" */ ?>
 <?php /*%%SmartyHeaderCode:1593055a1de2a311301-65692116%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '79d0862a81983dc16bafb04b9b5e1bb6da6ae475' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\index.html',
-      1 => 1443059505,
+      1 => 1443496627,
       2 => 'file',
     ),
     '5faa2dcbbfb8136e3a37dc4c1e38a72b8d01f8cf' => 
@@ -123,10 +123,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         menu: [{
                             text: '报表',
                             items: [
-                                {id: '1', text: '工程师工作量统计', href: '/itildemo/home/controller/admin/graph_engineer.php'},
-                                {id: '2', text: '用户请求统计', href: ''},
-                                {id: '3', text: '满意度反馈统计', href: ''},
-                                {id: '4', text: '请求报表', href: ''},
+                                {id: '1', text: '请求总体统计', href: '/itildemo/home/controller/admin/graph_req.php'},
+                                {id: '2', text: '工程师工作量统计', href: '/itildemo/home/controller/admin/graph_engineer.php'},
+                                {id: '3', text: '用户请求统计', href: '/itildemo/home/controller/admin/graph_user_req.php'},
+                                {id: '4', text: '满意度反馈统计', href: ''},
+
                             ]
                         }]
                     },
