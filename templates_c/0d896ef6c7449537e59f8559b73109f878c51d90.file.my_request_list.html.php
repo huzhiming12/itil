@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-15 11:04:02
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-07 05:12:52
          compiled from "F:\wamp\www\itildemo\templates\user\my_request_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:353055f7c593c90d53-74471612%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0d896ef6c7449537e59f8559b73109f878c51d90' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\user\\my_request_list.html',
-      1 => 1442315037,
+      1 => 1444194767,
       2 => 'file',
     ),
   ),
@@ -83,6 +83,13 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
                 <span class="_state_cancel">&nbsp;已取消&nbsp;</span>
                 <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_state']=='4') {?>
                 <span class="_state_pass">&nbsp;已解决&nbsp;</span>
+                <?php }?>
+
+                <?php if ($_smarty_tpl->tpl_vars['req']->value['req_state']==4&&$_smarty_tpl->tpl_vars['req']->value['fd']==1) {?>
+                 <span class="_state_evaluate">已评价</span>
+                <?php }?>
+                <?php if ($_smarty_tpl->tpl_vars['req']->value['req_state']==4&&$_smarty_tpl->tpl_vars['req']->value['fd']==0) {?>
+                <span class="_state_un_evaluate">待评价</span>
                 <?php }?>
             </div>
             <!--内容栏-->

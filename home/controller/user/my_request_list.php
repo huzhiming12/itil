@@ -13,7 +13,7 @@ require_once "../../tools/PageTool.class.php";
 $sqltool = new SQLTool();
 $user_name = $_SESSION['user_name'];
 
-$sql = "select * from t_req where req_author='$user_name' ";
+$sql = "select t_req.*,(select count(req_num) from t_feedback where t_feedback.req_num=t_req.req_num) fd from t_req where req_author='$user_name' ";
 
 $searchcontent = "";
 if (isset($_GET['searchcontent']) and $_GET['searchcontent'] != "") {

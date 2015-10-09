@@ -21,7 +21,7 @@ class PageTool
     var $sql = ""; //存放sql语句
     var $url_arg="a=1"; //url的参数
 
-    function __construct($rowCount, $pageSize = 10)
+    function __construct($rowCount, $pageSize = 20)
     {
         $this->rowCount = $rowCount;
         $this->pageSize = $pageSize;

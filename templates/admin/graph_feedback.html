@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script language="JavaScript" src="/itildemo/static/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap-datetimepicker.min.css">
+    <script language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"></script>
+    <script language="JavaScript" src="/itildemo/static/js/bootstrap-datetimepicker.min.js"></script>
+    <script language="JavaScript" src="/itildemo/static/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script language="javascript" src="/itildemo/plugins/feedback/lib/jquery.raty.min.js"></script>
+    <link rel="stylesheet" href="/itildemo/plugins/feedback/demo/css/application.css">
+    <title></title>
+</head>
+<body>
+<br>
+
+<div class="_012_RequestList">
+    <div class="_034_request_home">
+        <ul id="myTab" class="nav nav-tabs title_font">
+            <li class="active"><a href="#home" data-toggle="tab">评价的总体统计</a></li>
+        </ul>
+    </div>
+    <br>
+
+    <div id="myTabContent" class="tab-content _015_RequestList">
+        <!--按用户单位统计-->
+        <div class="tab-pane in active" id="home">
+
+            <div style="width: 100%;border-bottom: 2px solid #426AA3;"></div><br>
+            <div style="float: right">
+                <div style="line-height: 10px;margin-top: 5px">
+                    <span class="start_5"></span>
+
+                    <div class="_chart_star_5" style="width: 80px; border-radius: 3px">&nbsp;</div>
+                </div>
+                <div style="line-height: 10px;margin-top: 5px">
+                    <span class="start_4"></span>
+
+                    <div class="_chart_star_4" style="width: 80px; border-radius: 3px">&nbsp;</div>
+                </div>
+                <div style="line-height: 10px;margin-top: 5px">
+                    <span class="start_3"></span>
+
+                    <div class="_chart_star_3" style="width: 80px; border-radius: 3px">&nbsp;</div>
+                </div>
+                <div style="line-height: 10px;margin-top: 5px">
+                    <span class="start_2"></span>
+
+                    <div class="_chart_star_2" style="width: 80px; border-radius: 3px">&nbsp;</div>
+                </div>
+                <div style="line-height: 10px;margin-top: 5px">
+                    <span class="start_1"></span>
+
+                    <div class="_chart_star_1" style="width: 80px; border-radius: 3px">&nbsp;</div>
+                </div>
+            </div>
+            <label class="control-label">已评价的请求总数：<{$fd[0][6]}></label>
+            <table width="100%" class="table">
+                <caption><label class="control-label">用户评价的总体统计</label></caption>
+                <tr align="center">
+                    <td>评价内容</td>
+                    <td>平均评价</td>
+                    <td colspan="5">各评价分的事件量</td>
+                </tr>
+                <{foreach from=$fd item=res}>
+                <tr align="center">
+                    <td><{$res[0]}></td>
+                    <td><{$res[7]|string_format:"%.2f"}></td>
+                    <td width="620px">
+                        <a href="#" title="占比例为：<{($res[5]/$res[6]*100)|string_format:'%.2f'}>%">
+                            <div class="_chart_star_5" style="width: <{$res[5]/$res[6]*600}>px;"><{$res[5]}></div>
+                        </a>
+                        <a href="#" title="占比例为：<{($res[5]/$res[6]*100)|string_format:'%.2f'}>%">
+                            <div class="_chart_star_4" style="width: <{$res[4]/$res[6]*600}>px;"><{$res[4]}></div>
+                        </a>
+                        <a href="#" title="占比例为：<{($res[5]/$res[6]*100)|string_format:'%.2f'}>%">
+                            <div class="_chart_star_3" style="width: <{$res[3]/$res[6]*600}>px;"><{$res[3]}></div>
+                        </a>
+                        <a href="#" title="占比例为：<{($res[5]/$res[6]*100)|string_format:'%.2f'}>%">
+                            <div class="_chart_star_2" style="width: <{$res[2]/$res[6]*600}>px;"><{$res[2]}></div>
+                        </a>
+                        <a href="#" title="占比例为：<{($res[5]/$res[6]*100)|string_format:'%.2f'}>%">
+                            <div class="_chart_star_1" style="width: <{$res[1]/$res[6]*600}>px;"><{$res[1]}></div>
+                        </a>
+                    </td>
+                </tr>
+                <{/foreach}>
+
+            </table>
+            <br><br>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
+
+<script>
+    $.fn.raty.defaults.path = '/itildemo/plugins/feedback/lib/img';
+    $('.start_1').raty({readOnly: true, score: 1});
+    $('.start_2').raty({readOnly: true, score: 2});
+    $('.start_3').raty({readOnly: true, score: 3});
+    $('.start_4').raty({readOnly: true, score: 4});
+    $('.start_5').raty({readOnly: true, score: 5});
+
+</script>

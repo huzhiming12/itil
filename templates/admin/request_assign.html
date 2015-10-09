@@ -170,6 +170,7 @@
         </div>
     </div>
     <!--指派表单-->
+    <{if $flag!=doing_req}>
     <form method="post" name="assign_form" action="/itildemo/home/service/req_ser.php?flag=<{$flag}>"
           onsubmit="return CheckValue()">
         <div class="_48_task">
@@ -286,6 +287,9 @@
             <a href="javascript:void(0)" class="btn btn-sm btn-default" onclick="history.go(-1)">返回</a>
         </div>
     </form>
+    <{else}>
+    <div class="_46_knowledge"><button class="btn btn-sm btn-default" onclick="window.history.go(-1)"> 返 回 </button></div>
+    <{/if}>
     <br>
     <br>
 </div>

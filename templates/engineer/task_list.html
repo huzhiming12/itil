@@ -20,9 +20,12 @@
 
     <div class="_034_request_home">
         <ul id="myTab" class="nav nav-tabs title_font">
-            <li <{if $flag==1}>class="active"<{/if}> ><a href="#do" data-toggle="tab">我的待办(<{$res|count}>)</a></li>
-            <li <{if $flag==2}>class="active"<{/if}> ><a href="#done" data-toggle="tab">我的已办(<{$totalCount2}>)</a></li>
-            <li <{if $flag==3}>class="active"<{/if}> ><a href="#change" data-toggle="tab">我的变更(<{$totalCount3}>)</a></li>
+            <li
+            <{if $flag==1}>class="active"<{/if}> ><a href="#do" data-toggle="tab">我的待办(<{$res|count}>)</a></li>
+            <li
+            <{if $flag==2}>class="active"<{/if}> ><a href="#done" data-toggle="tab">我的已办(<{$totalCount2}>)</a></li>
+            <li
+            <{if $flag==3}>class="active"<{/if}> ><a href="#change" data-toggle="tab">我的变更(<{$totalCount3}>)</a></li>
         </ul>
     </div>
     <br>
@@ -91,6 +94,7 @@
                     <th>请求人</th>
                     <th>请求时间</th>
                     <th>解决时间</th>
+                    <th>评价状态</th>
                 </tr>
                 <tbody>
                 <{foreach from=$done item=req name=res}>
@@ -101,6 +105,13 @@
                     <td style="max-width: 80px;"><{$req.req_author}></td>
                     <td><{$req.req_time|date_format:'%y/%m/%d %H:%M'}></td>
                     <td><{$req.req_finish_time|date_format:'%y/%m/%d %H:%M'}></td>
+                    <td><{if $req.fd==1}>
+                        <span class="_state_evaluate" style="float: none">已评价</span>
+                        <{/if}>
+                        <{if $req.req_state==4 and $req.fd==0}>
+                        <span class="_state_un_evaluate" style="float: none">未评价</span>
+                        <{/if}>
+                    </td>
                 </tr>
                 <{/foreach}>
                 </tbody>
@@ -130,9 +141,12 @@
                     <td style="max-width: 80px;"><{$req.req_author}></td>
                     <td><{$req.req_time|date_format:'%y/%m/%d %H:%M'}></td>
                     <td><{$req.change_time|date_format:'%y/%m/%d %H:%M'}></td>
-                    <td><{if $req.flag==1}><div class="_span_new">未受理</div>
-                        <{else if $req.flag==2}><div class="_span_low">已指派</div>
-                        <{else}><div class="_span_cancel">已取消</div>
+                    <td><{if $req.flag==1}>
+                        <div class="_span_new">未受理</div>
+                        <{else if $req.flag==2}>
+                        <div class="_span_low">已指派</div>
+                        <{else}>
+                        <div class="_span_cancel">已取消</div>
                         <{/if}>
 
                     </td>

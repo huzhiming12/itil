@@ -54,6 +54,7 @@ for ($i = 0; $i < count($process); $i++) {
 }
 //取消信息
 $cancel = $sqltool->dbQuery("select * from t_req_cancel where req_num ='$req_num'");
+$feedback = $sqltool->dbQuery("select *from t_feedback where req_num='$req_num'");
 
 $smarty->assign("res", $res[0]);
 $smarty->assign("attach", $attachment);
@@ -61,6 +62,7 @@ $smarty->assign("ass", $res2[0]);
 $smarty->assign("process", $process);
 $smarty->assign("flag", $_GET['flag']);
 $smarty->assign("cancel", $cancel[0]);
+$smarty->assign("feedback", $feedback[0]);
 $sqltool->dbCloseConnection();
 
 

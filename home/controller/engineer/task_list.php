@@ -34,7 +34,7 @@ $sql2 = "select count(*) from t_req where req_finish_engineer='$user_name' and r
 $res2 = $sqltool->dbQuery($sql2);
 $page2 = new PageTool($res2[0][0]);
 $page2->url = "task_list.php";
-$page2->sql = "select * from t_req where req_finish_engineer='$user_name' and req_state=4 order by req_finish_time desc";
+$page2->sql = "select t_req.*,(select count(req_num) from t_feedback where t_feedback.req_num=t_req.req_num) fd from t_req where req_finish_engineer='$user_name' and req_state=4 order by req_finish_time desc";
 $page2->pageNow = 1;
 $page2->url_arg = "flag=2";
 if ($_GET['flag'] == 2 and $_GET['pageNow'])

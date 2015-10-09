@@ -46,6 +46,13 @@
                 <{else if $req.req_state=='4'}>
                 <span class="_state_pass">&nbsp;已解决&nbsp;</span>
                 <{/if}>
+
+                <{if $req.req_state==4 and $req.fd==1}>
+                 <span class="_state_evaluate">已评价</span>
+                <{/if}>
+                <{if $req.req_state==4 and $req.fd==0}>
+                <span class="_state_un_evaluate">待评价</span>
+                <{/if}>
             </div>
             <!--内容栏-->
             <div class="_43_knowledge">

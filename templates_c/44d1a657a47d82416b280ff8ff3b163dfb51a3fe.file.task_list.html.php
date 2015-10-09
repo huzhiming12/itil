@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-18 16:00:37
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-08 10:53:01
          compiled from "F:\wamp\www\itildemo\templates\engineer\task_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:909155f8056a783865-38473970%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '44d1a657a47d82416b280ff8ff3b163dfb51a3fe' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\engineer\\task_list.html',
-      1 => 1442563234,
+      1 => 1444272774,
       2 => 'file',
     ),
   ),
@@ -58,11 +58,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     <div class="_034_request_home">
         <ul id="myTab" class="nav nav-tabs title_font">
-            <li <?php if ($_smarty_tpl->tpl_vars['flag']->value==1) {?>class="active"<?php }?> ><a href="#do" data-toggle="tab">我的待办(<?php echo count($_smarty_tpl->tpl_vars['res']->value);?>
+            <li
+            <?php if ($_smarty_tpl->tpl_vars['flag']->value==1) {?>class="active"<?php }?> ><a href="#do" data-toggle="tab">我的待办(<?php echo count($_smarty_tpl->tpl_vars['res']->value);?>
 )</a></li>
-            <li <?php if ($_smarty_tpl->tpl_vars['flag']->value==2) {?>class="active"<?php }?> ><a href="#done" data-toggle="tab">我的已办(<?php echo $_smarty_tpl->tpl_vars['totalCount2']->value;?>
+            <li
+            <?php if ($_smarty_tpl->tpl_vars['flag']->value==2) {?>class="active"<?php }?> ><a href="#done" data-toggle="tab">我的已办(<?php echo $_smarty_tpl->tpl_vars['totalCount2']->value;?>
 )</a></li>
-            <li <?php if ($_smarty_tpl->tpl_vars['flag']->value==3) {?>class="active"<?php }?> ><a href="#change" data-toggle="tab">我的变更(<?php echo $_smarty_tpl->tpl_vars['totalCount3']->value;?>
+            <li
+            <?php if ($_smarty_tpl->tpl_vars['flag']->value==3) {?>class="active"<?php }?> ><a href="#change" data-toggle="tab">我的变更(<?php echo $_smarty_tpl->tpl_vars['totalCount3']->value;?>
 )</a></li>
         </ul>
     </div>
@@ -149,6 +152,7 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
                     <th>请求人</th>
                     <th>请求时间</th>
                     <th>解决时间</th>
+                    <th>评价状态</th>
                 </tr>
                 <tbody>
                 <?php  $_smarty_tpl->tpl_vars['req'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['req']->_loop = false;
@@ -172,6 +176,13 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
 </td>
                     <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['req']->value['req_finish_time'],'%y/%m/%d %H:%M');?>
 </td>
+                    <td><?php if ($_smarty_tpl->tpl_vars['req']->value['fd']==1) {?>
+                        <span class="_state_evaluate" style="float: none">已评价</span>
+                        <?php }?>
+                        <?php if ($_smarty_tpl->tpl_vars['req']->value['req_state']==4&&$_smarty_tpl->tpl_vars['req']->value['fd']==0) {?>
+                        <span class="_state_un_evaluate" style="float: none">未评价</span>
+                        <?php }?>
+                    </td>
                 </tr>
                 <?php } ?>
                 </tbody>
@@ -215,9 +226,12 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
 </td>
                     <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['req']->value['change_time'],'%y/%m/%d %H:%M');?>
 </td>
-                    <td><?php if ($_smarty_tpl->tpl_vars['req']->value['flag']==1) {?><div class="_span_new">未受理</div>
-                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['flag']==2) {?><div class="_span_low">已指派</div>
-                        <?php } else { ?><div class="_span_cancel">已取消</div>
+                    <td><?php if ($_smarty_tpl->tpl_vars['req']->value['flag']==1) {?>
+                        <div class="_span_new">未受理</div>
+                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['flag']==2) {?>
+                        <div class="_span_low">已指派</div>
+                        <?php } else { ?>
+                        <div class="_span_cancel">已取消</div>
                         <?php }?>
 
                     </td>

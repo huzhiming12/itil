@@ -15,9 +15,10 @@
 <div class="_012_RequestList">
     <div class="_034_request_home">
         <ul id="myTab" class="nav nav-tabs title_font">
-            <li class="active"><a href="#home" data-toggle="tab">待审核请求(<{$res|count}>)</a></li>
+            <li class="active"><a href="#home" data-toggle="tab">待审核请求(<{$undo_res|count}>)</a></li>
             <li><a href="#ios" data-toggle="tab">变更请求(<{$change_req|count}>)</a></li>
             <li><a href="#java" data-toggle="tab">逾期请求(<{$over_time_req|count}>)</a></li>
+            <li><a href="#req" data-toggle="tab">请求追踪(<{$doing_req|count}>)</a> </li>
         </ul>
     </div>
     <br>
@@ -37,7 +38,7 @@
                     <th>操作</th>
                 </tr>
                 <tbody>
-                <{foreach from=$res item=req name=req}>
+                <{foreach from=$undo_res item=req name=req}>
                 <tr>
                     <td><{$smarty.foreach.req.index+1}></td>
                     <td>
@@ -120,6 +121,60 @@
                     <td><span style="color:red;"><{($over.time_left/3600)|string_format:"%d"}>小时<{($over.time_left%3600/60)|string_format:"%d"}>分</span></td>
                 </tr>
             <{/foreach}>
+                </tbody>
+                </thead>
+            </table>
+        </div>
+        <!--请求追踪-->
+        <div class="tab-pane" id="req">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>请求编号</th>
+                    <th>请求标题</th>
+                    <th>请求人</th>
+                    <th>请求时间</th>
+                    <th>指派时间</th>
+                    <th>优先级</th>
+                    <th>影响范围</th>
+                    <th><span style="color: #009900">余时</span>/<span style="color: red">超时</span></th>
+                </tr>
+                <tbody>
+                <{foreach from=$doing_req item=req name=res}>
+                <tr>
+                    <td><{$smarty.foreach.res.index+1}></td>
+                    <td><a href="/itildemo/home/controller/admin/request_assign.php?req_num=<{$req.req_num}>&flag=doing_req"><{$req.req_num}></a></td>
+                    <td style="max-width: 200px;"><{$req.req_title}></td>
+                    <td style="max-width: 80px;"><{$req.req_author}></td>
+                    <td><{$req.req_time|date_format:'%y/%m/%d %H:%M'}></td>
+                    <td><{$req.assign_time|date_format:'%y/%m/%d %H:%M'}></td>
+                    <td>
+                        <{if $req.req_priority==1}>
+                        <div class="_span_low">&nbsp;低&nbsp;</div>
+                        <{else if $req.req_priority==2}>
+                        <div class="_span_middle">&nbsp;中&nbsp;</div>
+                        <{else}>
+                        <div class="_span_high">&nbsp;高&nbsp;</div>
+                        <{/if}>
+                    </td>
+                    <td>
+                        <{if $req.req_effect==1}>
+                        <div class="_span_low">&nbsp;个人&nbsp;</div>
+                        <{else if $req.req_effect==2}>
+                        <div class="_span_middle">&nbsp;部门&nbsp;</div>
+                        <{else}>
+                        <div class="_span_high">&nbsp;单位&nbsp;</div>
+                        <{/if}>
+                    </td>
+                    <td><{if $req.flag}>
+                        <span style="color: red"><{$req.hour}>小时<{$req.minute}>分</span>
+                        <{else}>
+                        <span style="color: #009900"><{$req.hour}>小时<{$req.minute}>分</span>
+                        <{/if}>
+                    </td>
+                </tr>
+                <{/foreach}>
                 </tbody>
                 </thead>
             </table>

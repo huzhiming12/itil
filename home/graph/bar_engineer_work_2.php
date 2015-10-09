@@ -29,13 +29,13 @@ switch ($id)
         $title = date("Y/m", strtotime($start_date)) . "月份";
         break;
     case 3://本周的起止时间
-        $start_date = date("Y-m-d H:i:s", mktime(0, 0, 0, date("m"), date("d") - date("w") + 1, date("Y")));
-        $end_date = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m"), date("d") - date("w") + 7, date("Y")));
+        $start_date = date("Y-m-d H:i:s", mktime(0, 0, 0, date("m"), date("d") - (date("w")==0? 7:date('w')) + 1, date("Y")));
+        $end_date = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m"), date("d") - (date("w")==0? 7:date('w')) + 7, date("Y")));
         $title = date('Y/m/d', strtotime($start_date)) . "—" . date('Y/m/d', strtotime($end_date)) . "日";
         break;
     case 4://上周的起止时间
-        $start_date = date("Y-m-d H:i:s", mktime(0, 0, 0, date("m"), date("d") - date("w") + 1 - 7, date("Y")));
-        $end_date = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m"), date("d") - date("w") + 7 - 7, date("Y")));
+        $start_date = date("Y-m-d H:i:s", mktime(0, 0, 0, date("m"), date("d") - (date("w")==0? 7:date('w')) + 1 - 7, date("Y")));
+        $end_date = date("Y-m-d H:i:s", mktime(23, 59, 59, date("m"), date("d") - (date("w")==0? 7:date('w')) + 7 - 7, date("Y")));
         $title = date('Y/m/d', strtotime($start_date)) . "—" . date('Y/m/d', strtotime($end_date)) . "日";
         break;
     case 5://本季度的起止时间

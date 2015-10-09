@@ -272,49 +272,38 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     color: #999;
 }
 
+._state_new,._state_cancel,._state_change,._state_pass,._state_un_evaluate,._state_evaluate
+{
+    float: right;
+    text-align: center;
+    line-height: 19px;
+    margin-top: 8px;
+    font-size: 10px;
+    color: #ffffff;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
 ._state_new {
     background-color: #FE8263;
-    float: right;
-    text-align: center;
-    line-height: 19px;
-    margin-top: 8px;
-    font-size: 10px;
-    color: #ffffff;
-    border-radius: 3px;
 }
-
 ._state_pass {
     background-color: #76C56D;
-    float: right;
-    text-align: center;
-    line-height: 19px;
-    margin-top: 8px;
-    font-size: 10px;
-    color: #ffffff;
-    border-radius: 3px;
 }
-
 ._state_change {
     background-color: #EEAD40;
-    float: right;
-    text-align: center;
-    line-height: 19px;
-    margin-top: 8px;
-    font-size: 10px;
-    color: #ffffff;
-    border-radius: 3px;
 }
-
 ._state_cancel {
     background-color: #72A5A7;
-    float: right;
-    text-align: center;
-    line-height: 19px;
-    margin-top: 8px;
-    font-size: 10px;
-    color: #ffffff;
-    border-radius: 3px;
 }
+._state_un_evaluate{
+    background-color:#ee5f5b;
+}
+._state_evaluate
+{
+    background-color: #0099FF;
+}
+
 
 ._42_knowledge {
     color: #6AA470;
@@ -402,6 +391,49 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
 ._50_attach
 {
     background: url("/itildemo/static/img/attach.png") no-repeat center left;
+    background-size: 20px 20px;
+    display: inline-block;
+    font-size: 10px;
+}
+
+._51_border
+{
+    border-bottom: thin solid #DDDDDD;
+}
+
+._chart_star_1,._chart_star_2,._chart_star_3,._chart_star_4,._chart_star_5
+{
+    text-align: center;
+    font-size: 10px;
+    color: #ffffff;
+    float: left;
+    height: 15px;
+}
+
+._chart_star_1
+{
+    background-color: #DD574C;
+}
+._chart_star_2
+{
+    background-color: #F7AD28;
+}
+._chart_star_3
+{
+    background-color: #69BA4F;
+}
+._chart_star_4
+{
+    background-color: #57D6D4;
+}
+._chart_star_5
+{
+    background-color: #0099FF;
+}
+
+._52_Excel_export
+{
+    background: url("/itildemo/static/img/excel.jpg") no-repeat center left;
     background-size: 20px 20px;
     display: inline-block;
     font-size: 10px;

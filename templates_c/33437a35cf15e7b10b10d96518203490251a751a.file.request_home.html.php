@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-25 13:11:08
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-08 01:29:39
          compiled from "F:\wamp\www\itildemo\templates\admin\request_home.html" */ ?>
 <?php /*%%SmartyHeaderCode:2595255a20a27136c40-20673934%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '33437a35cf15e7b10b10d96518203490251a751a' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_home.html',
-      1 => 1443186665,
+      1 => 1444267722,
       2 => 'file',
     ),
   ),
@@ -19,9 +19,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_55a20a27210b63_26805566',
   'variables' => 
   array (
-    'res' => 0,
+    'undo_res' => 0,
     'change_req' => 0,
     'over_time_req' => 0,
+    'doing_req' => 0,
     'req' => 0,
     'over' => 0,
   ),
@@ -51,12 +52,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div class="_012_RequestList">
     <div class="_034_request_home">
         <ul id="myTab" class="nav nav-tabs title_font">
-            <li class="active"><a href="#home" data-toggle="tab">待审核请求(<?php echo count($_smarty_tpl->tpl_vars['res']->value);?>
+            <li class="active"><a href="#home" data-toggle="tab">待审核请求(<?php echo count($_smarty_tpl->tpl_vars['undo_res']->value);?>
 )</a></li>
             <li><a href="#ios" data-toggle="tab">变更请求(<?php echo count($_smarty_tpl->tpl_vars['change_req']->value);?>
 )</a></li>
             <li><a href="#java" data-toggle="tab">逾期请求(<?php echo count($_smarty_tpl->tpl_vars['over_time_req']->value);?>
 )</a></li>
+            <li><a href="#req" data-toggle="tab">请求追踪(<?php echo count($_smarty_tpl->tpl_vars['doing_req']->value);?>
+)</a> </li>
         </ul>
     </div>
     <br>
@@ -77,7 +80,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 </tr>
                 <tbody>
                 <?php  $_smarty_tpl->tpl_vars['req'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['req']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['res']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_from = $_smarty_tpl->tpl_vars['undo_res']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
  $_smarty_tpl->tpl_vars['smarty']->value['foreach']['req']['index']=-1;
 foreach ($_from as $_smarty_tpl->tpl_vars['req']->key => $_smarty_tpl->tpl_vars['req']->value) {
 $_smarty_tpl->tpl_vars['req']->_loop = true;
@@ -201,6 +204,77 @@ $_smarty_tpl->tpl_vars['over']->_loop = true;
 分</span></td>
                 </tr>
             <?php } ?>
+                </tbody>
+                </thead>
+            </table>
+        </div>
+        <!--请求追踪-->
+        <div class="tab-pane" id="req">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>请求编号</th>
+                    <th>请求标题</th>
+                    <th>请求人</th>
+                    <th>请求时间</th>
+                    <th>指派时间</th>
+                    <th>优先级</th>
+                    <th>影响范围</th>
+                    <th><span style="color: #009900">余时</span>/<span style="color: red">超时</span></th>
+                </tr>
+                <tbody>
+                <?php  $_smarty_tpl->tpl_vars['req'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['req']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['doing_req']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']['res']['index']=-1;
+foreach ($_from as $_smarty_tpl->tpl_vars['req']->key => $_smarty_tpl->tpl_vars['req']->value) {
+$_smarty_tpl->tpl_vars['req']->_loop = true;
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']['res']['index']++;
+?>
+                <tr>
+                    <td><?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['res']['index']+1;?>
+</td>
+                    <td><a href="/itildemo/home/controller/admin/request_assign.php?req_num=<?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
+&flag=doing_req"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_num'];?>
+</a></td>
+                    <td style="max-width: 200px;"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_title'];?>
+</td>
+                    <td style="max-width: 80px;"><?php echo $_smarty_tpl->tpl_vars['req']->value['req_author'];?>
+</td>
+                    <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['req']->value['req_time'],'%y/%m/%d %H:%M');?>
+</td>
+                    <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['req']->value['assign_time'],'%y/%m/%d %H:%M');?>
+</td>
+                    <td>
+                        <?php if ($_smarty_tpl->tpl_vars['req']->value['req_priority']==1) {?>
+                        <div class="_span_low">&nbsp;低&nbsp;</div>
+                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_priority']==2) {?>
+                        <div class="_span_middle">&nbsp;中&nbsp;</div>
+                        <?php } else { ?>
+                        <div class="_span_high">&nbsp;高&nbsp;</div>
+                        <?php }?>
+                    </td>
+                    <td>
+                        <?php if ($_smarty_tpl->tpl_vars['req']->value['req_effect']==1) {?>
+                        <div class="_span_low">&nbsp;个人&nbsp;</div>
+                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_effect']==2) {?>
+                        <div class="_span_middle">&nbsp;部门&nbsp;</div>
+                        <?php } else { ?>
+                        <div class="_span_high">&nbsp;单位&nbsp;</div>
+                        <?php }?>
+                    </td>
+                    <td><?php if ($_smarty_tpl->tpl_vars['req']->value['flag']) {?>
+                        <span style="color: red"><?php echo $_smarty_tpl->tpl_vars['req']->value['hour'];?>
+小时<?php echo $_smarty_tpl->tpl_vars['req']->value['minute'];?>
+分</span>
+                        <?php } else { ?>
+                        <span style="color: #009900"><?php echo $_smarty_tpl->tpl_vars['req']->value['hour'];?>
+小时<?php echo $_smarty_tpl->tpl_vars['req']->value['minute'];?>
+分</span>
+                        <?php }?>
+                    </td>
+                </tr>
+                <?php } ?>
                 </tbody>
                 </thead>
             </table>

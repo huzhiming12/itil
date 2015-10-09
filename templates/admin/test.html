@@ -1,35 +1,28 @@
-<!DOCTYPE   HTML   PUBLIC   "-//W3C//DTD   HTML   4.01   Transitional//EN">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta   http-equiv="Content-Type"   content="text/html;   charset=gb2312">
-    <title>无标题文档</title>
+    <meta charset="UTF-8">
+    <script language="JavaScript" src="/itildemo/static/js/jquery-1.11.1.min.js"></script>
+    <script language="javascript" src="/itildemo/plugins/feedback/lib/jquery.raty.min.js"></script>
+    <link rel="stylesheet" href="/itildemo/plugins/feedback/demo/css/application.css">
+    <title></title>
 </head>
-<script   language="JavaScript"   type="text/JavaScript">
-    function   view1(){
-        t   =   view.window
-
-        t.document.open()
-        t.document.write("")
-        t.document.close()
-        t.document.open();
-        t.document.write(document.documentElement.innerHTML);
-        t.document.close();
-    }
-
-    function     code1(){
-        code.style.display="";
-        code.value=document.documentElement.innerHTML;
-        code.focus()
-    }
-</script>
-
 <body>
-<p>
-    <input   type="button"   name="Submit"   value="代码"   onClick="code1()">
-    <input   type="button"   name="Submit2"   value="视图"   onClick="view1()">
-</p>
-<IFRAME   NAME="view"     WIDTH=100%></IFRAME>
-<TEXTAREA         name="code"   cols="200"   rows="100"></TEXTAREA>
+<div class="demo">
+    <div id="targetType-demo" class="target-demo"></div>
+    <div id="targetType-hint" class="hint"></div>
+</div>
 
 </body>
 </html>
+<script>
+    $.fn.raty.defaults.path = '/itildemo/plugins/feedback/demo/img';
+    $('#targetType-demo').raty({
+        size: 24,
+        starHalf: 'star-half-big.png',
+        starOff: 'star-off-big.png',
+        starOn: 'star-on-big.png',
+        target: '#targetType-hint',
+        targetType: 'score'
+    });
+</script>

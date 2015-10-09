@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/itildemo/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
     <link rel="stylesheet" href="/itildemo/static/css/bootstrap-datetimepicker.min.css">
-
     <script language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"></script>
     <script language="JavaScript" src="/itildemo/static/js/bootstrap-datetimepicker.min.js"></script>
     <script language="JavaScript" src="/itildemo/static/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
@@ -19,69 +18,113 @@
 
 <div class="_012_RequestList">
     <div class="_013_RequestList">
-        <br>
-        <div class="form-group _015_RequestList form-group-sm">
-            <table>
-                <form action="/itildemo/home/controller/admin/request_inquiry.php" method="GET">
-                    <tr>
-                        <td>条件关系：</td>
-                        <td class="input-group-sm">
+        <div class="form-group _015_RequestList">
+            <form method="get" action="">
+                <table class="form-group-sm">
+                    <tr class="form-group-sm">
+                        <td>
+                            <label class="control-label">日期：</label>
+                        </td>
+                        <td colspan="3">
                             <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-success active">
-                                    <input type="radio" name="and_or" value="and" autocomplete="off" checked> and
+                                <label onclick="showDatePicker(1)"
+                                       class="btn btn-sm btn-primary <{if $options==7 or $options==''}>active<{/if}>">
+                                    <input type="radio" name="options" value="7" <{if $options==7 or $options==''}>
+                                    checked <{/if}>> 全部
                                 </label>
-                                <label class="btn btn-success">
-                                    <input type="radio" name="and_or" value="or" autocomplete="off"> or
+                                <label onclick="showDatePicker(1)"
+                                       class="btn btn-sm btn-primary <{if $options==1}> active <{/if}>">
+                                    <input type="radio" name="options" value="1" <{if $options==1}>checked <{/if}> > 本月
+                                </label>
+                                <label onclick="showDatePicker(1)"
+                                       class="btn btn-sm btn-primary <{if $options==2}>active<{/if}>">
+                                    <input type="radio" name="options" value="2" <{if $options==2}> checked <{/if}>> 上月
+                                </label>
+                                <label onclick="showDatePicker(1)"
+                                       class="btn btn-sm btn-primary <{if $options==3}>active<{/if}>">
+                                    <input type="radio" name="options" value="3" <{if $options==3}> checked <{/if}>> 本周
+                                </label>
+                                <label onclick="showDatePicker(1)"
+                                       class="btn btn-sm btn-primary <{if $options==4}>active<{/if}>">
+                                    <input type="radio" name="options" value="4" <{if $options==4}> checked <{/if}>> 上周
+                                </label>
+                                <label onclick="showDatePicker(1)"
+                                       class="btn btn-sm btn-primary <{if $options==5}>active<{/if}>">
+                                    <input type="radio" name="options" value="5" <{if $options==5}> checked <{/if}>> 本季度
+                                </label>
+                                <label onclick="showDatePicker(1)"
+                                       class="btn btn-sm btn-primary <{if $options==6}>active<{/if}>">
+                                    <input type="radio" name="options" value="6" <{if $options==6}> checked <{/if}>> 上季度
+                                </label>
+                                <label onclick="showDatePicker(0)"
+                                       class="btn btn-sm btn-primary <{if $options==8}>active<{/if}>">
+                                    <input type="radio" name="options" value="8" <{if $options==8}> checked <{/if}>>
+                                    指定日期
                                 </label>
                             </div>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>请求日期：</td>
-                        <td>&nbsp;&nbsp;起始日期：</td>
-                        <td class="input-group-sm">
-                            <input type="text" name="start_date" class="form-control datetimepicker" readonly>
+                        <td id="datepicker1" style="display: none">
+                            <table>
+                                <tr>
+                                    <td>
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td>
+                                        <input name="date1" value="<{$date1}>" class="form-control datetimepicker"
+                                               size="10">
+                                    </td>
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td>
+                                        <input name="date2" value="<{$date2}>" class="form-control datetimepicker"
+                                               size="10">
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
-                        <td>&nbsp;&nbsp;截至日期：</td>
-                        <td class="input-group-sm">
-                            <input type="text" name="end_date" class="form-control datetimepicker" readonly>
-                        </td>
+                    </tr>
+                    <tr style="height: 10px">
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>&nbsp;</td>
+                        <td><label class="control-label">请求人：</label></td>
+                        <td><input type="text" class="form-control" name="user" value="<{$user}>"></td>
+                        <td><label class="control-label" name="engineer">&nbsp;&nbsp;&nbsp;&nbsp;工程师：</label></td>
+                        <td><input type="text" class="form-control" name="engineer" value="<{$engineer}>"></td>
                     </tr>
-                    <tr class="form-group">
-                        <td colspan="1">请求状态：&nbsp;&nbsp;</td>
-                        <td colspan="4" class="input-group-sm">
-                            <select name="req_state" class="form-control" style="width:150px;">
-                                <option value="">全部</option>
-                                <option value="1">未处理</option>
-                                <option value="2">已指派</option>
-                                <option value="3">已取消</option>
-                                <option value="4">已解决</option>
+                    <tr style="height: 10px">
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><label class="control-label">请求状态：</label></td>
+                        <td>
+                            <select class="form-control" name="state">
+                                <option value="0"
+                                <{if $state==0}> selected<{/if}> >全部</option>
+                                <option value="1"
+                                <{if $state==1}> selected<{/if}> >未处理</option>
+                                <option value="2"
+                                <{if $state==2}> selected<{/if}> >已指派</option>
+                                <option value="3"
+                                <{if $state==3}> selected<{/if}> >已取消</option>
+                                <option value="4"
+                                <{if $state==4}> selected<{/if}> >已解决</option>
                             </select>
                         </td>
                     </tr>
+                    <tr style="height: 10px">
+                        <td></td>
+                    </tr>
                     <tr>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr class="form-group">
-                        <td>
-                            &nbsp;关&nbsp;键&nbsp;字：&nbsp;&nbsp;
-                        </td>
-                        <td colspan="4" class="form-group-sm">
-                            <input name="keyword" class="form-control" style="width:200px">
-                        </td>
-                        <td style="width: 250px"></td>
-                        <td>
-                            <button name="search_btn" class="btn btn-sm btn-primary">&nbsp;&nbsp;搜&nbsp;&nbsp;索&nbsp;&nbsp;</button>
+                        <td><label class="control-label">关键字检索：</label></td>
+                        <td colspan="2">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="keyword" value="<{$keyword}>">
+                            <span class="input-group-btn">
+                                <button class="btn btn-sm btn-primary" type="submit" name="search_btn">搜索</button>
+                            </span>
+                            </div>
                         </td>
                     </tr>
-                </form>
-            </table>
+                </table>
         </div>
     </div>
 
@@ -98,7 +141,7 @@
                 <th>请求人</th>
                 <th>请求时间</th>
                 <th>请求状态</th>
-                <th>操作</th>
+                <th>工程师</th>
             </tr>
             <tbody>
             <{foreach from=$res item=req name=req}>
@@ -119,9 +162,8 @@
                     <{else if $req.req_state==4}>
                     <span class="_span_low">已解决</span>
                     <{/if}>
-
                 </td>
-                <td>删除</td>
+                <td><{$req.req_finish_engineer}></td>
             </tr>
             <{/foreach}>
             </tbody>
@@ -130,14 +172,15 @@
     </div>
     <hr class="_016_RequestList_line">
     <div class="_015_RequestList">
-        <{$navi}>
+        <a href="/itildemo/home/service/excel_export_ser.php?list=<{$list}>" class="_52_Excel_export">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;导出</a>
+        <div style="float: right"><{$navi}></div>
     </div>
     <br><br>
-
-
 </div>
 </body>
 <script type="text/javascript">
+    if ('<{$options}>' == '8')
+        document.getElementById('datepicker1').style.display = "block";
     $('.datetimepicker').datetimepicker({
         format: 'yyyy-MM-dd',
         language: 'zh-CN',
@@ -149,6 +192,13 @@
         minView: 2,
         forceParse: 0
     });
+    function showDatePicker(id) {
+        if (id)
+            document.getElementById('datepicker1').style.display = "none";
+        else
+            document.getElementById('datepicker1').style.display = "block";
+
+    }
 </script>
 
 </html>

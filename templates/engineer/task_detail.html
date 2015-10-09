@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
     <script language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"></script>
     <script language="JavaScript" src="/itildemo/plugins/ckeditor/ckeditor.js"></script>
+    <script language="javascript" src="/itildemo/plugins/feedback/lib/jquery.raty.min.js"></script>
+    <link rel="stylesheet" href="/itildemo/plugins/feedback/demo/css/application.css">
     <title></title>
     <style type="text/css">
         tr {
@@ -286,6 +288,71 @@
             <{/if}>
         </div>
     </div>
+    <!--用户评价-->
+    <{if $feedback.req_num!=''}>
+    <div class="_48_task">
+        <span style="color: #999">用户评价：</span><br><br>
+        <table width="100%">
+            <tr class="_51_border">
+                <td colspan="2" style="color: #999">对工程师的评价</td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;工程师的技能与知识水平</td>
+                <td>
+                    <div class="fd_demo_1"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;工程师的服务态度</td>
+                <td>
+                    <div class="fd_demo_2"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;工程师的总体评价</td>
+                <td>
+                    <div class="fd_demo_3"></div>
+                </td>
+            </tr>
+            <tr class="_51_border">
+                <td colspan="2" style="color: #999">对请求处理情况的评价</td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;请求处理是否及时</td>
+                <td>
+                    <div class="fd_demo_4"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;请求的解决方案是否满意</td>
+                <td>
+                    <div class="fd_demo_5"></div>
+                </td>
+            </tr>
+            <tr class="_51_border">
+                <td colspan="2" style="color: #999">对服务的总体评价</td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;对本次请求服务的总体评价</td>
+                <td>
+                    <div class="fd_demo_6"></div>
+                </td>
+            </tr>
+        </table>
+        <div style="color: #999">建议或意见：</div>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<{$feedback.suggest}></p>
+
+    </div>
+    <script>
+        $.fn.raty.defaults.path = '/itildemo/plugins/feedback/lib/img';
+        $('.fd_demo_1').raty({ readOnly: true, score: <{$feedback.fd_1}> });
+        $('.fd_demo_2').raty({ readOnly: true, score: <{$feedback.fd_2}> });
+        $('.fd_demo_3').raty({ readOnly: true, score: <{$feedback.fd_3}> });
+        $('.fd_demo_4').raty({ readOnly: true, score: <{$feedback.fd_4}> });
+        $('.fd_demo_5').raty({ readOnly: true, score: <{$feedback.fd_5}> });
+        $('.fd_demo_6').raty({ readOnly: true, score: <{$feedback.fd_6}> });
+    </script>
+    <{/if}>
     <!--解决方案编辑-->
     <form method="post" name="solution_form" onsubmit="return CheckValue()"
           action="/itildemo/home/service/req_ser.php?req_num=<{$res.req_num}>&req_complex=<{$ass.req_complex}>">

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 08:23:22
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-07 07:45:43
          compiled from "F:\wamp\www\itildemo\templates\share\request_detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:1546155f7cee85bb8e1-78268792%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '52fd92c1f5aaed87cba14f415b87740871f6e89d' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\share\\request_detail.html',
-      1 => 1442978144,
+      1 => 1444203933,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'process' => 0,
     'pro' => 0,
     'cancel' => 0,
+    'feedback' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -43,6 +44,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <?php echo '<script'; ?>
  language="JavaScript" src="/itildemo/plugins/ckeditor/ckeditor.js"><?php echo '</script'; ?>
 >
+    <?php echo '<script'; ?>
+ language="javascript" src="/itildemo/plugins/feedback/lib/jquery.raty.min.js"><?php echo '</script'; ?>
+>
+    <link rel="stylesheet" href="/itildemo/plugins/feedback/demo/css/application.css">
     <title></title>
     <style type="text/css">
         tr {
@@ -50,7 +55,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         }
     </style>
 <body>
-
 <div class="_012_RequestList">
     <div class="_011_RequestList">
         请求详情
@@ -278,8 +282,87 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
             <?php }?>
         </div>
     </div>
+    <!--用户评价-->
+    <?php if ($_smarty_tpl->tpl_vars['feedback']->value['req_num']!='') {?>
+    <div class="_48_task">
+        <span style="color: #999">用户评价：</span><br><br>
+        <table width="100%">
+            <tr class="_51_border">
+                <td colspan="2" style="color: #999">对工程师的评价</td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;工程师的技能与知识水平</td>
+                <td>
+                    <div class="fd_demo_1"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;工程师的服务态度</td>
+                <td>
+                    <div class="fd_demo_2"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;工程师的总体评价</td>
+                <td>
+                    <div class="fd_demo_3"></div>
+                </td>
+            </tr>
+            <tr class="_51_border">
+                <td colspan="2" style="color: #999">对请求处理情况的评价</td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;请求处理是否及时</td>
+                <td>
+                    <div class="fd_demo_4"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;请求的解决方案是否满意</td>
+                <td>
+                    <div class="fd_demo_5"></div>
+                </td>
+            </tr>
+            <tr class="_51_border">
+                <td colspan="2" style="color: #999">对服务的总体评价</td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;对本次请求服务的总体评价</td>
+                <td>
+                    <div class="fd_demo_6"></div>
+                </td>
+            </tr>
+        </table>
+        <div style="color: #999">建议或意见：</div>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['feedback']->value['suggest'];?>
+</p>
+
+    </div>
+    <?php echo '<script'; ?>
+>
+        $.fn.raty.defaults.path = '/itildemo/plugins/feedback/lib/img';
+        $('.fd_demo_1').raty({ readOnly: true, score: <?php echo $_smarty_tpl->tpl_vars['feedback']->value['fd_1'];?>
+ });
+        $('.fd_demo_2').raty({ readOnly: true, score: <?php echo $_smarty_tpl->tpl_vars['feedback']->value['fd_2'];?>
+ });
+        $('.fd_demo_3').raty({ readOnly: true, score: <?php echo $_smarty_tpl->tpl_vars['feedback']->value['fd_3'];?>
+ });
+        $('.fd_demo_4').raty({ readOnly: true, score: <?php echo $_smarty_tpl->tpl_vars['feedback']->value['fd_4'];?>
+ });
+        $('.fd_demo_5').raty({ readOnly: true, score: <?php echo $_smarty_tpl->tpl_vars['feedback']->value['fd_5'];?>
+ });
+        $('.fd_demo_6').raty({ readOnly: true, score: <?php echo $_smarty_tpl->tpl_vars['feedback']->value['fd_6'];?>
+ });
+    <?php echo '</script'; ?>
+>
+    <?php }?>
 
     <div class="_46_knowledge">
+        <!--反馈-->
+        <?php if ($_smarty_tpl->tpl_vars['res']->value['req_author']==$_SESSION['user_name']&&$_smarty_tpl->tpl_vars['res']->value['req_state']==4&&$_smarty_tpl->tpl_vars['feedback']->value['req_num']=='') {?>
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">评价服务</button>
+        &nbsp;&nbsp;&nbsp;
+        <?php }?>
         <?php if ($_smarty_tpl->tpl_vars['res']->value['req_author']==$_SESSION['user_name']&&$_smarty_tpl->tpl_vars['res']->value['req_state']==1) {?>
         <a href="javascript:void(0)" class="btn btn-sm btn-warning" data-toggle="popover" data-placement="top"
            data-html="true" data-trigger="focus"
@@ -289,19 +372,139 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
 &flag=user&quot;'>注销</a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href='javascript:void(0)' class='btn btn-sm btn-default'>取消</a></div>">取消请求</a>&nbsp;&nbsp;&nbsp;
         <?php }?>
-        <button class="btn btn-sm btn-default" onclick="window.history.go(-1)">返回</button>
+        <button class="btn btn-sm btn-default" onclick="window.history.go(-1)"> 返 回</button>
     </div>
     <br>
     <br>
 </div>
 
+<!--评价输入框-->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <form class="form-horizontal" name="feedback" action="/itildemo/home/service/req_ser.php" method="post"
+              onsubmit="return checkValue()">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">用户评价反馈</h4>
+                </div>
+                <div class="modal-body">
+                    <table width="100%">
+                        <tr class="_51_border">
+                            <td colspan="2"><label class="control-label">对工程师的评价</label></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;工程师的技能与知识水平</td>
+                            <td>
+                                <div id="fd_demo_1"></div>
+                                <input type="hidden" name="fd_1" id="fd_1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;工程师的服务态度</td>
+                            <td>
+                                <div id="fd_demo_2"></div>
+                                <input type="hidden" name="fd_2" id="fd_2">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;工程师的总体评价</td>
+                            <td>
+                                <div id="fd_demo_3"></div>
+                                <input type="hidden" name="fd_3" id="fd_3">
+                            </td>
+                        </tr>
+                        <tr class="_51_border">
+                            <td colspan="2"><label class="control-label">对请求处理情况的评价</label></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;请求处理是否及时</td>
+                            <td>
+                                <div id="fd_demo_4"></div>
+                                <input type="hidden" name="fd_4" id="fd_4">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;请求的解决方案是否满意</td>
+                            <td>
+                                <div id="fd_demo_5"></div>
+                                <input type="hidden" name="fd_5" id="fd_5">
+                            </td>
+                        </tr>
+                        <tr class="_51_border">
+                            <td colspan="2"><label class="control-label">对服务的总体评价</label></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;对本次请求服务的总体评价</td>
+                            <td>
+                                <div id="fd_demo_6"></div>
+                                <input type="hidden" name="fd_6" id="fd_6">
+                            </td>
+                        </tr>
+                    </table>
+                    <div><label class="control-label">建议或意见：</label></div>
+                    <textarea class="form-control" name="suggest"></textarea>
+                    <input type="hidden" name="req_num" value="<?php echo $_smarty_tpl->tpl_vars['res']->value['req_num'];?>
+">
+                    <input type="hidden" name="engineer" value="<?php echo $_smarty_tpl->tpl_vars['res']->value['req_finish_engineer'];?>
+">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-primary" name="feedback_btn"> 评 价</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-sm btn-default" data-dismiss="modal"> 取 消</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+
 </body>
 </html>
 <?php echo '<script'; ?>
 >
+    function checkValue() {
+        if (feedback.fd_1.value == "" || feedback.fd_2.value == "" || feedback.fd_3.value == "" || feedback.fd_4.value == "" || feedback.fd_5.value == "") {
+            alert("您还有未评价的内容！");
+            return false;
+        }
+    }
     $(function () {
         $('[data-toggle="popover"]').popover();
     })
+    $.fn.raty.defaults.path = '/itildemo/plugins/feedback/lib/img';
+    $('#fd_demo_1').raty({
+        click: function (score, evt) {
+            document.getElementById('fd_1').value = score;
+        },
+    });
+    $('#fd_demo_2').raty({
+        click: function (score, evt) {
+            document.getElementById('fd_2').value = score;
+        },
+    });
+    $('#fd_demo_3').raty({
+        click: function (score, evt) {
+            document.getElementById('fd_3').value = score;
+        },
+    });
+    $('#fd_demo_4').raty({
+        click: function (score, evt) {
+            document.getElementById('fd_4').value = score;
+        },
+    });
+    $('#fd_demo_5').raty({
+        click: function (score, evt) {
+            document.getElementById('fd_5').value = score;
+        },
+    });
+    $('#fd_demo_6').raty({
+        click: function (score, evt) {
+            document.getElementById('fd_6').value = score;
+        },
+    });
+
+
 <?php echo '</script'; ?>
 ><?php }} ?>

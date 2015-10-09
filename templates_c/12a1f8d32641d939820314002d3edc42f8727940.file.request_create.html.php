@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 13:04:46
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-07 05:24:06
          compiled from "F:\wamp\www\itildemo\templates\admin\request_create.html" */ ?>
 <?php /*%%SmartyHeaderCode:2277955e3f8717b4c90-45168449%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '12a1f8d32641d939820314002d3edc42f8727940' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_create.html',
-      1 => 1442996079,
+      1 => 1444195443,
       2 => 'file',
     ),
   ),
@@ -131,11 +131,8 @@ $_smarty_tpl->tpl_vars['c_sort']->_loop = true;
             <div class="form-group">
                 <label class="col-sm-2 control-label">请求人:</label>
                 <div class="col-sm-3">
-                    <input tabindex="0" value="<?php echo $_SESSION['user_name'];?>
-" name="req_author"
+                    <input tabindex="0" name="req_author"
                            id="userPopover" class="form-control" type="text" readonly
-                           value="<?php echo $_SESSION['user_name'];?>
-"
                            data-toggle="popover"
                            data-container="body"
                            data-placement="bottom"

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-21 00:45:18
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-08 02:39:55
          compiled from "F:\wamp\www\itildemo\templates\engineer\task_detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:1172355f91637852724-76109748%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '73759c41a706d1b427c79987b3578860003b9cc1' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\engineer\\task_detail.html',
-      1 => 1442796035,
+      1 => 1444271988,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'process' => 0,
     'pro' => 0,
     'cancel' => 0,
+    'feedback' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -45,6 +46,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <?php echo '<script'; ?>
  language="JavaScript" src="/itildemo/plugins/ckeditor/ckeditor.js"><?php echo '</script'; ?>
 >
+    <?php echo '<script'; ?>
+ language="javascript" src="/itildemo/plugins/feedback/lib/jquery.raty.min.js"><?php echo '</script'; ?>
+>
+    <link rel="stylesheet" href="/itildemo/plugins/feedback/demo/css/application.css">
     <title></title>
     <style type="text/css">
         tr {
@@ -358,6 +363,80 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
             <?php }?>
         </div>
     </div>
+    <!--用户评价-->
+    <?php if ($_smarty_tpl->tpl_vars['feedback']->value['req_num']!='') {?>
+    <div class="_48_task">
+        <span style="color: #999">用户评价：</span><br><br>
+        <table width="100%">
+            <tr class="_51_border">
+                <td colspan="2" style="color: #999">对工程师的评价</td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;工程师的技能与知识水平</td>
+                <td>
+                    <div class="fd_demo_1"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;工程师的服务态度</td>
+                <td>
+                    <div class="fd_demo_2"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;工程师的总体评价</td>
+                <td>
+                    <div class="fd_demo_3"></div>
+                </td>
+            </tr>
+            <tr class="_51_border">
+                <td colspan="2" style="color: #999">对请求处理情况的评价</td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;请求处理是否及时</td>
+                <td>
+                    <div class="fd_demo_4"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;请求的解决方案是否满意</td>
+                <td>
+                    <div class="fd_demo_5"></div>
+                </td>
+            </tr>
+            <tr class="_51_border">
+                <td colspan="2" style="color: #999">对服务的总体评价</td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;对本次请求服务的总体评价</td>
+                <td>
+                    <div class="fd_demo_6"></div>
+                </td>
+            </tr>
+        </table>
+        <div style="color: #999">建议或意见：</div>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['feedback']->value['suggest'];?>
+</p>
+
+    </div>
+    <?php echo '<script'; ?>
+>
+        $.fn.raty.defaults.path = '/itildemo/plugins/feedback/lib/img';
+        $('.fd_demo_1').raty({ readOnly: true, score: <?php echo $_smarty_tpl->tpl_vars['feedback']->value['fd_1'];?>
+ });
+        $('.fd_demo_2').raty({ readOnly: true, score: <?php echo $_smarty_tpl->tpl_vars['feedback']->value['fd_2'];?>
+ });
+        $('.fd_demo_3').raty({ readOnly: true, score: <?php echo $_smarty_tpl->tpl_vars['feedback']->value['fd_3'];?>
+ });
+        $('.fd_demo_4').raty({ readOnly: true, score: <?php echo $_smarty_tpl->tpl_vars['feedback']->value['fd_4'];?>
+ });
+        $('.fd_demo_5').raty({ readOnly: true, score: <?php echo $_smarty_tpl->tpl_vars['feedback']->value['fd_5'];?>
+ });
+        $('.fd_demo_6').raty({ readOnly: true, score: <?php echo $_smarty_tpl->tpl_vars['feedback']->value['fd_6'];?>
+ });
+    <?php echo '</script'; ?>
+>
+    <?php }?>
     <!--解决方案编辑-->
     <form method="post" name="solution_form" onsubmit="return CheckValue()"
           action="/itildemo/home/service/req_ser.php?req_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['req_num'];?>

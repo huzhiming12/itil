@@ -24,7 +24,8 @@ $process = array();
 $i = 0;
 
 
-for ($i = 0; $i < count($assign); $i++) {
+for ($i = 0; $i < count($assign); $i++)
+{
     $process[$i]['title'] = $assign[$i]['assign_time'] . "  " . $assign[$i]['assign_admin'] . "  指派  " . $assign[$i]['req_engineer'] . "  解决该请求.";
     $process[$i]['req_priority'] = $assign[$i]['req_priority'];
     $process[$i]['req_effect'] = $assign[$i]['req_effect'];
@@ -35,7 +36,8 @@ for ($i = 0; $i < count($assign); $i++) {
     $process[$i]['flag'] = "ass";
 }
 
-for ($j = $i; $j - $i < count($change); $j++) {
+for ($j = $i; $j - $i < count($change); $j++)
+{
     $process[$j]['title'] = $change[$j - $i]['change_time'] . "  " . $change[$j - $i]['req_engineer'] . "  申请变更请求.";
     $process[$j]['add_description'] = $change[$j - $i]['change_reason'];
     $process[$j]['time'] = $change[$j - $i]['change_time'];
@@ -43,9 +45,12 @@ for ($j = $i; $j - $i < count($change); $j++) {
 
 //二维数组按时间排序
 $temp = array();
-for ($i = 0; $i < count($process); $i++) {
-    for ($j = 0; $j < count($process) - $i - 1; $j++) {
-        if ($process[$j]['time'] > $process[$j + 1]['time']) {
+for ($i = 0; $i < count($process); $i++)
+{
+    for ($j = 0; $j < count($process) - $i - 1; $j++)
+    {
+        if ($process[$j]['time'] > $process[$j + 1]['time'])
+        {
             $temp = $process[$j];
             $process[$j] = NULL;
             $process[$j] = $process[$j + 1];
@@ -55,11 +60,13 @@ for ($i = 0; $i < count($process); $i++) {
 }
 
 $cancel = $sqltool->dbQuery("select * from t_req_cancel where req_num ='$req_num'");
+$feedback = $sqltool->dbQuery("select *from t_feedback where req_num='$req_num'");
 
-$smarty->assign("res",$res[0]);
-$smarty->assign("attach",$attachment);
+$smarty->assign("res", $res[0]);
+$smarty->assign("attach", $attachment);
 $smarty->assign("process", $process);
 $smarty->assign("cancel", $cancel[0]);
+$smarty->assign("feedback", $feedback[0]);
 $sqltool->dbCloseConnection();
 
 $smarty->display("share/request_detail.html");

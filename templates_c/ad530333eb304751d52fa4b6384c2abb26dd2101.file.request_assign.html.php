@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 08:12:55
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-08 01:33:31
          compiled from "F:\wamp\www\itildemo\templates\admin\request_assign.html" */ ?>
 <?php /*%%SmartyHeaderCode:1230455fa1b00c94f92-73396372%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ad530333eb304751d52fa4b6384c2abb26dd2101' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_assign.html',
-      1 => 1442978113,
+      1 => 1444268004,
       2 => 'file',
     ),
   ),
@@ -234,6 +234,7 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
         </div>
     </div>
     <!--指派表单-->
+    <?php if ($_smarty_tpl->tpl_vars['flag']->value!='doing_req') {?>
     <form method="post" name="assign_form" action="/itildemo/home/service/req_ser.php?flag=<?php echo $_smarty_tpl->tpl_vars['flag']->value;?>
 "
           onsubmit="return CheckValue()">
@@ -362,6 +363,9 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
             <a href="javascript:void(0)" class="btn btn-sm btn-default" onclick="history.go(-1)">返回</a>
         </div>
     </form>
+    <?php } else { ?>
+    <div class="_46_knowledge"><button class="btn btn-sm btn-default" onclick="window.history.go(-1)"> 返 回 </button></div>
+    <?php }?>
     <br>
     <br>
 </div>
