@@ -354,7 +354,7 @@
     </script>
     <{/if}>
     <!--解决方案编辑-->
-    <form method="post" name="solution_form" onsubmit="return CheckValue()"
+    <form method="post" name="solution_form"
           action="/itildemo/home/service/req_ser.php?req_num=<{$res.req_num}>&req_complex=<{$ass.req_complex}>">
         <{if $flag==1}>
         <div class="_48_task">
@@ -404,10 +404,4 @@
         $('[data-toggle="popover"]').popover('hide');
     }
 
-    function CheckValue() {
-        if (solution_form.req_solution.value == "") {
-            alert("解决方案不能为空！");
-            return false;
-        }
-    }
 </script>

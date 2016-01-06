@@ -17,7 +17,8 @@ if ($_GET['searchcontent']) {
     $sql = " from t_news where news_title like '%$searchcontent%' or news_content like '%$searchcontent%'";
 }
 $res = $sqltool->dbQuery("select count(*) " . $sql);
-$pagetool = new PageTool($res[0][0], 3);
+$sql.=" order by news_time desc";
+$pagetool = new PageTool($res[0][0]);
 $pagetool->url = "news_list.php";
 $pagetool->url_arg = "searchcontent=$searchcontent";
 $pagetool->sql = "select *" . $sql;
@@ -29,3 +30,4 @@ $smarty->assign("nav", $pagetool->getNavigate());
 $smarty->assign("res", $pagetool->getPageResource());
 $smarty->display("share/news_list.html");
 $sqltool->dbCloseConnection();
+

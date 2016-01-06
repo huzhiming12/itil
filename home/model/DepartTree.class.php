@@ -23,13 +23,13 @@ class Tree
             if ($t['parent_id'] == '') {
                 $hr = '/itildemo/home/service/depart_ser.php?id=' . $t['id'];
                 $html .= "<li><span>" . $t['name'] . "&nbsp;&nbsp;&nbsp;&nbsp;"
-                    . "<a href='#' onclick='openModal({$t['id']})' titile='添加' style='font-size: 11px;line-height: 25px;color: #999999'>+</a>&nbsp;&nbsp;"
+                    . "<a href='#' onclick='openModal({$t['id']}, \"{$t['name']}\")' titile='添加' style='font-size: 11px;line-height: 25px;color: #999999'>+</a>&nbsp;&nbsp;"
                     . "<a href='" . $hr
                     . " 'onclick='deleteDepart()' title='删除' style='font-size: 11px;line-height: 25px;color: #999999'>-</a>
                 </span></li>";
             } else {
                 $html .= "<li><span>" . $t['name'] . "&nbsp;&nbsp;
-                 &nbsp;&nbsp;<a href='#' onclick='openModal({$t['id']})' title='添加' style='font-size: 11px;line-height: 25px;color: #999999'>+</a>
+                 &nbsp;&nbsp;<a href='#' onclick='openModal({$t['id']}, \"{$t['name']}\")' title='添加' style='font-size: 11px;line-height: 25px;color: #999999'>+</a>
                  </span>";
                 $html .= $this->DepartprocHtml($t['parent_id']);
                 $html = $html . "</li>";
@@ -58,9 +58,10 @@ class Tree
 ?>
 <script language="javascript" src="/itildemo/static/js/ajax.js"></script>
 <script>
-    function openModal(id) {
+    function openModal(id,name) {
         //document.getElementById('parent_name').value = name;
         document.getElementById('depart_parent_id').value = id;
+        document.getElementById('depart_parent_name').value = name;
         $('#myModal').modal();
     }
 

@@ -16,9 +16,8 @@ if (isset($_POST['depart_name'])) {
         $depart_name = $_POST['depart_name'];
         $depart_parent = $_POST['depart_parent_id'];
         if ($depart_parent == "")
-            $sql = "insert into t_depart (depart_name) values ('$depart_name')";
-        else
-            $sql = "insert into t_depart (depart_name,depart_parent_id) values ('$depart_name',$depart_parent)";
+            $depart_parent="NULL";
+        $sql = "insert into t_depart (depart_name,depart_parent_id) values ('$depart_name',$depart_parent)";
         if ($sqltool->dbUpdate($sql))
             echo "<script> alert('机构添加成功！');</script>";
         else

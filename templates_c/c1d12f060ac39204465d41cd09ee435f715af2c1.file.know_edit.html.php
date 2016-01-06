@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-22 03:03:02
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-14 11:14:10
          compiled from "F:\wamp\www\itildemo\templates\admin\know_edit.html" */ ?>
 <?php /*%%SmartyHeaderCode:1396255f516b07761b4-36752064%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c1d12f060ac39204465d41cd09ee435f715af2c1' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\know_edit.html',
-      1 => 1442890977,
+      1 => 1444821241,
       2 => 'file',
     ),
   ),
@@ -26,6 +26,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c_sort' => 0,
     'reqlist' => 0,
     'req' => 0,
+    'attach_id' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -60,32 +61,30 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     <div class="_013_RequestList">
         <div class="_013_RequestList form-group-sm">
-            <form class="form-horizontal" action="/itildemo/home/service/know_ser.php" method="post">
-                <div class="panel panel-primary _015_RequestList form-group-sm">
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">知识主题:</label>
+            <form class="form-horizontal" name="kno_form" onsubmit="return checkValue()" action="/itildemo/home/service/know_ser.php" method="post">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">知识主题:</label>
 
-                            <div class="col-sm-3">
-                                <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_num'];?>
+                    <div class="col-sm-3">
+                        <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_num'];?>
 " name="kno_num">
-                                <input type="text" name="kno_title" class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_title'];?>
+                        <input type="text" name="kno_title" class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_title'];?>
 "
-                                       placeholder="请求标题">
-                            </div>
-                            <label class="col-sm-2 control-label">知识分类:</label>
+                               placeholder="请求标题">
+                    </div>
+                    <label class="col-sm-2 control-label">知识分类:</label>
 
-                            <div class="col-sm-3">
-                                <input tabindex="0" name="kno_sort" id="sortPopover" class="form-control" type="text"
-                                       readonly
-                                       value="<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_sort'];?>
+                    <div class="col-sm-3">
+                        <input tabindex="0" name="kno_sort" id="sortPopover" class="form-control" type="text"
+                               readonly
+                               value="<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_sort'];?>
 "
-                                       data-toggle="popover"
-                                       data-container="body"
-                                       data-placement="bottom"
-                                       data-html="true"
-                                       title="分类请求"
-                                       data-content="
+                               data-toggle="popover"
+                               data-container="body"
+                               data-placement="bottom"
+                               data-html="true"
+                               title="分类请求"
+                               data-content="
                                <div class='_015_RequestList'>
                                     <div class='_014_RequestList btn-group' data-toggle='buttons'>
                                         <table width='100%'>
@@ -117,32 +116,35 @@ $_smarty_tpl->tpl_vars['c_sort']->_loop = true;
                                             <?php } ?>
                                         </table>
                                     </div>
-                                    <br><br><button class='btn btn-sm btn-primary' onclick='selectSort()'>确定</button>
+                                    <br><br>
+                                    <div class='_46_knowledge'>
+                                    <button class='btn btn-sm btn-primary' onclick='selectSort()'>确定</button>
+                                    </div>
                                 </div>
                                ">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">关键字:</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">关键字:</label>
 
-                            <div class="col-sm-3">
-                                <input type="text" name="kno_keyword" placeholder="keyword1  keyword2  keyword3 …"
-                                       value="<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_keyword'];?>
+                    <div class="col-sm-3">
+                        <input type="text" name="kno_keyword" placeholder="keyword1  keyword2  keyword3 …"
+                               value="<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_keyword'];?>
 "
-                                       class="form-control">
-                            </div>
-                            <label class="col-sm-2 control-label">关联请求:</label>
+                               class="form-control">
+                    </div>
+                    <label class="col-sm-2 control-label">关联请求:</label>
 
-                            <div class="col-sm-3">
-                                <input type="text" name="req_num" id="reqPopover" placeholder="请求编号"
-                                       class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_req_num'];?>
+                    <div class="col-sm-3">
+                        <input type="text" name="req_num" id="reqPopover" placeholder="请求编号"
+                               class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_req_num'];?>
 "
-                                       data-toggle="popover"
-                                       data-container="body"
-                                       data-placement="bottom"
-                                       data-html="true"
-                                       title="已解决请求"
-                                       data-content="
+                               data-toggle="popover"
+                               data-container="body"
+                               data-placement="bottom"
+                               data-html="true"
+                               title="已解决请求"
+                               data-content="
                                <div style='max-height:300px;overflow-y:scroll'>
                                     <table class='table table-hover'>
                                          <tbody>
@@ -165,36 +167,17 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
                                </div>
 
                                 ">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">附件:</label>
+                    </div>
 
-                            <div class="col-sm-4">
-                                <p id="i_select_files"></p>
-                                <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_attach_id'];?>
-" name="attach_id">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-1"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">变更说明:</label>
 
-                            <div class="col-sm-10">
-                                <div id="i_stream_files_queue">
-                                </div>
-                                <br>
-                                <a href="javascript:void(0)" class="btn btn-sm btn-primary"
-                                   onclick="javascript:_t.upload();">开始上传</a>
-                                <a href="javascript:void(0)" class="btn btn-sm btn-danger"
-                                   onclick="javascript:_t.stop();">停止上传</a>
-                                <a href="javascript:void(0)" class="btn btn-sm btn-default"
-                                   onclick="javascript:_t.cancel();">
-                                    &nbsp;取&nbsp;消&nbsp;</a>
-                            </div>
-                        </div>
+                    <div class="col-sm-9">
+                        <textarea class="form-control" name="kno_change"></textarea>
                     </div>
                 </div>
-
+                <br>
                 <div class="_015_RequestList">
                     <textarea name="kno_content" id="content"><?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_content'];?>
 </textarea>
@@ -210,22 +193,39 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
                         });
                     <?php echo '</script'; ?>
 >
-                </div>
-                <br><br>
-
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">变更说明:</label>
-
-                    <div class="col-sm-9">
-                        <textarea class="form-control" name="kno_change"></textarea>
+                </div><br>
+                <a href="#" class="_50_attach _015_RequestList">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;添加附件</a>
+                <div id="attach" style="display: none" class="panel panel-primary  form-group-sm _015_RequestList">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">附件:</label>
+                            <div class="col-sm-6">
+                                <p id="i_select_files"></p>
+                                <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['attach_id']->value;?>
+" name="attach_id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div id="i_stream_files_queue">
+                                </div>
+                                <br>
+                                <a href="javascript:void(0)" class="btn btn-sm btn-primary"
+                                   onclick="javascript:_t.upload();">开始上传</a>
+                                <a href="javascript:void(0)" class="btn btn-sm btn-danger"
+                                   onclick="javascript:_t.stop();">停止上传</a>
+                                <a href="javascript:void(0)" class="btn btn-sm btn-default"
+                                   onclick="javascript:_t.cancel();">
+                                    &nbsp;取&nbsp;消&nbsp;</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <br>
-
                 <div class="_46_knowledge">
-                    <button name="edit_kno" class="btn btn-primary btn-sm ">提交审核</button>
+                    <button name="edit_kno" type="submit" class="btn btn-primary btn-sm ">提交审核</button>
                     &nbsp;&nbsp;
-                    <button class="btn btn-default btn-sm" onclick="window.history.go(-1)">返回</button>
+                    <a  href="javascript:void(0)" class="btn btn-default btn-sm" onclick="window.history.go(-1)">返回</a>
                 </div>
                 <br><br><br>
             </form>
@@ -256,6 +256,37 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
             }
         }
         document.getElementById('sortPopover').value = sort;
+    }
+
+    $('._50_attach').click(function () {
+        var attach = document.getElementById("attach");
+        if(attach.style.display=="none")
+            attach.style.display="block";
+        else
+            attach.style.display="none";
+    })
+
+    function checkValue() {
+        if (kno_form.kno_title.value == "") {
+            alert("知识主题不能为空！");
+            kno_form.kno_title.focus();
+            return false;
+        }
+        if (kno_form.kno_sort.value == "") {
+            alert("知识分类不能为空！");
+            kno_form.kno_sort.focus();
+            return false;
+        }
+        if (kno_form.kno_keyword.value == "") {
+            alert("关键字不能为空！");
+            kno_form.kno_keyword.focus();
+            return false;
+        }
+        if (kno_form.kno_change.value == "") {
+            alert("变更说明不能为空！");
+            kno_form.kno_change.focus();
+            return false;
+        }
     }
 <?php echo '</script'; ?>
 >

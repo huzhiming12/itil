@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-07 07:45:43
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-10 13:15:49
          compiled from "F:\wamp\www\itildemo\templates\share\request_detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:1546155f7cee85bb8e1-78268792%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '52fd92c1f5aaed87cba14f415b87740871f6e89d' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\share\\request_detail.html',
-      1 => 1444203933,
+      1 => 1444482940,
       2 => 'file',
     ),
   ),
@@ -92,8 +92,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             </tr>
         </table>
         <div>
-            <?php echo $_smarty_tpl->tpl_vars['res']->value['req_content'];?>
-
+            <?php echo $_smarty_tpl->tpl_vars['res']->value['req_content'];
+if ($_smarty_tpl->tpl_vars['res']->value['req_content']=='') {?><a>该请求已删除或不存在！</a><?php }?>
         </div>
     </div>
     <!---附件信息-->

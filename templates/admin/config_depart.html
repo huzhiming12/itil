@@ -17,7 +17,7 @@
     <div class="_011_RequestList">
         机构配置 &nbsp;&nbsp;
         <a href="#" title="添加机构">
-            <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal">
+            <button onclick="document.getElementById('depart_parent_name').value='无'" class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal">
                 +
             </button>
         </a>
@@ -35,7 +35,7 @@
 <!--添加机构的模态框-->
 <div id="myModal" class="modal fade">
     <div class="modal-dialog">
-        <form class="form-horizontal" name="adddepart" method="post" action="/itildemo/home/service/depart_ser.php"
+        <form class="form-horizontal" name="adddepart" onsubmit="return checkValue()" method="post" action="/itildemo/home/service/depart_ser.php"
               role="form">
             <div class="modal-content">
                 <div class="modal-header">
@@ -44,6 +44,12 @@
                     <h4 class="modal-title">添加机构</h4>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group form-group-sm">
+                        <label class="col-sm-3 control-label">上级机构：</label>
+                        <div class="col-sm-6">
+                            <input type="text" id="depart_parent_name" class="form-control" readonly>
+                        </div>
+                    </div>
                     <div class="form-group form-group-sm">
                         <label class="col-sm-3 control-label">机构名称：</label>
                         <div class="col-sm-6">
@@ -65,3 +71,16 @@
 
 </body>
 </html>
+
+<script>
+
+    function checkValue()
+    {
+        if(adddepart.depart_name.value=="")
+        {
+            alert("机构名称不能为空！");
+            adddepart.depart_name.focus();
+            return false;
+        }
+    }
+</script>

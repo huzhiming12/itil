@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-21 07:43:39
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-14 10:40:53
          compiled from "F:\wamp\www\itildemo\templates\admin\config_staff.html" */ ?>
 <?php /*%%SmartyHeaderCode:1822355a1de335d3062-09046241%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5567e853a1a58a23739c4e5b7dc669f5c78afe14' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\config_staff.html',
-      1 => 1442821415,
+      1 => 1444819227,
       2 => 'file',
     ),
   ),
@@ -75,12 +75,14 @@ function searchStaff()
         <div class="_011_RequestList">
             人员列表 &nbsp;&nbsp;
             <a href="#" title="添加人员">
-                <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal">
+                <button class="btn btn-sm btn-default"  data-toggle="modal" data-target="#myModal">
                     +
                 </button>
             </a>
         </div>
-        <div class="_015_RequestList _49_userlist" id="box">
+        <div style="width: 750px; height: 400px; overflow: scroll">
+            <div class="_015_RequestList _49_userlist" id="box">
+            </div>
         </div>
         <br>
     </div>
@@ -89,7 +91,7 @@ function searchStaff()
 <!--添加人员窗口-->
 <div id="myModal" class="modal fade">
     <div class="modal-dialog">
-        <form class="form-horizontal" action="/itildemo/home/service/staff_ser.php" method="post" role="form">
+        <form class="form-horizontal" name="adduser" onsubmit="return checkValue()" action="/itildemo/home/service/staff_ser.php" method="post" role="form">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -134,10 +136,10 @@ function searchStaff()
 
                         <div class="col-sm-4">
                             <label for="man">男</label>
-                            <input type="radio" name="sex" checked="true" id="man" value="man">
+                            <input type="radio" name="sex" checked id="man" value="man">
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label for="woman">女</label>
-                            <input type="radio" name="sex" checked="true" id="woman" value="woman">
+                            <input type="radio" name="sex" id="woman" value="woman">
                         </div>
                     </div>
                     <div class="form-group form-group-sm">
@@ -177,4 +179,28 @@ function searchStaff()
 </div>
 
 </body>
-</html><?php }} ?>
+</html>
+
+<?php echo '<script'; ?>
+>
+    $(function () {
+        $('[data-toggle="popover"]').popover();
+    });
+
+    function checkValue()
+    {
+        if(adduser.username.value=="")
+        {
+            alert("帐号不能为空！");
+            adduser.username.focus();
+            return false;
+        }
+        if(adduser.depart_name.value=="")
+        {
+            alert("所属机构不能为空，请在左侧选择机构后，再添加人员！");
+            adduser.depart_name.focus();
+            return false;
+        }
+    }
+<?php echo '</script'; ?>
+><?php }} ?>

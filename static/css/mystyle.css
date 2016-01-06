@@ -272,8 +272,7 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     color: #999;
 }
 
-._state_new,._state_cancel,._state_change,._state_pass,._state_un_evaluate,._state_evaluate
-{
+._state_new, ._state_cancel, ._state_change, ._state_pass, ._state_un_evaluate, ._state_evaluate {
     float: right;
     text-align: center;
     line-height: 19px;
@@ -287,23 +286,26 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
 ._state_new {
     background-color: #FE8263;
 }
+
 ._state_pass {
     background-color: #76C56D;
 }
+
 ._state_change {
     background-color: #EEAD40;
 }
+
 ._state_cancel {
     background-color: #72A5A7;
 }
-._state_un_evaluate{
-    background-color:#ee5f5b;
-}
-._state_evaluate
-{
-    background-color: #0099FF;
+
+._state_un_evaluate {
+    background-color: #ee5f5b;
 }
 
+._state_evaluate {
+    background-color: #0099FF;
+}
 
 ._42_knowledge {
     color: #6AA470;
@@ -340,8 +342,7 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     margin-bottom: 15px;
 }
 
-._span_high,._span_middle,._span_low,._span_new,._span_cancel
-{
+._span_high, ._span_middle, ._span_low, ._span_new, ._span_cancel {
     border-radius: 3px;
     line-height: 20px;
     font-size: 10px;
@@ -349,29 +350,28 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     width: 40px;
     text-align: center;
 }
-._span_high
-{
+
+._span_high {
     background-color: #E15656;
 }
-._span_middle
-{
+
+._span_middle {
     background-color: #E9981F;
 }
-._span_low
-{
+
+._span_low {
     background-color: #A6D037;
 }
-._span_new
-{
+
+._span_new {
     background-color: #FE8263;
 }
-._span_cancel
-{
-    background-color:#72A5A7;
+
+._span_cancel {
+    background-color: #72A5A7;
 }
 
-._48_task
-{
+._48_task {
     background: #F8F8F8 none repeat scroll 0% 0%;
     padding: 6px 20px;
     margin-bottom: 16px;
@@ -382,27 +382,23 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     border-radius: 4px;
 }
 
-._49_userlist
-{
+._49_userlist {
     height: 400px;
-    overflow-y: scroll;
+    width: 900px;
 }
 
-._50_attach
-{
+._50_attach {
     background: url("/itildemo/static/img/attach.png") no-repeat center left;
     background-size: 20px 20px;
     display: inline-block;
     font-size: 10px;
 }
 
-._51_border
-{
+._51_border {
     border-bottom: thin solid #DDDDDD;
 }
 
-._chart_star_1,._chart_star_2,._chart_star_3,._chart_star_4,._chart_star_5
-{
+._chart_star_1, ._chart_star_2, ._chart_star_3, ._chart_star_4, ._chart_star_5 {
     text-align: center;
     font-size: 10px;
     color: #ffffff;
@@ -410,31 +406,63 @@ body, div, th, td, span, li, a, label, textarea, select, input, button {
     height: 15px;
 }
 
-._chart_star_1
-{
+._chart_star_1 {
     background-color: #DD574C;
 }
-._chart_star_2
-{
+
+._chart_star_2 {
     background-color: #F7AD28;
 }
-._chart_star_3
-{
+
+._chart_star_3 {
     background-color: #69BA4F;
 }
-._chart_star_4
-{
+
+._chart_star_4 {
     background-color: #57D6D4;
 }
-._chart_star_5
-{
+
+._chart_star_5 {
     background-color: #0099FF;
 }
 
-._52_Excel_export
-{
+._52_Excel_export {
     background: url("/itildemo/static/img/excel.jpg") no-repeat center left;
     background-size: 20px 20px;
     display: inline-block;
     font-size: 10px;
+}
+
+._login_body {
+    background: url("/itildemo/static/img/2.jpg") no-repeat center;
+    background-size: 100%;
+
+}
+
+._login_form_box {
+    background: rgba(255, 255, 255, 0.4) !important;
+    filter: Alpha(opacity=40);
+    background: #fff; /*　使用IE专属滤镜实现IE背景透明*/
+    background-color: #fff;
+    width: 600px;
+    height: 460px;
+    border-radius: 10px;
+    margin-top: 100px;
+    margin-left: 383px;
+}
+
+._login_form {
+    margin-left: 100px;
+    padding-top: 100px;
+    width: 400px;
+}
+
+._53_user_info
+{
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    background-color: #DCDDDE;
+    font-size: 14px;
+    font-weight: 800;
 }

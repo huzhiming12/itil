@@ -37,7 +37,7 @@
         <div class="_45_knowledge">
             <!--标题栏-->
             <div>
-                <a href="/itildemo/home/controller/admin/know_detail.php?kno_num=<{$kno.kno_num}>">
+                <a href="/itildemo/home/controller/admin/know_detail.php?kno_num=<{$kno.kno_num}>&readflag=1">
                     <span class="_38_knowledge_title">
                     <{if $searchcontent!=''}>
                     <{$kno.kno_title|replace:$searchcontent:"<font style='color: red'>$searchcontent</font>"}>
@@ -77,7 +77,7 @@
                     <{$kno.kno_keyword}>
                     <{/if}>
                 </span>
-                <span class="_44_knowledge">创建：<{$kno.kno_author}>  <{$kno.kno_sub_time}> 阅读(0) 评论(0)</span>
+                <span class="_44_knowledge">创建：<{$kno.kno_author}>  <{$kno.kno_sub_time}> 阅读(<{$kno.kno_read}>)</span>
             </div>
         </div>
         <{/foreach}>

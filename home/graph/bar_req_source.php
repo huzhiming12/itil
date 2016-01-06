@@ -114,7 +114,7 @@ $bplot->SetWidth(0.5);
 
 // We want to display the value of each bar at the top
 $bplot->value->Show();
-$bplot->value->SetFont(FF_ARIAL, FS_NORMAL, 10);
+$bplot->value->SetFont(FF_SIMSUN, FS_NORMAL, 10);
 $bplot->value->SetAlign('left', 'center');
 $bplot->value->SetColor('black');
 $bplot->value->SetFormat('%d');

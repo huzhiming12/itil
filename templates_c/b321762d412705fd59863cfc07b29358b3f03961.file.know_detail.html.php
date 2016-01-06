@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 08:18:46
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-10 12:17:03
          compiled from "F:\wamp\www\itildemo\templates\share\know_detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:1671755f2d67bd50c31-24948832%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b321762d412705fd59863cfc07b29358b3f03961' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\share\\know_detail.html',
-      1 => 1442978064,
+      1 => 1444479418,
       2 => 'file',
     ),
   ),
@@ -67,7 +67,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <div class="_020_KnowledgeDetail">
         创建：<?php echo $_smarty_tpl->tpl_vars['res']->value['kno_author'];?>
 &nbsp; <?php echo $_smarty_tpl->tpl_vars['res']->value['kno_sub_time'];?>
-&nbsp;   阅读(88) 评论(2)
+&nbsp;   阅读(<?php echo $_smarty_tpl->tpl_vars['res']->value['kno_read'];?>
+)
     </div>
     <br>
 

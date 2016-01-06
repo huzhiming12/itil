@@ -33,8 +33,8 @@
         <div class="_45_knowledge">
             <!--标题栏-->
             <div>
-                <a href="/itildemo/home/controller/admin/know_detail.php?kno_num=<{$kno.kno_num}>"><span
-                        class="_38_knowledge_title"><{$kno.kno_title}></span></a>
+                <a href="/itildemo/home/controller/admin/know_detail.php?kno_num=<{$kno.kno_num}>">
+                    <span class="_38_knowledge_title"><{$kno.kno_title}></span></a>
                 <span class="_40_knowledge">&nbsp;&nbsp;[分类：<{$kno.kno_sort}>]</span>
                 <{if $kno.kno_state=='1'}>
                 <span class="_state_new">&nbsp;新采集&nbsp;</span>
@@ -51,7 +51,7 @@
             <!--结尾关键字栏-->
             <div>
                 <span class="_42_knowledge">关键字：<{$kno.kno_keyword}></span>
-                <span class="_44_knowledge">创建：<{$kno.kno_author}>  <{$kno.kno_sub_time}> 阅读(0) 评论(0)</span>
+                <span class="_44_knowledge">创建：<{$kno.kno_author}>  <{$kno.kno_sub_time}> 阅读(<{$kno.kno_read}>)</span>
             </div>
         </div>
         <{/foreach}>

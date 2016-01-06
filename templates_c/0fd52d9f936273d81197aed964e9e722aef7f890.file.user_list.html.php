@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-11 07:00:21
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-14 10:33:51
          compiled from "F:\wamp\www\itildemo\templates\admin\user_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:2960555f27c05c0beb3-05636782%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0fd52d9f936273d81197aed964e9e722aef7f890' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\user_list.html',
-      1 => 1441161433,
+      1 => 1444818828,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_55f27c05cf5526_36270106',
   'variables' => 
   array (
     'res' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'depart_id' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55f27c05cf5526_36270106',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_55f27c05cf5526_36270106')) {function content_55f27c05cf5526_36270106($_smarty_tpl) {?><!DOCTYPE html>
 <html>
@@ -31,10 +31,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <meta charset="UTF-8">
     <title></title>
     <?php echo '<script'; ?>
+ language="JavaScript" src="/itildemo/static/js/jquery-1.11.1.min.js"><?php echo '</script'; ?>
+>
+    <link rel="stylesheet" href="/itildemo/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/itildemo/static/css/mystyle.css">
+    <?php echo '<script'; ?>
+ language="JavaScript" src="/itildemo/static/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
  language="javascript" src="/itildemo/static/js/ajax.js"><?php echo '</script'; ?>
 >
 </head>
 <body>
+
+<iframe style="display:none" onload="func()"></iframe>
 <table class="table table-hover">
     <thead>
     <tr>
@@ -44,7 +54,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <th>职工号</th>
         <th>所属机构</th>
         <th>职务</th>
-        <th>联系方式</th>
+        <th>电话</th>
+        <th>手机</th>
+        <th>邮箱</th>
+        <th>角色</th>
         <th>操作</th>
     </tr>
     <tbody>
@@ -61,19 +74,33 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
         <td><?php echo $_smarty_tpl->tpl_vars['user']->value['user_name'];?>
 </td>
         <td><?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
-</td>
+</a></td>
         <td><?php echo $_smarty_tpl->tpl_vars['user']->value['staff_id'];?>
 </td>
         <td><?php echo $_smarty_tpl->tpl_vars['user']->value['depart_name'];?>
 </td>
         <td><?php echo $_smarty_tpl->tpl_vars['user']->value['position'];?>
 </td>
+        <td><?php echo $_smarty_tpl->tpl_vars['user']->value['phone'];?>
+</td>
         <td><?php echo $_smarty_tpl->tpl_vars['user']->value['telephone'];?>
 </td>
-
-        <td><a href="javascript:void(0);" onclick="AJAX('/itildemo/home/controller/admin/user_list.php?flag=1&depart_id=<?php echo $_smarty_tpl->tpl_vars['depart_id']->value;?>
+        <td><?php echo $_smarty_tpl->tpl_vars['user']->value['email'];?>
+</td>
+        <td>
+            <?php if ($_smarty_tpl->tpl_vars['user']->value['user_role']==1) {?>
+            用户
+            <?php } elseif ($_smarty_tpl->tpl_vars['user']->value['user_role']==2) {?>
+            工程师
+            <?php } else { ?>
+            管理员
+            <?php }?>
+        </td>
+        <td><a href="javascript:void(0);"
+               onclick="AJAX('/itildemo/home/controller/admin/user_list.php?flag=1&depart_id=<?php echo $_smarty_tpl->tpl_vars['depart_id']->value;?>
 &user_id=<?php echo $_smarty_tpl->tpl_vars['user']->value['user_id'];?>
-')">删除</a></td>
+')">删除</a>
+        </td>
     </tr>
     <?php } ?>
     </tbody>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-29 03:21:37
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-12 07:25:30
          compiled from "F:\wamp\www\itildemo\templates\admin\graph_req.html" */ ?>
 <?php /*%%SmartyHeaderCode:9440560607ffd3db85-14670314%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2fe0e60b9a517e9b5b19cb3d40dd5cf4d6b20eed' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\graph_req.html',
-      1 => 1443496893,
+      1 => 1444634727,
       2 => 'file',
     ),
   ),
@@ -84,7 +84,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div style="width: 100%;border-bottom: 2px solid #426AA3;"></div>
             <br>
             <label class="control-label">请求趋势统计</label>
-            <img id="line_req" style="width: 100%" src="/itildemo/home/graph/line_req.php">
+            <img id="line_req" src="/itildemo/home/graph/line_req.php">
             <br>
         </div>
         <!--请求分类统计-->

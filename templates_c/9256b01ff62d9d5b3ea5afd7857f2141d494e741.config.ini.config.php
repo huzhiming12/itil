@@ -15,9 +15,9 @@
     array (
       'vars' => 
       array (
-        'extFilters' => '".doc" ,".docx" ,".ppt" ,".pptx" ,".xml" ,".xmlx" ,".pdf" ,".txt" ,".php" ,".html" ,".wmv" ,".asf" ,".rm" ,".rmvb" ,".mpg" ,".mpe" ,".3gp" ,".mov" ,".mp4" ,".avi" ,".mkv" ,".flv" ,".rar" ,".zip" ,".tar" ,".iso" ,".jar" ,".exe" ,".msi"',
-        'MaxFileSize' => 10485760,
-        'MaxFileCount' => 10,
+        'extFilters' => '".doc" ,".docx" ,".ppt" ,".pptx" ,".xls" ,".xlsx" ,".pdf" ,".txt" ,".html" ,".wmv" ,".asf" ,".rm" ,".rmvb" ,".mpg" ,".mpe" ,".3gp" ,".mov" ,".mp4" ,".avi" ,".mkv" ,".flv" ,".rar" ,".zip" ,".tar" ,".iso" ,".jar" ,".exe" ,".msi"',
+        'MaxFileSize' => 52428800,
+        'MaxFileCount' => 5,
       ),
     ),
     'email_message' => 

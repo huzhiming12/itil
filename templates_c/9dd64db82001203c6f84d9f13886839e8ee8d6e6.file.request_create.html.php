@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 08:22:08
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-14 11:44:45
          compiled from "F:\wamp\www\itildemo\templates\user\request_create.html" */ ?>
 <?php /*%%SmartyHeaderCode:2597755f78b99087a22-76087136%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9dd64db82001203c6f84d9f13886839e8ee8d6e6' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\user\\request_create.html',
-      1 => 1442996523,
+      1 => 1444823072,
       2 => 'file',
     ),
   ),
@@ -58,7 +58,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <br>
 
     <div class="_013_RequestList">
-        <form class="form-horizontal form-group-sm" action="/itildemo/home/service/req_ser.php" method="post">
+        <form class="form-horizontal form-group-sm" name="req_form" onsubmit="return checkValue()" action="/itildemo/home/service/req_ser.php" method="post">
             <div class="form-group">
                 <label class="col-sm-2 control-label">标题:</label>
 
@@ -193,6 +193,28 @@ $_smarty_tpl->tpl_vars['c_sort']->_loop = true;
         else
             attach.style.display="none";
     })
+
+    function checkValue()
+    {
+        if(req_form.req_title.value=="")
+        {
+            alert("请求标题不能为空！");
+            req_form.req_title.focus();
+            return false;
+        }
+        if(req_form.req_sort.value=="")
+        {
+            alert("请求分类不能为空！");
+            req_form.req_sort.focus();
+            return false;
+        }
+        if(req_form.req_keyword.value=="")
+        {
+            alert("关键字不能为空！");
+            req_form.req_keyword.focus();
+            return false;
+        }
+    }
 <?php echo '</script'; ?>
 >
 

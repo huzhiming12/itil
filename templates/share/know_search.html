@@ -51,7 +51,8 @@
             <tr>
                 <{/if}>
                 <td style="line-height: 30px; padding-left: 80px">
-                    <a href="/itildemo/home/controller/admin/know_detail.php?kno_num=<{$res.kno_num}>"><{$res.kno_title}></a>&nbsp;&nbsp;&nbsp;
+                    <a href="/itildemo/home/controller/admin/know_detail.php?kno_num=<{$res.kno_num}>&readflag=1"><{$res.kno_title}></a>&nbsp;&nbsp;&nbsp;
+                    <span style="color: #999">阅读(<{$res.kno_read}>)</span>
                 </td>
                 <{if $smarty.foreach.kno.index%2 ==1}>
             </tr>

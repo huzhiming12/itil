@@ -39,9 +39,73 @@ for ($i = 0; $i < count($res); $i++)
     $res[$i]['hour'] = floor($time / 3600);
     $res[$i]['minute'] = floor($time % 3600 / 60);
 }
+$list = "(";
+for ($i = 0; $i < count($undo_res); $i++)
+{
+    if ($i == count($undo_res) - 1)
+    {
+        $list .= "'" . $undo_res[$i]['req_num'] . "'";
+    }
+    else
+    {
+        $list .= "'" . $undo_res[$i]['req_num'] . "',";
+    }
+}
+$list .= ")";
+$smarty->assign("undo_req_num", $list);
+
+
+$list = "(";
+for ($i = 0; $i < count($change_req); $i++)
+{
+    if ($i == count($change_req) - 1)
+    {
+        $list .= "'" . $change_req[$i]['req_num'] . "'";
+    }
+    else
+    {
+        $list .= "'" . $change_req[$i]['req_num'] . "',";
+    }
+}
+$list .= ")";
+$smarty->assign("change_req_num", $list);
+
+$list = "";
+$list = "(";
+for ($i = 0; $i < count($over_time_req); $i++)
+{
+    if ($i == count($over_time_req) - 1)
+    {
+        $list .= "'" . $over_time_req[$i]['req_num'] . "'";
+    }
+    else
+    {
+        $list .= "'" . $over_time_req[$i]['req_num'] . "',";
+    }
+}
+$list .= ")";
+$smarty->assign("over_time_req_num", $list);
+
+
+$list = "(";
+for ($i = 0; $i < count($res); $i++)
+{
+    if ($i == count($res) - 1)
+    {
+        $list .= "'" . $res[$i]['req_num'] . "'";
+    }
+    else
+    {
+        $list .= "'" . $res[$i]['req_num'] . "',";
+    }
+}
+$list .= ")";
+$smarty->assign("doing_req_num", $list);
+
+
 
 $smarty->assign("change_req", $change_req);
-$smarty->assign("undo_res", $undo_res);
+$smarty->assign("undo_req", $undo_res);
 $smarty->assign("over_time_req", $over_time_req);
-$smarty->assign("doing_req",$res);
+$smarty->assign("doing_req", $res);
 $smarty->display("admin/request_home.html");

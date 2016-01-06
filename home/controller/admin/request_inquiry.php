@@ -84,7 +84,7 @@ $pagetool = new PageTool($res[0][0]);
 $pagetool->url = "request_inquiry.php";
 $pagetool->url_arg = "options=$options&date1=$date1&date2=$date2&user=$user&engineer=$engineer&state=$state&keyword=$keyword";
 $pageNow = 1;
-$pagetool->sql = "select *from t_req where 1=1 $sql order by req_time desc";
+$pagetool->sql = "select t_req.*,(select count(req_num) from t_feedback where t_feedback.req_num=t_req.req_num) fd from t_req where 1=1 $sql order by req_time desc";
 if ($_GET['pageNow'])
 {
     $pageNow = $_GET['pageNow'];

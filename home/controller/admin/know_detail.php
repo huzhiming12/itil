@@ -33,6 +33,11 @@ $res = $sqltool->dbQuery($sql);
 $attachment = $sqltool->dbQuery("select attach_name,attach_id from t_attachment,t_kno where kno_attach_id=attach_id and kno_num='$kno_num'");
 $change = $sqltool->dbQuery("select *from t_kno_change where kno_num='$kno_num'");
 
+//更新阅读次数
+if($_GET['readflag']==1)
+{
+    $sqltool->dbUpdate("update t_kno set kno_read=kno_read+1 where kno_num='$kno_num'");
+}
 
 $smarty->assign("res",$res[0]);
 $smarty->assign("attach",$attachment);

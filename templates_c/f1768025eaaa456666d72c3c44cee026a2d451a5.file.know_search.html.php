@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-15 06:51:33
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-10 12:24:17
          compiled from "F:\wamp\www\itildemo\templates\share\know_search.html" */ ?>
 <?php /*%%SmartyHeaderCode:1517255f6710e2608d5-27383176%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f1768025eaaa456666d72c3c44cee026a2d451a5' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\share\\know_search.html',
-      1 => 1442299888,
+      1 => 1444479854,
       2 => 'file',
     ),
   ),
@@ -104,8 +104,10 @@ $_smarty_tpl->tpl_vars['res']->_loop = true;
                 <?php }?>
                 <td style="line-height: 30px; padding-left: 80px">
                     <a href="/itildemo/home/controller/admin/know_detail.php?kno_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['kno_num'];?>
-"><?php echo $_smarty_tpl->tpl_vars['res']->value['kno_title'];?>
+&readflag=1"><?php echo $_smarty_tpl->tpl_vars['res']->value['kno_title'];?>
 </a>&nbsp;&nbsp;&nbsp;
+                    <span style="color: #999">阅读(<?php echo $_smarty_tpl->tpl_vars['res']->value['kno_read'];?>
+)</span>
                 </td>
                 <?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['kno']['index']%2==1) {?>
             </tr>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-08 02:39:55
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-14 11:56:57
          compiled from "F:\wamp\www\itildemo\templates\engineer\task_detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:1172355f91637852724-76109748%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '73759c41a706d1b427c79987b3578860003b9cc1' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\engineer\\task_detail.html',
-      1 => 1444271988,
+      1 => 1444823811,
       2 => 'file',
     ),
   ),
@@ -438,7 +438,7 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
 >
     <?php }?>
     <!--解决方案编辑-->
-    <form method="post" name="solution_form" onsubmit="return CheckValue()"
+    <form method="post" name="solution_form"
           action="/itildemo/home/service/req_ser.php?req_num=<?php echo $_smarty_tpl->tpl_vars['res']->value['req_num'];?>
 &req_complex=<?php echo $_smarty_tpl->tpl_vars['ass']->value['req_complex'];?>
 ">
@@ -494,11 +494,5 @@ $_smarty_tpl->tpl_vars['pro']->_loop = true;
         $('[data-toggle="popover"]').popover('hide');
     }
 
-    function CheckValue() {
-        if (solution_form.req_solution.value == "") {
-            alert("解决方案不能为空！");
-            return false;
-        }
-    }
 <?php echo '</script'; ?>
 ><?php }} ?>

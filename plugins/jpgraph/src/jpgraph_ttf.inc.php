@@ -300,10 +300,10 @@ class TTF {
 	    	FS_BOLD  =>'comicbd.ttf',
 	    	FS_ITALIC =>'',
 	    	FS_BOLDITALIC =>'' ),
-	    FF_ARIAL =>   array(FS_NORMAL =>'arial.ttf',
-	    	FS_BOLD  =>'arialbd.ttf',
-	    	FS_ITALIC =>'ariali.ttf',
-	    	FS_BOLDITALIC =>'arialbi.ttf' ) ,
+	    FF_ARIAL =>   array(FS_NORMAL =>'simhei.ttf',
+	    	FS_BOLD  =>'simhei.ttf',
+	    	FS_ITALIC =>'simhei.ttf',
+	    	FS_BOLDITALIC =>'simhei.ttf' ) ,
 	    FF_VERA =>    array(FS_NORMAL =>'Vera.ttf',
 	    	FS_BOLD  =>'VeraBd.ttf',
 	    	FS_ITALIC =>'VeraIt.ttf',
@@ -319,7 +319,7 @@ class TTF {
 
 	    /* Chinese fonts */
 	    FF_SIMSUN  =>  array(
-	    	FS_NORMAL =>'simsun.ttc',
+	    	FS_NORMAL =>'simhei.ttf',
 	    	FS_BOLD =>'simhei.ttf',
 	    	FS_ITALIC =>'',
 	    	FS_BOLDITALIC =>'' ),

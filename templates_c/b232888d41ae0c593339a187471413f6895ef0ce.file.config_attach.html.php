@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-21 11:06:24
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-10 10:59:42
          compiled from "F:\wamp\www\itildemo\templates\admin\config_attach.html" */ ?>
 <?php /*%%SmartyHeaderCode:3013955ffa4799cab81-68208354%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b232888d41ae0c593339a187471413f6895ef0ce' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\config_attach.html',
-      1 => 1442833579,
+      1 => 1444474755,
       2 => 'file',
     ),
   ),
@@ -105,9 +105,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                 <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
                                                                              value="pptx">.pptx</label>&nbsp;&nbsp;
                                 <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
-                                                                             value="xml">.xls</label>&nbsp;&nbsp;
+                                                                             value="xls">.xls</label>&nbsp;&nbsp;
                                 <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
-                                                                             value="xmlx">.xlsx</label>&nbsp;&nbsp;
+                                                                             value="xlsx">.xlsx</label>&nbsp;&nbsp;
                                 <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"
                                                                              value="pdf">.pdf</label>&nbsp;&nbsp;
                                 <label class='btn btn-sm btn-default'><input type='checkbox' name="file_type[]"

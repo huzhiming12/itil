@@ -22,7 +22,7 @@
     <br>
 
     <div class="_013_RequestList">
-        <form class="form-horizontal form-group-sm" action="/itildemo/home/service/know_ser.php?flag=admin" method="post">
+        <form class="form-horizontal form-group-sm" name="kno_form" onsubmit="return checkValue()" action="/itildemo/home/service/know_ser.php?flag=admin" method="post">
             <div class="_015_RequestList">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">知识主题:</label>
@@ -61,7 +61,10 @@
                                             <{/foreach}>
                                         </table>
                                     </div>
-                                    <br><br><button class='btn btn-sm btn-primary' onclick='selectSort()'>确定</button>
+                                    <br><br>
+                                    <div class='_46_knowledge'>
+                                    <button class='btn btn-sm btn-primary' onclick='selectSort()'> 确 定 </button>
+                                    </div>
                                 </div>
                                ">
                     </div>
@@ -75,7 +78,6 @@
                     <label class="col-sm-2 control-label">关联请求:</label>
                     <div class="col-sm-3">
                         <input type="text" name="req_num" id="reqPopover" placeholder="请求编号" class="form-control"
-                               readonly
                                data-toggle="popover"
                                data-container="body"
                                data-placement="bottom"
@@ -84,18 +86,20 @@
                                data-content="
                                <div style='max-height:300px;overflow-y:scroll'>
                                     <table class='table table-hover'>
+                                        <tr><th>请求编号</th><th>请求标题</th><th>请求人</th><th>请求人帐号</th>
+                                        </tr>
                                          <tbody>
                                          <{foreach from=$reqlist item=req}>
                                           <tr>
                                              <td><a href='javascript:void(0)' onclick=&quot;chooseReq('<{$req.req_num}>')&quot;><{$req.req_num}></a></td>
                                              <td><{$req.req_title}></td>
-                                             <td>560001</td>
+                                             <td><{$req.name}></td>
+                                              <td><{$req.req_author}></td>
                                           </tr>
                                           <{/foreach}>
                                           <tbody>
                                     </table>
                                </div>
-
                                 ">
                     </div>
 
@@ -177,6 +181,24 @@
         else
             attach.style.display="none";
     })
+
+    function checkValue() {
+        if (kno_form.kno_title.value == "") {
+            alert("知识主题不能为空！");
+            kno_form.kno_title.focus();
+            return false;
+        }
+        if (kno_form.kno_sort.value == "") {
+            alert("知识分类不能为空！");
+            kno_form.kno_sort.focus();
+            return false;
+        }
+        if (kno_form.kno_keyword.value == "") {
+            alert("关键字不能为空！");
+            kno_form.kno_keyword.focus();
+            return false;
+        }
+    }
 </script>
 
 <script type="text/javascript">

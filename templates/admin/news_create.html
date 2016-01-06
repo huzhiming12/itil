@@ -19,7 +19,7 @@
     </div>
     <br>
     <div class="_013_RequestList">
-        <form class="form-horizontal" action="/itildemo/home/service/news_ser.php" method="post">
+        <form class="form-horizontal" name="add_news" onsubmit="return checkValue()" action="/itildemo/home/service/news_ser.php" method="post">
             <div class="form-group form-group-sm">
                 <label class="col-sm-2 control-label">通知标题:</label>
                 <div class="col-sm-8">
@@ -82,6 +82,16 @@
         else
             attach.style.display="none";
     })
+
+    function checkValue()
+    {
+        if(add_news.news_title.value=="")
+        {
+            alert("通知标题不能为空！")
+            add_news.news_title.focus();
+            return false;
+        }
+    }
 </script>
 <script type="text/javascript">
     /**

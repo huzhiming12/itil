@@ -11,16 +11,19 @@
     <div class="nav-item-inner nav-home">服务台</div>
 </li>
 <li class="nav-item dl-selected">
-    <div class="nav-item-inner nav-order">知识库</div>
+    <div class="nav-item-inner nav-inventory">知识库</div>
 </li>
 <li class="nav-item dl-selected">
     <div class="nav-item-inner nav-order">报表</div>
 </li>
 <li class="nav-item dl-selected">
-    <div class="nav-item-inner nav-order">配置</div>
+    <div class="nav-item-inner nav-supplier">配置</div>
 </li>
 <li class="nav-item dl-selected">
-    <div class="nav-item-inner nav-order">公告</div>
+    <div class="nav-item-inner nav-goods">公告</div>
+</li>
+<li class="nav-item dl-selected">
+    <div class="nav-item-inner nav-goods">个人信息</div>
 </li>
 <{/block}>
 
@@ -76,7 +79,6 @@
                                 {id: '2', text: '人员配置', href: '/itildemo/home/controller/admin/config_staff.php'},
                                 {id: '3', text: '附件上传配置', href: '/itildemo/home/controller/admin/config_attach.php'},
                                 {id: '4', text: '知识请求分类配置', href: '/itildemo/home/controller/admin/config_sort.php'},
-                                {id: '5', text: '邮件提示内容配置', href: '/itildemo/home/controller/admin/config_sort.php'},
                             ]
                         }]
                     },
@@ -88,6 +90,16 @@
                             items: [
                                 {id: '1', text: '公告列表', href: '/itildemo/home/controller/share/news_list.php'},
                                 {id: '2', text: '新建公告', href: '/itildemo/home/controller/admin/news_create.php'},
+                            ]
+                        }]
+                    },
+                    {
+                        id: '6',
+                        homePage: '1',
+                        menu: [{
+                            text: '个人信息',
+                            items: [
+                                {id: '1', text: '个人信息', href: '/itildemo/home/controller/share/info.php'},
                             ]
                         }]
                     },

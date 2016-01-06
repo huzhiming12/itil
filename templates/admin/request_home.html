@@ -15,7 +15,7 @@
 <div class="_012_RequestList">
     <div class="_034_request_home">
         <ul id="myTab" class="nav nav-tabs title_font">
-            <li class="active"><a href="#home" data-toggle="tab">待审核请求(<{$undo_res|count}>)</a></li>
+            <li class="active"><a href="#home" data-toggle="tab">待审核请求(<{$undo_req|count}>)</a></li>
             <li><a href="#ios" data-toggle="tab">变更请求(<{$change_req|count}>)</a></li>
             <li><a href="#java" data-toggle="tab">逾期请求(<{$over_time_req|count}>)</a></li>
             <li><a href="#req" data-toggle="tab">请求追踪(<{$doing_req|count}>)</a> </li>
@@ -32,38 +32,33 @@
                     <th></th>
                     <th>请求编号</th>
                     <th>请求标题</th>
+                    <th>请求分类</th>
                     <th>请求人</th>
                     <th>请求时间</th>
                     <th>请求状态</th>
-                    <th>操作</th>
                 </tr>
                 <tbody>
-                <{foreach from=$undo_res item=req name=req}>
+                <{foreach from=$undo_req item=req name=req}>
                 <tr>
                     <td><{$smarty.foreach.req.index+1}></td>
                     <td>
                         <a href="request_assign.php?req_num=<{$req.req_num}>"><{$req.req_num}></a>
                     </td>
                     <td><{$req.req_title}></td>
+                    <td><{$req.req_sort}></td>
                     <td><{$req.req_author}></td>
                     <td><{$req.req_time}></td>
                     <td>
-                        <{if $req.req_state=='1'}>
-                        <span>&nbsp;未处理&nbsp;</span>
-                        <{else if $req.req_state=='2'}>
-                        <span>&nbsp;已指派&nbsp;</span>
-                        <{else if $req.req_state=='3'}>
-                        <span>&nbsp;已取消&nbsp;</span>
-                        <{else if $req.req_state=='4'}>
-                        <span>&nbsp;已解决&nbsp;</span>
-                        <{/if}>
+                        <span class="_span_new">&nbsp;未处理&nbsp;</span>
                     </td>
-                    <td>删除</td>
                 </tr>
                 <{/foreach}>
                 </tbody>
                 </thead>
             </table>
+            <{if $undo_req|count!=0}>
+            <a href="/itildemo/home/service/excel_export_ser.php?list=<{$undo_req_num}>&title=待审核请求列表" class="_52_Excel_export">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;导出</a>
+            <{/if}>
         </div>
         <!--变更列表-->
         <div class="tab-pane" id="ios">
@@ -93,6 +88,9 @@
                 </tbody>
                 </thead>
             </table>
+            <{if $change_req|count!=0}>
+            <a href="/itildemo/home/service/excel_export_ser.php?list=<{$change_req_num}>&title=变更请求列表" class="_52_Excel_export">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;导出</a>
+            <{/if}>
         </div>
         <!--逾期列表-->
         <div class="tab-pane" id="java">
@@ -124,6 +122,9 @@
                 </tbody>
                 </thead>
             </table>
+            <{if $over_time_req|count!=0}>
+            <a href="/itildemo/home/service/excel_export_ser.php?list=<{$over_time_req_num}>&title=逾期请求列表" class="_52_Excel_export">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;导出</a>
+            <{/if}>
         </div>
         <!--请求追踪-->
         <div class="tab-pane" id="req">
@@ -178,6 +179,9 @@
                 </tbody>
                 </thead>
             </table>
+            <{if $doing_req|count!=0}>
+            <a href="/itildemo/home/service/excel_export_ser.php?list=<{$doing_req_num}>" class="_52_Excel_export">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;导出</a>
+            <{/if}>
         </div>
 
         <br><br>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-22 13:04:42
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-10 12:19:55
          compiled from "F:\wamp\www\itildemo\templates\admin\know_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:2983055f6b0f251c895-08352182%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7530df37d7fd0c828ef3f2b681dd2dbf30d3a83b' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\know_list.html',
-      1 => 1442924683,
+      1 => 1444479590,
       2 => 'file',
     ),
   ),
@@ -69,8 +69,8 @@ $_smarty_tpl->tpl_vars['kno']->_loop = true;
             <!--标题栏-->
             <div>
                 <a href="/itildemo/home/controller/admin/know_detail.php?kno_num=<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_num'];?>
-"><span
-                        class="_38_knowledge_title"><?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_title'];?>
+">
+                    <span class="_38_knowledge_title"><?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_title'];?>
 </span></a>
                 <span class="_40_knowledge">&nbsp;&nbsp;[分类：<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_sort'];?>
 ]</span>
@@ -93,7 +93,8 @@ $_smarty_tpl->tpl_vars['kno']->_loop = true;
 </span>
                 <span class="_44_knowledge">创建：<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_author'];?>
   <?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_sub_time'];?>
- 阅读(0) 评论(0)</span>
+ 阅读(<?php echo $_smarty_tpl->tpl_vars['kno']->value['kno_read'];?>
+)</span>
             </div>
         </div>
         <?php } ?>

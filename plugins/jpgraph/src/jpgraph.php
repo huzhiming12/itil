@@ -196,10 +196,10 @@ if (!defined('TTF_DIR')) {
             die($msg);
         }
         else {
-            define('TTF_DIR', $sroot.'/fonts/');
+            define('TTF_DIR', dirname(__FILE__));
         }
     } else {
-        define('TTF_DIR','/usr/share/fonts/truetype/');
+        define('TTF_DIR',dirname(__FILE__));
     }
 }
 
@@ -500,12 +500,12 @@ class Graph {
     public $cache_name;   // File name to be used for the current graph in the cache directory
     public $xgrid=null;   // X Grid object (linear or logarithmic)
     public $ygrid=null,$y2grid=null; //dito for Y
-    public $doframe=true,$frame_color='#DDDDDD', $frame_weight=1; // Frame around graph ×îÍâ²ã±ß¿òÑÕÉ«
+    public $doframe=true,$frame_color='#DDDDDD', $frame_weight=1; // Frame around graph ï¿½ï¿½ï¿½ï¿½ï¿½ß¿ï¿½ï¿½ï¿½É«
     public $boxed=false, $box_color='black', $box_weight=1;  // Box around plot area
     public $doshadow=false,$shadow_width=4,$shadow_color='gray@0.5'; // Shadow for graph
     public $xaxis=null;   // X-axis (instane of Axis class)
     public $yaxis=null, $y2axis=null, $ynaxis=array(); // Y axis (instance of Axis class)
-    public $margin_color='white'; // Margin color of graph Íâ²ã±³¾°
+    public $margin_color='white'; // Margin color of graph ï¿½ï¿½ã±³ï¿½ï¿½
     public $plotarea_color=array(255,255,255); // Plot area color
     public $title,$subtitle,$subsubtitle;  // Title and subtitle(s) text object
     public $axtype="linlin";  // Type of axis

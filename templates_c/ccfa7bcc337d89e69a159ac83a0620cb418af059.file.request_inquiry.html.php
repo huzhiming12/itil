@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-09 13:48:47
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-12 07:23:00
          compiled from "F:\wamp\www\itildemo\templates\admin\request_inquiry.html" */ ?>
 <?php /*%%SmartyHeaderCode:1089055e3f86e8afd41-50589588%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ccfa7bcc337d89e69a159ac83a0620cb418af059' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_inquiry.html',
-      1 => 1444398487,
+      1 => 1444634577,
       2 => 'file',
     ),
   ),
@@ -188,8 +188,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <th>请求标题</th>
                 <th>请求人</th>
                 <th>请求时间</th>
-                <th>请求状态</th>
                 <th>工程师</th>
+                <th>请求状态</th>
             </tr>
             <tbody>
             <?php  $_smarty_tpl->tpl_vars['req'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['req']->_loop = false;
@@ -212,6 +212,8 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_time'];?>
 </td>
+                <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_finish_engineer'];?>
+</td>
                 <td>
                     <?php if ($_smarty_tpl->tpl_vars['req']->value['req_state']==1) {?>
                     <span class="_span_new">未处理</span>
@@ -222,9 +224,11 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
                     <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_state']==4) {?>
                     <span class="_span_low">已解决</span>
                     <?php }?>
+
+                    <?php if ($_smarty_tpl->tpl_vars['req']->value['fd']==1) {?>
+                    <span class="_state_evaluate" style="float: none">已评价</span>
+                    <?php }?>
                 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_finish_engineer'];?>
-</td>
             </tr>
             <?php } ?>
             </tbody>

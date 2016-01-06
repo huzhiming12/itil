@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-07 05:24:06
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-14 08:26:28
          compiled from "F:\wamp\www\itildemo\templates\admin\request_create.html" */ ?>
 <?php /*%%SmartyHeaderCode:2277955e3f8717b4c90-45168449%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '12a1f8d32641d939820314002d3edc42f8727940' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_create.html',
-      1 => 1444195443,
+      1 => 1444811179,
       2 => 'file',
     ),
   ),
@@ -45,6 +45,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
  language="JavaScript" src="/itildemo/plugins/ckeditor/ckeditor.js"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
+ language="JavaScript" src="/itildemo/plugins/ckfinder/ckfinder.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
  language="JavaScript" src="/itildemo/plugins/fileupload/js/stream-v1.js"><?php echo '</script'; ?>
 >
     <link rel="stylesheet" href="/itildemo/plugins/fileupload/css/stream-v1.css">
@@ -58,7 +61,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </div>
     <br>
     <div class="_013_RequestList">
-        <form class="form-horizontal form-group-sm" action="/itildemo/home/service/req_ser.php?flag=admin" method="post">
+        <form class="form-horizontal form-group-sm" name="req_form" onsubmit="return checkValue();" action="/itildemo/home/service/req_ser.php?flag=admin" method="post">
             <div class="form-group">
                 <label class="col-sm-2 control-label">标题:</label>
 
@@ -107,7 +110,8 @@ $_smarty_tpl->tpl_vars['c_sort']->_loop = true;
                                             <?php } ?>
                                         </table>
                                     </div>
-                                    <br><br><button class='btn btn-sm btn-primary' onclick='selectSort()'>确定</button>
+                                    <br><br>
+                                    <div class='_46_knowledge'><button class='btn btn-sm btn-primary' onclick='selectSort()'> 确 定 </button></div>
                                 </div>
                                ">
                 </div>
@@ -172,12 +176,12 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
                 <?php echo '<script'; ?>
 >
                     CKEDITOR.replace("req_content", {
-                        filebrowserBrowseUrl: '/itildemo/plugins/ckfinder/ckfinder.html',
-                        filebrowserImageBrowseUrl: '/itildemo/plugins/ckfinder/ckfinder.html?Type=Images',
-                        filebrowserFlashBrowseUrl: '/itildemo/plugins/ckfinder/ckfinder.html?Type=Flash',
-                        filebrowserUploadUrl: '/itildemo/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-                        filebrowserImageUploadUrl: '/itildemo/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-                        filebrowserFlashUploadUrl: '/itildemo/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                        filebrowserBrowseUrl        : '/itildemo/plugins/ckfinder/ckfinder.html',
+                        filebrowserImageBrowseUrl   : '/itildemo/plugins/ckfinder/ckfinder.html?Type=Images',
+                        filebrowserFlashBrowseUrl   : '/itildemo/plugins/ckfinder/ckfinder.html?Type=Flash',
+                        filebrowserUploadUrl        : '/itildemo/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                        filebrowserImageUploadUrl   : '/itildemo/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                        filebrowserFlashUploadUrl   : '/itildemo/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
                     });
                 <?php echo '</script'; ?>
 >
@@ -211,7 +215,7 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
                 </div>
             </div>
 
-            <button name="add_req" class="btn btn-primary btn-sm _017_AddRequest">提交请求</button>
+            <button name="add_req" type="submit" class="btn btn-primary btn-sm _017_AddRequest">提交请求</button>
             <br><br><br>
         </form>
 
@@ -250,6 +254,34 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
         else
             attach.style.display="none";
     })
+
+    function checkValue()
+    {
+        if(req_form.req_title.value=="")
+        {
+            alert("请求标题不能为空！");
+            req_form.req_title.focus();
+            return false;
+        }
+        if(req_form.req_sort.value=="")
+        {
+            alert("请求分类不能为空！");
+            req_form.req_sort.focus();
+            return false;
+        }
+        if(req_form.req_keyword.value=="")
+        {
+            alert("关键字不能为空！");
+            req_form.req_keyword.focus();
+            return false;
+        }
+        if(req_form.req_author.value=="")
+        {
+            alert("请求人不能为空！");
+            req_form.req_author.focus();
+            return false;
+        }
+    }
 <?php echo '</script'; ?>
 >
 

@@ -14,7 +14,7 @@ $sql = "select sort_id,sort_name from t_req_sort where sort_parent_id is NULL ";
 $parent_sort = $sqltool->dbQuery($sql);
 $sql = "select sort_id,sort_name,sort_parent_id from t_req_sort where sort_parent_id is not NULL";
 $child_sort = $sqltool->dbQuery($sql);
-$req = $sqltool->dbQuery("select req_num,req_title from t_req where req_state='4'");
+$req = $sqltool->dbQuery("select req_num,req_title,req_author,t_user.name from t_req,t_user where req_state='4' and req_author=user_name");
 
 
 $sqltool->dbCloseConnection();

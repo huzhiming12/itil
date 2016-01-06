@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 04:16:14
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-13 10:50:17
          compiled from "F:\wamp\www\itildemo\templates\user\index.html" */ ?>
 <?php /*%%SmartyHeaderCode:1246955e6655c3b4a00-93256839%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '013c1beaefc05e710bbb180e14bfc46f7fd5eb28' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\user\\index.html',
-      1 => 1442981717,
+      1 => 1444733414,
       2 => 'file',
     ),
     '5faa2dcbbfb8136e3a37dc4c1e38a72b8d01f8cf' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\frame\\index.html',
-      1 => 1442366263,
+      1 => 1444696436,
       2 => 'file',
     ),
   ),
@@ -30,11 +30,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
     <title>运维管理系统</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="shortcut icon" href="/itildemo/static/img/itil.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/itildemo/static/img/itil.png" type="image/x-icon"/>
     <link href="/itildemo/templates/frame/assets/css/dpl-min.css" rel="stylesheet" type="text/css"/>
     <link href="/itildemo/templates/frame/assets/css/bui-min.css" rel="stylesheet" type="text/css"/>
     <link href="/itildemo/templates/frame/assets/css/main-min.css" rel="stylesheet" type="text/css"/>
+
 </head>
+
 <body>
 
 <div class="header">
@@ -42,10 +44,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <!--<img src="/chinapost/Public/assets/img/top.png">-->
     </div>
 
-    <div class="dl-log">欢迎您，<span class="dl-log-user"><?php echo $_SESSION['role'];?>
-:<?php echo $_SESSION['user_name'];?>
-</span>
-        <a href="#" title="退出系统" class="dl-log-quit">[退出]</a>
+    <div class="dl-log">欢迎您，尊敬的<span class="dl-log-user">
+        <?php if ($_SESSION['role']=='user') {?>
+        用户:
+        <?php } elseif ($_SESSION['role']=='engineer') {?>
+        工程师：
+        <?php } else { ?>
+        管理员：
+        <?php }?>
+        <a class="dl-log-quit"><?php echo $_SESSION['user_name'];?>
+</a> &nbsp;&nbsp;您好！
+    </span>
+        <a href="/itildemo/home/controller/share/login.php" title="退出系统" class="dl-log-quit">[退出]</a>
     </div>
 </div>
 <div class="content">
@@ -60,6 +70,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </li>
 <li class="nav-item dl-selected">
     <div class="nav-item-inner nav-order">公告通知</div>
+</li>
+<li class="nav-item dl-selected">
+    <div class="nav-item-inner nav-order">个人信息</div>
 </li>
 
 
@@ -106,6 +119,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             items: [
                                 {id: '1', text: '最新通知', href: '/itildemo/home/controller/share/news_list.php'},
                                 {id: '2', text: '消息提醒', href: 'Node/index.html'}]
+                        }]
+                    },
+                    {
+                        id: '3',
+                        homePage: '1',
+                        menu: [{
+                            text: '个人信息',
+                            items: [
+                                {id: '1', text: '个人信息', href: '/itildemo/home/controller/share/info.php'}]
+
                         }]
                     }
                 ];

@@ -13,7 +13,7 @@ $sql = "select sort_id,sort_name from t_req_sort where sort_parent_id is NULL ";
 $parent_sort = $sqltool->dbQuery($sql);
 $sql = "select sort_id,sort_name,sort_parent_id from t_req_sort where sort_parent_id is not NULL";
 $child_sort = $sqltool->dbQuery($sql);
-$userlist = $sqltool->dbQuery("select user_name,name,depart_name from t_user,t_depart where t_user.depart_id=t_depart.depart_id and user_role='1'");
+$userlist = $sqltool->dbQuery("select user_name,name,depart_name from t_user,t_depart where t_user.depart_id=t_depart.depart_id and user_role='1' order by t_user.depart_id");
 
 
 $attach_id = md5(uniqid(md5(microtime(true)), true));

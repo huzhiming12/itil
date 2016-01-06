@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-07-14 01:45:05
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-14 08:48:21
          compiled from "F:\wamp\www\itildemo\templates\admin\config_depart.html" */ ?>
 <?php /*%%SmartyHeaderCode:2638855a1de2b380725-94905385%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6ddb174c4a4e4d018df71a97a4d12b742752b1df' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\config_depart.html',
-      1 => 1436838272,
+      1 => 1444812498,
       2 => 'file',
     ),
   ),
@@ -48,7 +48,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <div class="_011_RequestList">
         机构配置 &nbsp;&nbsp;
         <a href="#" title="添加机构">
-            <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal">
+            <button onclick="document.getElementById('depart_parent_name').value='无'" class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal">
                 +
             </button>
         </a>
@@ -67,7 +67,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <!--添加机构的模态框-->
 <div id="myModal" class="modal fade">
     <div class="modal-dialog">
-        <form class="form-horizontal" name="adddepart" method="post" action="/itildemo/home/service/depart_ser.php"
+        <form class="form-horizontal" name="adddepart" onsubmit="return checkValue()" method="post" action="/itildemo/home/service/depart_ser.php"
               role="form">
             <div class="modal-content">
                 <div class="modal-header">
@@ -76,6 +76,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <h4 class="modal-title">添加机构</h4>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group form-group-sm">
+                        <label class="col-sm-3 control-label">上级机构：</label>
+                        <div class="col-sm-6">
+                            <input type="text" id="depart_parent_name" class="form-control" readonly>
+                        </div>
+                    </div>
                     <div class="form-group form-group-sm">
                         <label class="col-sm-3 control-label">机构名称：</label>
                         <div class="col-sm-6">
@@ -96,4 +102,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </div>
 
 </body>
-</html><?php }} ?>
+</html>
+
+<?php echo '<script'; ?>
+>
+
+    function checkValue()
+    {
+        if(adddepart.depart_name.value=="")
+        {
+            alert("机构名称不能为空！");
+            adddepart.depart_name.focus();
+            return false;
+        }
+    }
+<?php echo '</script'; ?>
+><?php }} ?>

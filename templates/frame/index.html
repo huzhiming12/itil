@@ -3,11 +3,13 @@
 <head>
     <title>运维管理系统</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="shortcut icon" href="/itildemo/static/img/itil.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/itildemo/static/img/itil.png" type="image/x-icon"/>
     <link href="/itildemo/templates/frame/assets/css/dpl-min.css" rel="stylesheet" type="text/css"/>
     <link href="/itildemo/templates/frame/assets/css/bui-min.css" rel="stylesheet" type="text/css"/>
     <link href="/itildemo/templates/frame/assets/css/main-min.css" rel="stylesheet" type="text/css"/>
+
 </head>
+
 <body>
 
 <div class="header">
@@ -15,8 +17,17 @@
         <!--<img src="/chinapost/Public/assets/img/top.png">-->
     </div>
 
-    <div class="dl-log">欢迎您，<span class="dl-log-user"><{$smarty.session.role}>:<{$smarty.session.user_name}></span>
-        <a href="#" title="退出系统" class="dl-log-quit">[退出]</a>
+    <div class="dl-log">欢迎您，尊敬的<span class="dl-log-user">
+        <{if $smarty.session.role=='user'}>
+        用户:
+        <{else if $smarty.session.role=='engineer'}>
+        工程师：
+        <{else}>
+        管理员：
+        <{/if}>
+        <a class="dl-log-quit"><{$smarty.session.user_name}></a> &nbsp;&nbsp;您好！
+    </span>
+        <a href="/itildemo/home/controller/share/login.php" title="退出系统" class="dl-log-quit">[退出]</a>
     </div>
 </div>
 <div class="content">
@@ -30,13 +41,13 @@
                 <div class="nav-item-inner nav-home">系统管理</div>
             </li>
             <li class="nav-item dl-selected">
-                <div class="nav-item-inner nav-order">业务管理</div>
+                <div class="nav-item-inner nav-inventory">业务管理</div>
             </li>
             <li class="nav-item dl-selected">
-                <div class="nav-item-inner nav-order">业务管理</div>
+                <div class="nav-item-inner nav-supplier">业务管理</div>
             </li>
             <li class="nav-item dl-selected">
-                <div class="nav-item-inner nav-order">业务管理</div>
+                <div class="nav-item-inner nav-goods">业务管理</div>
             </li>
             <{/block}>
         </ul>

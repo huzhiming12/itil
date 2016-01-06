@@ -11,6 +11,11 @@ require_once "../tools/SQLTool.class.php";
 
 $list = $_GET['list'];
 
+if(isset($_GET['title']))
+    $title = $_GET['title'];
+else
+    $title="用户请求列表";
+
 $sqltool = new SQLTool();
 $excel = new ExcelExport();
 $cell = array("请求编号", "请求标题", "请求分类", "请求方式", "请求时间", "请求描述", "优先级", "影响范围",
@@ -21,8 +26,8 @@ $sql = "select t_req.req_num, t_req.req_title, t_req.req_sort,t_req.req_source, 
         t_user.telephone,t_user.email,t_req_assign.req_engineer,t_req.req_state,t_req.req_solution
         from t_req left outer join t_req_assign on t_req.req_num=t_req_assign.req_num and (finish_flag=1 or finish_flag=2),t_user
 		where t_req.req_author = t_user.user_name  and t_req.req_num in $list order by req_time desc";
-$res = $sqltool->dbQuery($sql);
 
+$res = $sqltool->dbQuery($sql);
 
 for ($i = 0; $i < count($res); $i++)
 {
@@ -132,7 +137,7 @@ for ($i = 0; $i < count($res); $i++)
 }
 
 
-$excel->setCellTitle($cell, "用户请求列表");
+$excel->setCellTitle($cell, $title);
 $excel->setCellValue($res);
 
 $excel->export();

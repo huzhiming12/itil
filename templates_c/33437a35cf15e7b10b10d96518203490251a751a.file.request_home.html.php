@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-08 01:29:39
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-10 20:00:37
          compiled from "F:\wamp\www\itildemo\templates\admin\request_home.html" */ ?>
 <?php /*%%SmartyHeaderCode:2595255a20a27136c40-20673934%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '33437a35cf15e7b10b10d96518203490251a751a' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\request_home.html',
-      1 => 1444267722,
+      1 => 1444478418,
       2 => 'file',
     ),
   ),
@@ -19,12 +19,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_55a20a27210b63_26805566',
   'variables' => 
   array (
-    'undo_res' => 0,
+    'undo_req' => 0,
     'change_req' => 0,
     'over_time_req' => 0,
     'doing_req' => 0,
     'req' => 0,
+    'undo_req_num' => 0,
+    'change_req_num' => 0,
     'over' => 0,
+    'over_time_req_num' => 0,
+    'doing_req_num' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -52,7 +56,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div class="_012_RequestList">
     <div class="_034_request_home">
         <ul id="myTab" class="nav nav-tabs title_font">
-            <li class="active"><a href="#home" data-toggle="tab">待审核请求(<?php echo count($_smarty_tpl->tpl_vars['undo_res']->value);?>
+            <li class="active"><a href="#home" data-toggle="tab">待审核请求(<?php echo count($_smarty_tpl->tpl_vars['undo_req']->value);?>
 )</a></li>
             <li><a href="#ios" data-toggle="tab">变更请求(<?php echo count($_smarty_tpl->tpl_vars['change_req']->value);?>
 )</a></li>
@@ -73,14 +77,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <th></th>
                     <th>请求编号</th>
                     <th>请求标题</th>
+                    <th>请求分类</th>
                     <th>请求人</th>
                     <th>请求时间</th>
                     <th>请求状态</th>
-                    <th>操作</th>
                 </tr>
                 <tbody>
                 <?php  $_smarty_tpl->tpl_vars['req'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['req']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['undo_res']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_from = $_smarty_tpl->tpl_vars['undo_req']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
  $_smarty_tpl->tpl_vars['smarty']->value['foreach']['req']['index']=-1;
 foreach ($_from as $_smarty_tpl->tpl_vars['req']->key => $_smarty_tpl->tpl_vars['req']->value) {
 $_smarty_tpl->tpl_vars['req']->_loop = true;
@@ -96,27 +100,24 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
                     </td>
                     <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_title'];?>
 </td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_sort'];?>
+</td>
                     <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_author'];?>
 </td>
                     <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_time'];?>
 </td>
                     <td>
-                        <?php if ($_smarty_tpl->tpl_vars['req']->value['req_state']=='1') {?>
-                        <span>&nbsp;未处理&nbsp;</span>
-                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_state']=='2') {?>
-                        <span>&nbsp;已指派&nbsp;</span>
-                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_state']=='3') {?>
-                        <span>&nbsp;已取消&nbsp;</span>
-                        <?php } elseif ($_smarty_tpl->tpl_vars['req']->value['req_state']=='4') {?>
-                        <span>&nbsp;已解决&nbsp;</span>
-                        <?php }?>
+                        <span class="_span_new">&nbsp;未处理&nbsp;</span>
                     </td>
-                    <td>删除</td>
                 </tr>
                 <?php } ?>
                 </tbody>
                 </thead>
             </table>
+            <?php if (count($_smarty_tpl->tpl_vars['undo_req']->value)!=0) {?>
+            <a href="/itildemo/home/service/excel_export_ser.php?list=<?php echo $_smarty_tpl->tpl_vars['undo_req_num']->value;?>
+&title=待审核请求列表" class="_52_Excel_export">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;导出</a>
+            <?php }?>
         </div>
         <!--变更列表-->
         <div class="tab-pane" id="ios">
@@ -160,6 +161,10 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
                 </tbody>
                 </thead>
             </table>
+            <?php if (count($_smarty_tpl->tpl_vars['change_req']->value)!=0) {?>
+            <a href="/itildemo/home/service/excel_export_ser.php?list=<?php echo $_smarty_tpl->tpl_vars['change_req_num']->value;?>
+&title=变更请求列表" class="_52_Excel_export">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;导出</a>
+            <?php }?>
         </div>
         <!--逾期列表-->
         <div class="tab-pane" id="java">
@@ -207,6 +212,10 @@ $_smarty_tpl->tpl_vars['over']->_loop = true;
                 </tbody>
                 </thead>
             </table>
+            <?php if (count($_smarty_tpl->tpl_vars['over_time_req']->value)!=0) {?>
+            <a href="/itildemo/home/service/excel_export_ser.php?list=<?php echo $_smarty_tpl->tpl_vars['over_time_req_num']->value;?>
+&title=逾期请求列表" class="_52_Excel_export">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;导出</a>
+            <?php }?>
         </div>
         <!--请求追踪-->
         <div class="tab-pane" id="req">
@@ -278,6 +287,10 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
                 </tbody>
                 </thead>
             </table>
+            <?php if (count($_smarty_tpl->tpl_vars['doing_req']->value)!=0) {?>
+            <a href="/itildemo/home/service/excel_export_ser.php?list=<?php echo $_smarty_tpl->tpl_vars['doing_req_num']->value;?>
+" class="_52_Excel_export">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;导出</a>
+            <?php }?>
         </div>
 
         <br><br>

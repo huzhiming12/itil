@@ -48,7 +48,7 @@
             </tr>
         </table>
         <div>
-            <{$res.req_content}>
+            <{$res.req_content}><{if $res.req_content==''}><a>该请求已删除或不存在！</a><{/if}>
         </div>
     </div>
     <!---附件信息-->

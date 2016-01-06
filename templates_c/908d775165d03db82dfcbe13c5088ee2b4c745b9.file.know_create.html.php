@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 08:18:02
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-14 08:31:12
          compiled from "F:\wamp\www\itildemo\templates\share\know_create.html" */ ?>
 <?php /*%%SmartyHeaderCode:1778655f50b8839e987-24807902%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '908d775165d03db82dfcbe13c5088ee2b4c745b9' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\share\\know_create.html',
-      1 => 1442996279,
+      1 => 1444811469,
       2 => 'file',
     ),
   ),
@@ -61,7 +61,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <br>
 
     <div class="_013_RequestList">
-        <form class="form-horizontal form-group-sm" action="/itildemo/home/service/know_ser.php?flag=admin" method="post">
+        <form class="form-horizontal form-group-sm" name="kno_form" onsubmit="return checkValue()" action="/itildemo/home/service/know_ser.php?flag=admin" method="post">
             <div class="_015_RequestList">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">知识主题:</label>
@@ -111,7 +111,10 @@ $_smarty_tpl->tpl_vars['c_sort']->_loop = true;
                                             <?php } ?>
                                         </table>
                                     </div>
-                                    <br><br><button class='btn btn-sm btn-primary' onclick='selectSort()'>确定</button>
+                                    <br><br>
+                                    <div class='_46_knowledge'>
+                                    <button class='btn btn-sm btn-primary' onclick='selectSort()'> 确 定 </button>
+                                    </div>
                                 </div>
                                ">
                     </div>
@@ -125,7 +128,6 @@ $_smarty_tpl->tpl_vars['c_sort']->_loop = true;
                     <label class="col-sm-2 control-label">关联请求:</label>
                     <div class="col-sm-3">
                         <input type="text" name="req_num" id="reqPopover" placeholder="请求编号" class="form-control"
-                               readonly
                                data-toggle="popover"
                                data-container="body"
                                data-placement="bottom"
@@ -134,6 +136,8 @@ $_smarty_tpl->tpl_vars['c_sort']->_loop = true;
                                data-content="
                                <div style='max-height:300px;overflow-y:scroll'>
                                     <table class='table table-hover'>
+                                        <tr><th>请求编号</th><th>请求标题</th><th>请求人</th><th>请求人帐号</th>
+                                        </tr>
                                          <tbody>
                                          <?php  $_smarty_tpl->tpl_vars['req'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['req']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['reqlist']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -146,13 +150,15 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
 </a></td>
                                              <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_title'];?>
 </td>
-                                             <td>560001</td>
+                                             <td><?php echo $_smarty_tpl->tpl_vars['req']->value['name'];?>
+</td>
+                                              <td><?php echo $_smarty_tpl->tpl_vars['req']->value['req_author'];?>
+</td>
                                           </tr>
                                           <?php } ?>
                                           <tbody>
                                     </table>
                                </div>
-
                                 ">
                     </div>
 
@@ -238,6 +244,24 @@ $_smarty_tpl->tpl_vars['req']->_loop = true;
         else
             attach.style.display="none";
     })
+
+    function checkValue() {
+        if (kno_form.kno_title.value == "") {
+            alert("知识主题不能为空！");
+            kno_form.kno_title.focus();
+            return false;
+        }
+        if (kno_form.kno_sort.value == "") {
+            alert("知识分类不能为空！");
+            kno_form.kno_sort.focus();
+            return false;
+        }
+        if (kno_form.kno_keyword.value == "") {
+            alert("关键字不能为空！");
+            kno_form.kno_keyword.focus();
+            return false;
+        }
+    }
 <?php echo '</script'; ?>
 >
 

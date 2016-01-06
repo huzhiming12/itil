@@ -34,7 +34,7 @@ if ($_GET['pageNow'])
 $pagetool->pageNow = $pageNow;
 
 $smarty->assign("res", $pagetool->getPageResource());
-if ($pagetool->pageCount >= 2)
-    $smarty->assign("nav", $pagetool->getNavigate());
+
+$smarty->assign("nav", $pagetool->getNavigate());
 
 $smarty->display("admin/know_list.html");

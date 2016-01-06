@@ -16,6 +16,9 @@
 <li class="nav-item dl-selected">
     <div class="nav-item-inner nav-order">知识库</div>
 </li>
+<li class="nav-item dl-selected">
+    <div class="nav-item-inner nav-order">个人信息</div>
+</li>
 <{/block}>
 
 <{block name=navi}>
@@ -30,7 +33,7 @@
                             text: '我的主页',
                             items: [
                                 {id: '1', text: '任务清单', href: '/itildemo/home/controller/engineer/task_list.php'},
-                                {id: '2', text: '个人信息', href: '/itildemo/home/controller/engineer/info.php'},]
+                               ]
                         }]
                     },
                     {
@@ -40,7 +43,7 @@
                             text: '公告通知',
                             items: [
                                 {id: '1', text: '最新通知', href: '/itildemo/home/controller/share/news_list.php'},
-                                {id: '2', text: '消息提醒', href: 'Node/index.html'}]
+                                ]
                         }]
                     },
                     {
@@ -52,6 +55,16 @@
                                 {id: '1', text: '知识检索', href: '/itildemo/home/controller/share/know_search.php'},
                                 {id: '2', text: '我的知识', href: '/itildemo/home/controller/engineer/my_know_list.php'},
                                 {id: '3', text: '知识采集', href: '/itildemo/home/controller/share/know_create.php'}]
+                        }]
+                    },
+                    {
+                        id: '4',
+                        homePage: '1',
+                        menu: [{
+                            text: '个人信息',
+                            items: [
+                                {id: '1', text: '个人信息', href: '/itildemo/home/controller/share/info.php'},
+                            ]
                         }]
                     },
                 ];

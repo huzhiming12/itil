@@ -93,7 +93,7 @@ if(isset($_POST['edit_kno']))
     $res1 = 1;
     //将上传的文件从temp文件夹下移到files
     if (file_exists(PROJECT_DIR . "/uploadfile/temp/" . $kno_attach_id))
-        $res1 = $fileutil->moveDir(PROJECT_DIR . "/uploadfile/temp/" . $kno_attach_id, PROJECT_DIR . "/uploadfile/files/" . $kno_attach_id);
+        $res1 = $fileutil->moveDir(PROJECT_DIR . "/uploadfile/temp/" . $kno_attach_id, PROJECT_DIR . "/uploadfile/files/know/" . $kno_attach_id);
     $sql = "insert into t_kno_change (kno_num,kno_change,kno_change_time,kno_change_author) VALUES ('$kno_num','$kno_change',NOW(),'$kno_change_author')";
     $res2 = $sqltool->dbUpdate($sql);
 

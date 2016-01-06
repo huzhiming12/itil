@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-23 02:12:55
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-14 10:52:02
          compiled from "F:\wamp\www\itildemo\templates\admin\news_create.html" */ ?>
 <?php /*%%SmartyHeaderCode:11743560150b4416135-31487185%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b0aba353a4bede88a13407638dc8ed0fb289bdcc' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\news_create.html',
-      1 => 1442973207,
+      1 => 1444819918,
       2 => 'file',
     ),
   ),
@@ -52,7 +52,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </div>
     <br>
     <div class="_013_RequestList">
-        <form class="form-horizontal" action="/itildemo/home/service/news_ser.php" method="post">
+        <form class="form-horizontal" name="add_news" onsubmit="return checkValue()" action="/itildemo/home/service/news_ser.php" method="post">
             <div class="form-group form-group-sm">
                 <label class="col-sm-2 control-label">通知标题:</label>
                 <div class="col-sm-8">
@@ -119,6 +119,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         else
             attach.style.display="none";
     })
+
+    function checkValue()
+    {
+        if(add_news.news_title.value=="")
+        {
+            alert("通知标题不能为空！")
+            add_news.news_title.focus();
+            return false;
+        }
+    }
 <?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-07 05:41:23
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-10-14 07:30:30
          compiled from "F:\wamp\www\itildemo\templates\admin\index.html" */ ?>
 <?php /*%%SmartyHeaderCode:1593055a1de2a311301-65692116%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '79d0862a81983dc16bafb04b9b5e1bb6da6ae475' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\admin\\index.html',
-      1 => 1444196424,
+      1 => 1444807827,
       2 => 'file',
     ),
     '5faa2dcbbfb8136e3a37dc4c1e38a72b8d01f8cf' => 
     array (
       0 => 'F:\\wamp\\www\\itildemo\\templates\\frame\\index.html',
-      1 => 1442366263,
+      1 => 1444696436,
       2 => 'file',
     ),
   ),
@@ -30,11 +30,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
     <title>运维管理系统</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="shortcut icon" href="/itildemo/static/img/itil.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/itildemo/static/img/itil.png" type="image/x-icon"/>
     <link href="/itildemo/templates/frame/assets/css/dpl-min.css" rel="stylesheet" type="text/css"/>
     <link href="/itildemo/templates/frame/assets/css/bui-min.css" rel="stylesheet" type="text/css"/>
     <link href="/itildemo/templates/frame/assets/css/main-min.css" rel="stylesheet" type="text/css"/>
+
 </head>
+
 <body>
 
 <div class="header">
@@ -42,10 +44,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <!--<img src="/chinapost/Public/assets/img/top.png">-->
     </div>
 
-    <div class="dl-log">欢迎您，<span class="dl-log-user"><?php echo $_SESSION['role'];?>
-:<?php echo $_SESSION['user_name'];?>
-</span>
-        <a href="#" title="退出系统" class="dl-log-quit">[退出]</a>
+    <div class="dl-log">欢迎您，尊敬的<span class="dl-log-user">
+        <?php if ($_SESSION['role']=='user') {?>
+        用户:
+        <?php } elseif ($_SESSION['role']=='engineer') {?>
+        工程师：
+        <?php } else { ?>
+        管理员：
+        <?php }?>
+        <a class="dl-log-quit"><?php echo $_SESSION['user_name'];?>
+</a> &nbsp;&nbsp;您好！
+    </span>
+        <a href="/itildemo/home/controller/share/login.php" title="退出系统" class="dl-log-quit">[退出]</a>
     </div>
 </div>
 <div class="content">
@@ -59,16 +69,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <div class="nav-item-inner nav-home">服务台</div>
 </li>
 <li class="nav-item dl-selected">
-    <div class="nav-item-inner nav-order">知识库</div>
+    <div class="nav-item-inner nav-inventory">知识库</div>
 </li>
 <li class="nav-item dl-selected">
     <div class="nav-item-inner nav-order">报表</div>
 </li>
 <li class="nav-item dl-selected">
-    <div class="nav-item-inner nav-order">配置</div>
+    <div class="nav-item-inner nav-supplier">配置</div>
 </li>
 <li class="nav-item dl-selected">
-    <div class="nav-item-inner nav-order">公告</div>
+    <div class="nav-item-inner nav-goods">公告</div>
+</li>
+<li class="nav-item dl-selected">
+    <div class="nav-item-inner nav-goods">个人信息</div>
 </li>
 
         </ul>
@@ -141,7 +154,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                 {id: '2', text: '人员配置', href: '/itildemo/home/controller/admin/config_staff.php'},
                                 {id: '3', text: '附件上传配置', href: '/itildemo/home/controller/admin/config_attach.php'},
                                 {id: '4', text: '知识请求分类配置', href: '/itildemo/home/controller/admin/config_sort.php'},
-                                {id: '5', text: '邮件提示内容配置', href: '/itildemo/home/controller/admin/config_sort.php'},
                             ]
                         }]
                     },
@@ -153,6 +165,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             items: [
                                 {id: '1', text: '公告列表', href: '/itildemo/home/controller/share/news_list.php'},
                                 {id: '2', text: '新建公告', href: '/itildemo/home/controller/admin/news_create.php'},
+                            ]
+                        }]
+                    },
+                    {
+                        id: '6',
+                        homePage: '1',
+                        menu: [{
+                            text: '个人信息',
+                            items: [
+                                {id: '1', text: '个人信息', href: '/itildemo/home/controller/share/info.php'},
                             ]
                         }]
                     },
